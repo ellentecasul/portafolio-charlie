@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Ente Casual de Charlie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0e0e0e;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #121212;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+    header p {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      color: #aaaaaa;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0;
+    }
+    nav a {
+      color: #f5f5f5;
+      text-decoration: none;
+      font-weight: 300;
+    }
+    nav a:hover {
+      color: #4ade80;
+    }
+    .hero {
+      background: url('https://source.unsplash.com/1600x900/?nature,cinematic') no-repeat center center/cover;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      max-width: 800px;
+      background: rgba(0,0,0,0.5);
+      padding: 1rem;
+      border-radius: 10px;
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.02);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #121212;
+      color: #777;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>El Ente Casual de Charlie</h1>
+    <p>Fotografía cinematográfica, naturaleza y momentos para vivir.</p>
+    <nav>
+      <a href="#galeria">Galería</a>
+      <a href="#sobre">Sobre mí</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>Contar historias con luz, naturaleza y emociones reales</h2>
+  </div>
+
+  <section id="galeria">
+    <h2>Galería</h2>
+    <div class="gallery">
+      <img src="https://source.unsplash.com/800x600/?forest" alt="Bosque" />
+      <img src="https://source.unsplash.com/800x600/?mountain" alt="Montaña" />
+      <img src="https://source.unsplash.com/800x600/?cinematic,people" alt="Retrato" />
+    </div>
+  </section>
+
+  <section id="sobre">
+    <h2>Sobre mí</h2>
+    <p>Soy Charlie, un fotógrafo que busca capturar lo esencial: momentos reales, emociones auténticas y la belleza del mundo natural. Mi estilo es cinematográfico, con énfasis en el contraste, la luz y la simplicidad elegante.</p>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>¿Te gustaría trabajar conmigo o tienes una idea? Escríbeme a <a href="mailto:charlie@tuweb.com">charlie@tuweb.com</a> o sígueme en Instagram: <strong>@elentecasuldecharlie</strong></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 El Ente Casual de Charlie. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
