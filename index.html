@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>El Lente Casual de Charlie</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+  <title>El Ente Casual de Charlie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Ephesis&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -13,119 +13,178 @@
     }
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: #0e0e0e;
-      color: #f5f5f5;
+      background-color: #0a0a0a;
+      color: #f0f0f0;
       line-height: 1.6;
     }
     header {
-      background-color: #121212;
-      padding: 2rem;
-      text-align: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: rgba(0,0,0,0.85);
+      z-index: 1000;
     }
-    header h1 {
-      font-size: 2.5rem;
+    .logo {
+      font-size: 1.4rem;
       font-weight: 600;
       color: #ffffff;
     }
-    header p {
-      font-size: 1rem;
-      margin-top: 0.5rem;
-      color: #aaaaaa;
-    }
     nav {
       display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem 0;
+      gap: 1.5rem;
     }
     nav a {
-      color: #f5f5f5;
+      color: #f0f0f0;
       text-decoration: none;
       font-weight: 300;
+      transition: color 0.3s;
     }
     nav a:hover {
       color: #4ade80;
     }
     .hero {
-      background: url('palmeras.jpg') no-repeat center center/cover;
-      height: 90vh;
+      margin-top: 80px;
+      background: url('https://source.unsplash.com/1600x900/?nature') no-repeat center center/cover;
+      height: 100vh;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 4rem;
       color: white;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-family: 'Ephesis', cursive;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1rem 2rem;
+      max-width: 600px;
+    }
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
       padding: 2rem;
+      flex-wrap: wrap;
     }
-    .hero h2 {
-      font-size: 2.5rem;
-      max-width: 800px;
-      background: rgba(0,0,0,0.5);
-      padding: 1rem;
-      border-radius: 10px;
+    .categories button {
+      background: none;
+      border: 1px solid #4ade80;
+      color: #4ade80;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
     }
-    section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
+    .categories button:hover {
+      background-color: #4ade80;
+      color: #0a0a0a;
     }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 1rem;
+      padding: 2rem;
     }
     .gallery img {
       width: 100%;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
+      height: auto;
+      border-radius: 8px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: brightness(0.8);
     }
     .gallery img:hover {
-      transform: scale(1.02);
+      transform: scale(1.03);
+      filter: brightness(1);
+    }
+    .about {
+      padding: 4rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .about img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      filter: grayscale(100%);
+    }
+    .about p {
+      flex: 1;
+      font-size: 1rem;
+    }
+    .contact {
+      padding: 2rem;
+      text-align: center;
+    }
+    .contact a {
+      color: #4ade80;
+      text-decoration: none;
     }
     footer {
       text-align: center;
       padding: 2rem;
-      background-color: #121212;
-      color: #777;
+      background-color: #111;
+      color: #888;
       font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>El Lente Casual de Charlie</h1>
-    <p>CAPTURANDO LA VIDA UN INSTANTE A LA VEZ.</p>
+    <div class="logo">El Ente Casual de Charlie</div>
     <nav>
-      <a href="#galeria">Galería</a>
+      <a href="#galeria">Portafolio</a>
       <a href="#sobre">Sobre mí</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
-  <div class="hero">
-    <h2>Contar historias con luz, naturaleza y emociones reales</h2>
+  <section class="hero">
+    <h1>Contar historias con luz, naturaleza y emociones reales</h1>
+  </section>
+
+  <div class="categories">
+    <button>Naturaleza</button>
+    <button>Náuticos</button>
+    <button>Bodas</button>
+    <button>Gastronomía</button>
+    <button>Retratos</button>
   </div>
 
-  <section id="galeria">
-    <h2>Galería</h2>
-    <div class="gallery">
-      <img src="analu sol.jpg" alt="lifestyle" />
-      <img src="yoga boat.jpg" alt="naturaleza" />
-      <img src="elsa.jpg" alt="Retrato" />
-    </div>
+  <section id="galeria" class="gallery">
+    <img src="https://source.unsplash.com/800x600/?forest" alt="Bosque" />
+    <img src="https://source.unsplash.com/800x600/?mountain" alt="Montaña" />
+    <img src="https://source.unsplash.com/800x600/?portrait" alt="Retrato" />
+    <img src="https://source.unsplash.com/800x600/?sea" alt="Mar" />
+    <img src="https://source.unsplash.com/800x600/?wedding" alt="Boda" />
+    <img src="https://source.unsplash.com/800x600/?food" alt="Gastronomía" />
   </section>
 
-  <section id="sobre">
-    <h2>Sobre mí</h2>
-    <p>Soy Charlie, busco capturar lo esencial: momentos reales, emociones auténticas y la belleza del mundo natural.</p>
+  <section id="sobre" class="about">
+    <img src="https://source.unsplash.com/150x150/?man,photographer" alt="Charlie" />
+    <p>Soy Charlie, un fotógrafo que busca capturar lo esencial: momentos reales, emociones auténticas y la belleza del mundo natural. Mi estilo combina luz, sombra y tiempo para revelar lo invisible.</p>
   </section>
 
-  <section id="contacto">
+  <section id="contacto" class="contact">
     <h2>Contacto</h2>
-    <p>¿Si tienes alguna idea? Escríbeme a <a href="mailto:charlie@tuweb.com">charlie@tuweb.com</a> o sígueme en Instagram: <strong>@ellentecasuldecharlie</strong></p>
+    <p>¿Te gustaría trabajar conmigo o tienes una idea? Escríbeme a <a href="mailto:charlie@tuweb.com">charlie@tuweb.com</a> o sígueme en Instagram: <strong>@elentecasuldecharlie</strong></p>
   </section>
 
   <footer>
-    <p>&copy; 2025 El Lente Casual de Charlie. Todos los derechos reservados.</p>
+    <p>&copy; 2025 El Ente Casual de Charlie. Todos los derechos reservados.</p>
   </footer>
+</body>
+</html>
+
 </body>
 </html>
