@@ -158,11 +158,14 @@
      .contact-strip-image { ... }
 
       display: block;
-      width: 100%;
+      width: auto;
       height: 140vh;       /* 👉 Aumenta 50% + más (casi el doble del tamaño actual) */
       object-fit: contain; /* 👉 NO se corta */
       object-position: center;
-      margin: 0 auto 32px;
+      margin-left: auto;     /* 👉 CENTRADA horizontalmente */
+      margin-right: auto;    /* 👉 CENTRADA horizontalmente */
+      margin-bottom: 32px;   /* 👉 aire debajo */
+
     }
 
     .contact-strip-info p {
@@ -296,6 +299,7 @@
 
 </body>
 </html>
+
 
 
 
