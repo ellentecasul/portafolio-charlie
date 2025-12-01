@@ -1,228 +1,131 @@
-/* RESET BÁSICO */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charlie...</title>
+  <link rel="stylesheet" href="style.css" />
 
-body {
-  background-color: #000;
-  color: #f2f2f2;
-  font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.6;
-}
+  <!-- Fuentes de ejemplo (puedes cambiarlas) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
 
-/* HEADER */
+  <!-- HEADER / MENÚ SUPERIOR -->
+  <header class="main-header">
+    <div class="logo">Charlie...</div>
 
-.main-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 18px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(0, 0, 0, 0.9);
-  z-index: 100;
-}
+    <nav class="main-nav">
+      <a href="#dwellings">Dwellings</a>
+      <a href="#wedding">Wedding</a>
+      <a href="#gastronomy">Gastronomy</a>
+      <a href="#lifestyle">Lifestyle</a>
+      <a href="#sports">Sports</a>
+    </nav>
 
-.logo {
-  font-family: "Playfair Display", serif;
-  font-size: 1.4rem;
-  letter-spacing: 0.1em;
-}
+    <div class="header-icons">
+      <!-- Cambia el número de WhatsApp -->
+      <a href="https://wa.me/34600000000" target="_blank" class="icon">WhatsApp</a>
+      <!-- El botón del mapa puede ir a Google Maps o a tu sección contacto -->
+      <a href="#contacto" class="icon">📍</a>
+    </div>
+  </header>
 
-.main-nav {
-  display: flex;
-  gap: 24px;
-  font-size: 0.9rem;
-}
+  <!-- HERO / FOTO GRANDE -->
+  <section class="hero">
+    <img src="img/hero.jpg" alt="Fotografía de atardecer" class="hero-image" />
+    <div class="hero-text">
+      Contar historias con luz, naturaleza y emociones reales
+    </div>
+  </section>
 
-.main-nav a {
-  color: #f2f2f2;
-  text-decoration: none;
-  text-transform: lowercase;
-  letter-spacing: 0.08em;
-}
+  <!-- GALERÍA DE CATEGORÍAS -->
+  <section class="categories">
+    <div class="category" id="dwellings">
+      <img src="img/dwellings.jpg" alt="Dwellings" />
+      <h3>Dwellings</h3>
+    </div>
 
-.main-nav a:hover {
-  opacity: 0.7;
-}
+    <div class="category" id="wedding">
+      <img src="img/wedding.jpg" alt="Wedding" />
+      <h3>Wedding</h3>
+    </div>
 
-.header-icons {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 0.8rem;
-}
+    <div class="category" id="gastronomy">
+      <img src="img/gastronomy.jpg" alt="Gastronomy" />
+      <h3>Gastronomy</h3>
+    </div>
 
-.header-icons .icon {
-  color: #f2f2f2;
-  text-decoration: none;
-}
+    <div class="category" id="lifestyle">
+      <img src="img/lifestyle.jpg" alt="Lifestyle" />
+      <h3>Lifestyle</h3>
+    </div>
 
-/* HERO */
+    <div class="category" id="sports">
+      <img src="img/sports.jpg" alt="Sports" />
+      <h3>Sports</h3>
+    </div>
+  </section>
 
-.hero {
-  margin-top: 70px; /* altura del header */
-  position: relative;
-  overflow: hidden;
-}
+  <!-- TEXTO SOBRE TI -->
+  <section class="about">
+    <h2>Soy Charlie,</h2>
+    <p>
+      y mi trabajo no es solo fotografía o filmmaking; es la culminación de múltiples pasiones.
+      Como ex-chef, entiendo la composición, la textura y el arte de la presentación en la gastronomía.
+      Como DJ aficionado, aporto un sentido innato del ritmo y la cadencia que se traduce en transiciones
+      fluidas y una narrativa dinámica en mis videos.
+    </p>
+    <p>
+      Pero lo que realmente me define es mi experiencia como instructor de deportes náuticos
+      (kitesurf, windsurf, efoil, etc.): he aprendido a leer la luz en su momento más espectacular
+      —desde el amanecer hasta el atardecer—, y el misterio de las estrellas y la luna,
+      y a capturar la energía humana en su estado más puro.
+    </p>
+    <p>
+      Si buscas un creativo que combine la precisión técnica con una perspectiva vibrante
+      y sensorial para bodas, deportes, gastronomía o lifestyle, has encontrado la lente
+      que estabas buscando.
+    </p>
+  </section>
 
-.hero-image {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  display: block;
-}
+  <!-- POR QUÉ TRABAJAR CONTIGO -->
+  <section class="why">
+    <h2>¿Por qué elegir trabajar conmigo?</h2>
+    <p>
+      La respuesta es simple: no solo documento momentos, sino que los vivo y los siento antes
+      de capturarlos. Mi experiencia con mi estilo de vida me ha enseñado el valor de la energía,
+      la conexión humana y el ritmo perfecto.
+    </p>
+    <p>
+      Traslado esa intensidad a cada proyecto, ya sea inmortalizando la adrenalina pura de un evento
+      deportivo, la emoción íntima de una boda, la pasión detrás de un plato gastronómico o la esencia
+      auténtica del lifestyle. Busco la luz, la historia y la chispa vital que hace que tus proyectos
+      sean inolvidables.
+    </p>
+    <p>
+      Si buscas un filmmaker y fotógrafo que combine la visión artística con la experiencia real y la
+      capacidad de adaptación, has encontrado a tu aliado.
+    </p>
+  </section>
 
-.hero-text {
-  position: absolute;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  font-size: 0.95rem;
-  text-transform: lowercase;
-  letter-spacing: 0.15em;
-  background: rgba(0, 0, 0, 0.35);
-  padding: 10px 24px;
-}
+  <!-- PIE DE PÁGINA / CONTACTO -->
+  <footer class="footer" id="contacto">
+    <div class="footer-image-wrapper">
+      <img src="img/footer.jpg" alt="Fotografía submarina" class="footer-image" />
+      <div class="footer-overlay">
+        <p class="footer-phrase">el arte de expresar sin palabras</p>
+        <div class="footer-contact">
+          <p>📧 <a href="mailto:carlos.seguin@gmail.com">carlos.seguin@gmail.com</a></p>
+          <p>📷 @ellenteocasualdecharlie</p>
+          <p>📞 +34 671 310 241</p>
+          <p class="footer-signature">Charlie...</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-/* GALERÍA DE CATEGORÍAS */
-
-.categories {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  background-color: #000;
-}
-
-.category {
-  flex: 1 1 20%;
-  min-width: 160px;
-  text-align: center;
-  position: relative;
-}
-
-.category img {
-  width: 100%;
-  height: 360px;
-  object-fit: cover;
-  display: block;
-}
-
-.category h3 {
-  margin: 8px 0 16px;
-  font-size: 0.9rem;
-  text-transform: lowercase;
-}
-
-/* SECCIONES DE TEXTO */
-
-.about,
-.why {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 0 20px;
-  text-align: center;
-}
-
-.about h2,
-.why h2 {
-  font-family: "Playfair Display", serif;
-  margin-bottom: 22px;
-  font-size: 1.4rem;
-}
-
-.about p,
-.why p {
-  margin-bottom: 14px;
-  font-size: 0.95rem;
-}
-
-/* FOOTER */
-
-.footer {
-  margin-top: 80px;
-}
-
-.footer-image-wrapper {
-  position: relative;
-}
-
-.footer-image {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-.footer-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  text-align: center;
-}
-
-.footer-phrase {
-  font-family: "Playfair Display", serif;
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-
-.footer-contact p {
-  font-size: 0.9rem;
-}
-
-.footer-contact a {
-  color: #f2f2f2;
-  text-decoration: none;
-}
-
-.footer-contact a:hover {
-  text-decoration: underline;
-}
-
-.footer-signature {
-  margin-top: 16px;
-  font-family: "Playfair Display", serif;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 900px) {
-  .main-header {
-    padding: 12px 18px;
-  }
-
-  .main-nav {
-    display: none; /* para simplificar en móvil, luego puedes hacer menú hamburguesa */
-  }
-
-  .hero-image {
-    height: 80vh;
-  }
-
-  .categories {
-    flex-direction: column;
-  }
-
-  .category img {
-    height: 280px;
-  }
-
-  .about,
-  .why {
-    margin: 40px auto;
-  }
-
-  .footer-overlay {
-    justify-content: flex-end;
-    padding-bottom: 40px;
-  }
-}
+</body>
+</html>
