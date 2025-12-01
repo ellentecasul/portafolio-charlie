@@ -67,11 +67,6 @@
       font-size: 0.8rem;
     }
 
-    .header-icons .icon {
-      color: #f2f2f2;
-      text-decoration: none;
-    }
-
     /* HERO */
     .hero {
       margin-top: 70px;
@@ -81,7 +76,7 @@
 
     .hero-image {
       width: 100%;
-      height: 90vh;
+      height: 60vh;     /* MÁS PEQUEÑA COMO PEDISTE */
       object-fit: cover;
       display: block;
     }
@@ -103,7 +98,6 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      background-color: #000;
     }
 
     .category {
@@ -125,12 +119,12 @@
       text-transform: lowercase;
     }
 
-    /* SECCIONES DE TEXTO */
+    /* TEXT SECTIONS */
     .about,
     .why {
       max-width: 900px;
       margin: 60px auto;
-      padding: 0 20px;
+      padding: 20px;
       text-align: center;
     }
 
@@ -141,31 +135,23 @@
       font-size: 1.4rem;
     }
 
-    .about p,
-    .why p {
-      margin-bottom: 14px;
-      font-size: 0.95rem;
-    }
-
-    /* SECCIÓN FINAL: IMAGEN COMPLETA + CONTACTO */
+    /* FINAL SECTION — FULLY FIXED */
     .contact-strip {
       max-width: 900px;
-      margin: 80px auto 480px;  /* muchiiiiiiisimo espacio abajo */
+      margin: 80px auto 480px;
       padding: 0 20px;
       text-align: center;
     }
 
-     .contact-strip-image { ... }
-
+    .contact-strip-image {
       display: block;
       width: auto;
-      height: 140vh;       /* 👉 Aumenta 50% + más (casi el doble del tamaño actual) */
-      object-fit: contain; /* 👉 NO se corta */
+      height: 140vh;         /* 50% MÁS GRANDE */
+      object-fit: contain;   /* MUESTRA TODO SIN CORTAR */
       object-position: center;
-      margin-left: auto;     /* 👉 CENTRADA horizontalmente */
-      margin-right: auto;    /* 👉 CENTRADA horizontalmente */
-      margin-bottom: 32px;   /* 👉 aire debajo */
-
+      margin-left: auto;     /* CENTRADA */
+      margin-right: auto;    /* CENTRADA */
+      margin-bottom: 32px;
     }
 
     .contact-strip-info p {
@@ -182,37 +168,6 @@
       text-decoration: underline;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .main-header {
-        padding: 12px 18px;
-      }
-
-      .main-nav {
-        display: none;
-      }
-
-      .hero-image {
-        height: 80vh;
-      }
-
-      .categories {
-        flex-direction: column;
-      }
-
-      .category img {
-        height: 280px;
-      }
-
-      .about,
-      .why {
-        margin: 40px auto;
-      }
-
-      .contact-strip {
-        margin: 60px auto 260px;
-      }
-    }
   </style>
 </head>
 
@@ -238,67 +193,49 @@
 
   <!-- HERO -->
   <section class="hero">
-    <img src="palmeras.jpg" alt="Atardecer en la playa" class="hero-image" />
+    <img src="palmeras.jpg" class="hero-image" />
     <div class="hero-text">Contar historias con luz, naturaleza y emociones reales</div>
   </section>
 
   <!-- CATEGORÍAS -->
   <section class="categories">
-    <div class="category" id="dwellings">
-      <img src="ana_piso.jpg" alt="Dwellings" />
-      <h3>Dwellings</h3>
-    </div>
-
-    <div class="category" id="wedding">
-      <img src="boda.png" alt="Wedding" />
-      <h3>Wedding</h3>
-    </div>
-
-    <div class="category" id="gastronomy">
-      <img src="food.jpg" alt="Gastronomy" />
-      <h3>Gastronomy</h3>
-    </div>
-
-    <div class="category" id="lifestyle">
-      <img src="modelo orange.jpg" alt="Lifestyle" />
-      <h3>Lifestyle</h3>
-    </div>
-
-    <div class="category" id="sports">
-      <img src="luzkite1.png" alt="Sports" />
-      <h3>Sports</h3>
-    </div>
+    <div class="category"><img src="ana_piso.jpg"><h3>Dwellings</h3></div>
+    <div class="category"><img src="boda.png"><h3>Wedding</h3></div>
+    <div class="category"><img src="food.jpg"><h3>Gastronomy</h3></div>
+    <div class="category"><img src="modelo orange.jpg"><h3>Lifestyle</h3></div>
+    <div class="category"><img src="luzkite1.png"><h3>Sports</h3></div>
   </section>
 
-  <!-- SOBRE TI -->
+  <!-- ABOUT -->
   <section class="about">
     <h2>Soy Charlie,</h2>
-    <p>y mi trabajo no es solo fotografía o filmmaking; es la culminación de múltiples pasiones. Como ex-chef, entiendo la composición, la textura y el arte de la presentación en la gastronomía.</p>
-    <p>Como instructor de deportes náuticos he aprendido a leer la luz en su momento más espectacular, y a capturar la energía humana en su estado más puro.</p>
-    <p>Soy un creativo que combina la técnica con una perspectiva vibrante y sensorial.</p>
+    <p>y mi trabajo no es solo fotografía o filmmaking; es la culminación de múltiples pasiones.</p>
+    <p>Como instructor de deportes náuticos he aprendido a leer la luz y capturar la energía humana.</p>
+    <p>Soy un creativo que une técnica y sensibilidad.</p>
   </section>
 
-  <!-- POR QUÉ TRABAJAR CONTIGO -->
+  <!-- WHY -->
   <section class="why">
     <h2>¿Por qué elegir trabajar conmigo?</h2>
-    <p>No solo documento momentos: los vivo, los siento y los transformo en historias visuales llenas de fuerza.</p>
-    <p>Capturo la adrenalina de los deportes, la emoción íntima de una boda, la pasión de la gastronomía y la autenticidad del lifestyle.</p>
-    <p>Si buscas visión artística + experiencia real + sensibilidad humana, has encontrado a tu aliado.</p>
+    <p>No solo documento momentos: los vivo y los transformo en historias visuales.</p>
+    <p>Combino visión artística con experiencia real.</p>
+    <p>Si buscas autenticidad y emoción, soy tu aliado.</p>
   </section>
 
-  <!-- SECCIÓN FINAL -->
+  <!-- FINAL SECTION -->
   <section class="contact-strip">
-    <img src="pagina 3.jpg" alt="Contacto Charlie en Mallorca" class="contact-strip-image">
+    <img src="pagina 3.jpg" class="contact-strip-image">
 
     <div class="contact-strip-info">
       <p>📍 Mallorca, España</p>
       <p>📧 <a href="mailto:carlos.seguin@gmail.com">carlos.seguin@gmail.com</a></p>
-      <p>📱 <a href="https://wa.me/34671310241" target="blank">WhatsApp: +34 671 310 241</a></p>
+      <p>📱 <a href="https://wa.me/34671310241">WhatsApp: +34 671 310 241</a></p>
     </div>
   </section>
 
 </body>
 </html>
+
 
 
 
