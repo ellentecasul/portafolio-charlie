@@ -56,6 +56,10 @@
       letter-spacing: 0.08em;
     }
 
+    .main-nav a:visited {
+      color: #f2f2f2; /* evita morado en links visitados */
+    }
+
     .main-nav a:hover {
       opacity: 0.7;
     }
@@ -67,6 +71,19 @@
       font-size: 0.8rem;
     }
 
+    .header-icons .icon {
+      color: #f2f2f2;         /* SIEMPRE BLANCO */
+      text-decoration: none;
+    }
+
+    .header-icons .icon:visited {
+      color: #f2f2f2;         /* evita morado en WhatsApp */
+    }
+
+    .header-icons .icon:hover {
+      opacity: 0.7;
+    }
+
     /* HERO */
     .hero {
       margin-top: 70px;
@@ -76,7 +93,7 @@
 
     .hero-image {
       width: 100%;
-      height: 60vh;     /* MÁS PEQUEÑA COMO PEDISTE */
+      height: 60vh;     /* algo más pequeña para que no se vea tan estirada */
       object-fit: cover;
       display: block;
     }
@@ -119,44 +136,48 @@
       text-transform: lowercase;
     }
 
-    /* TEXT SECTIONS */
+    /* SECCIONES DE TEXTO (ABOUT / WHY) */
     .about,
     .why {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 20px;
+      max-width: 1100px;      /* más ancho, más presencia */
+      margin: 100px auto;     /* más espacio arriba y abajo */
+      padding: 0 40px;
       text-align: center;
     }
 
     .about h2,
     .why h2 {
       font-family: "Playfair Display", serif;
-      margin-bottom: 22px;
-      font-size: 1.4rem;
+      margin-bottom: 26px;
+      font-size: 1.6rem;
     }
 
-    /* FINAL SECTION — FULLY FIXED */
+    .about p,
+    .why p {
+      margin-bottom: 22px;
+      font-size: 1.1rem;
+      line-height: 1.9;
+    }
+
+    /* SECCIÓN FINAL: IMAGEN COMPLETA + CONTACTO */
     .contact-strip {
-      max-width: 900px;
-      margin: 80px auto 480px;
-      padding: 0 20px;
+      max-width: 1100px;
+      margin: 80px auto 260px;
+      padding: 0 40px;
       text-align: center;
     }
 
     .contact-strip-image {
       display: block;
-      width: auto;
-      height: 140vh;         /* 50% MÁS GRANDE */
-      object-fit: contain;   /* MUESTRA TODO SIN CORTAR */
-      object-position: center;
-      margin-left: auto;     /* CENTRADA */
-      margin-right: auto;    /* CENTRADA */
-      margin-bottom: 32px;
+      max-width: 100%;
+      height: auto;        /* sin estirar, respeta proporción */
+      margin: 0 auto 28px; /* centrada + espacio debajo */
     }
 
     .contact-strip-info p {
-      margin: 8px 0;
+      margin: 6px 0;
       font-size: 1rem;
+      letter-spacing: 0.03em;
     }
 
     .contact-strip-info a {
@@ -164,10 +185,47 @@
       text-decoration: none;
     }
 
+    .contact-strip-info a:visited {
+      color: #f2f2f2;
+    }
+
     .contact-strip-info a:hover {
       text-decoration: underline;
     }
 
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-header {
+        padding: 12px 18px;
+      }
+
+      .main-nav {
+        display: none;
+      }
+
+      .hero-image {
+        height: 70vh;
+      }
+
+      .categories {
+        flex-direction: column;
+      }
+
+      .category img {
+        height: 280px;
+      }
+
+      .about,
+      .why {
+        margin: 60px auto;
+        padding: 0 20px;
+      }
+
+      .contact-strip {
+        margin: 60px auto 200px;
+        padding: 0 20px;
+      }
+    }
   </style>
 </head>
 
@@ -187,23 +245,39 @@
 
     <div class="header-icons">
       <a href="https://wa.me/34671310241" target="_blank" class="icon">WhatsApp</a>
-      <span class="icon">📍</span>
+      <!-- 📍 ahora enlaza a la sección de contacto -->
+      <a href="#contacto" class="icon">📍</a>
     </div>
   </header>
 
   <!-- HERO -->
   <section class="hero">
-    <img src="palmeras.jpg" class="hero-image" />
+    <img src="palmeras.jpg" class="hero-image" alt="Atardecer en la playa" />
     <div class="hero-text">Contar historias con luz, naturaleza y emociones reales</div>
   </section>
 
   <!-- CATEGORÍAS -->
   <section class="categories">
-    <div class="category"><img src="ana_piso.jpg"><h3>Dwellings</h3></div>
-    <div class="category"><img src="boda.png"><h3>Wedding</h3></div>
-    <div class="category"><img src="food.jpg"><h3>Gastronomy</h3></div>
-    <div class="category"><img src="modelo orange.jpg"><h3>Lifestyle</h3></div>
-    <div class="category"><img src="luzkite1.png"><h3>Sports</h3></div>
+    <div class="category" id="dwellings">
+      <img src="ana_piso.jpg" alt="Dwellings" />
+      <h3>Dwellings</h3>
+    </div>
+    <div class="category" id="wedding">
+      <img src="boda.png" alt="Wedding" />
+      <h3>Wedding</h3>
+    </div>
+    <div class="category" id="gastronomy">
+      <img src="food.jpg" alt="Gastronomy" />
+      <h3>Gastronomy</h3>
+    </div>
+    <div class="category" id="lifestyle">
+      <img src="modelo orange.jpg" alt="Lifestyle" />
+      <h3>Lifestyle</h3>
+    </div>
+    <div class="category" id="sports">
+      <img src="luzkite1.png" alt="Sports" />
+      <h3>Sports</h3>
+    </div>
   </section>
 
   <!-- ABOUT -->
@@ -222,19 +296,20 @@
     <p>Si buscas autenticidad y emoción, soy tu aliado.</p>
   </section>
 
-  <!-- FINAL SECTION -->
-  <section class="contact-strip">
-    <img src="pagina 3.jpg" class="contact-strip-image">
+  <!-- SECCIÓN FINAL -->
+  <section class="contact-strip" id="contacto">
+    <img src="pagina3.jpg" class="contact-strip-image" alt="Contacto Charlie en Mallorca" />
 
     <div class="contact-strip-info">
       <p>📍 Mallorca, España</p>
       <p>📧 <a href="mailto:carlos.seguin@gmail.com">carlos.seguin@gmail.com</a></p>
-      <p>📱 <a href="https://wa.me/34671310241">WhatsApp: +34 671 310 241</a></p>
+      <p>📱 <a href="https://wa.me/34671310241" target="_blank">WhatsApp: +34 671 310 241</a></p>
     </div>
   </section>
 
 </body>
 </html>
+
 
 
 
