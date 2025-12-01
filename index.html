@@ -8,13 +8,10 @@
   <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background-color: #000;
@@ -26,8 +23,7 @@
     /* HEADER */
     .main-header {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
       padding: 18px 40px;
       display: flex;
@@ -49,65 +45,42 @@
       font-size: 0.9rem;
     }
 
-    .main-nav a {
+    .main-nav a,
+    .main-nav a:visited {
       color: #f2f2f2;
       text-decoration: none;
       text-transform: lowercase;
       letter-spacing: 0.08em;
     }
 
-    .main-nav a:visited {
-      color: #f2f2f2; /* evita morado en links visitados */
-    }
+    .main-nav a:hover { opacity: 0.7; }
 
-    .main-nav a:hover {
-      opacity: 0.7;
-    }
-
-    .header-icons {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: 0.8rem;
-    }
-
-    .header-icons .icon {
-      color: #f2f2f2;         /* SIEMPRE BLANCO */
+    .header-icons .icon,
+    .header-icons .icon:visited {
+      color: #f2f2f2;
       text-decoration: none;
     }
 
-    .header-icons .icon:visited {
-      color: #f2f2f2;         /* evita morado en WhatsApp */
-    }
-
-    .header-icons .icon:hover {
-      opacity: 0.7;
-    }
+    .header-icons { display: flex; gap: 16px; }
 
     /* HERO */
-    .hero {
-      margin-top: 70px;
-      position: relative;
-      overflow: hidden;
-    }
+    .hero { margin-top: 70px; position: relative; overflow: hidden; }
 
     .hero-image {
       width: 100%;
-      height: 60vh;     /* algo más pequeña para que no se vea tan estirada */
+      height: 60vh;
       object-fit: cover;
       display: block;
     }
 
     .hero-text {
       position: absolute;
-      top: 58%;
-      left: 50%;
+      top: 58%; left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
       font-size: 1.3rem;
-      text-transform: lowercase;
+      color: #fff;
       letter-spacing: 0.12em;
-      color: #ffffff;
     }
 
     /* CATEGORÍAS */
@@ -127,7 +100,6 @@
       width: 100%;
       height: 360px;
       object-fit: cover;
-      display: block;
     }
 
     .category h3 {
@@ -136,11 +108,11 @@
       text-transform: lowercase;
     }
 
-    /* SECCIONES DE TEXTO (ABOUT / WHY) */
+    /* TEXT SECTIONS */
     .about,
     .why {
-      max-width: 1100px;      /* más ancho, más presencia */
-      margin: 100px auto;     /* más espacio arriba y abajo */
+      max-width: 1100px;
+      margin: 100px auto;
       padding: 0 40px;
       text-align: center;
     }
@@ -159,25 +131,39 @@
       line-height: 1.9;
     }
 
-    /* SECCIÓN FINAL: IMAGEN COMPLETA + CONTACTO */
+    /* FINAL SECTION */
     .contact-strip {
       max-width: 1100px;
       margin: 80px auto 260px;
       padding: 0 40px;
       text-align: center;
+      position: relative;
+    }
+
+    /* TÍTULO PINCELADO SOBRE IMAGEN */
+    .contact-strip-title {
+      position: absolute;
+      top: 12%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: "Caveat", cursive;
+      font-size: 3rem;
+      color: #ff3b3b;
+      text-shadow: 0 0 6px rgba(0,0,0,0.4);
+      pointer-events: none;
+      white-space: nowrap;
     }
 
     .contact-strip-image {
       display: block;
       max-width: 100%;
-      height: auto;        /* sin estirar, respeta proporción */
-      margin: 0 auto 28px; /* centrada + espacio debajo */
+      height: auto;
+      margin: 0 auto 28px;
     }
 
     .contact-strip-info p {
       margin: 6px 0;
       font-size: 1rem;
-      letter-spacing: 0.03em;
     }
 
     .contact-strip-info a {
@@ -185,47 +171,8 @@
       text-decoration: none;
     }
 
-    .contact-strip-info a:visited {
-      color: #f2f2f2;
-    }
+    .contact-strip-info a:hover { text-decoration: underline; }
 
-    .contact-strip-info a:hover {
-      text-decoration: underline;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .main-header {
-        padding: 12px 18px;
-      }
-
-      .main-nav {
-        display: none;
-      }
-
-      .hero-image {
-        height: 70vh;
-      }
-
-      .categories {
-        flex-direction: column;
-      }
-
-      .category img {
-        height: 280px;
-      }
-
-      .about,
-      .why {
-        margin: 60px auto;
-        padding: 0 20px;
-      }
-
-      .contact-strip {
-        margin: 60px auto 200px;
-        padding: 0 20px;
-      }
-    }
   </style>
 </head>
 
@@ -234,7 +181,6 @@
   <!-- HEADER -->
   <header class="main-header">
     <div class="logo">Charlie...</div>
-
     <nav class="main-nav">
       <a href="#dwellings">Dwellings</a>
       <a href="#wedding">Wedding</a>
@@ -242,10 +188,8 @@
       <a href="#lifestyle">Lifestyle</a>
       <a href="#sports">Sports</a>
     </nav>
-
     <div class="header-icons">
       <a href="https://wa.me/34671310241" target="_blank" class="icon">WhatsApp</a>
-      <!-- 📍 ahora enlaza a la sección de contacto -->
       <a href="#contacto" class="icon">📍</a>
     </div>
   </header>
@@ -258,79 +202,72 @@
 
   <!-- CATEGORÍAS -->
   <section class="categories">
-    <div class="category" id="dwellings">
-      <img src="ana_piso.jpg" alt="Dwellings" />
-      <h3>Dwellings</h3>
-    </div>
-    <div class="category" id="wedding">
-      <img src="boda.png" alt="Wedding" />
-      <h3>Wedding</h3>
-    </div>
-    <div class="category" id="gastronomy">
-      <img src="food.jpg" alt="Gastronomy" />
-      <h3>Gastronomy</h3>
-    </div>
-    <div class="category" id="lifestyle">
-      <img src="modelo orange.jpg" alt="Lifestyle" />
-      <h3>Lifestyle</h3>
-    </div>
-    <div class="category" id="sports">
-      <img src="luzkite1.png" alt="Sports" />
-      <h3>Sports</h3>
-    </div>
+    <div class="category" id="dwellings"><img src="ana_piso.jpg"><h3>Dwellings</h3></div>
+    <div class="category" id="wedding"><img src="boda.png"><h3>Wedding</h3></div>
+    <div class="category" id="gastronomy"><img src="food.jpg"><h3>Gastronomy</h3></div>
+    <div class="category" id="lifestyle"><img src="modelo orange.jpg"><h3>Lifestyle</h3></div>
+    <div class="category" id="sports"><img src="luzkite1.png"><h3>Sports</h3></div>
   </section>
 
   <!-- ABOUT -->
   <section class="about">
     <h2>Soy Charlie,</h2>
-     <p>
-    y mi trabajo no es solo fotografía o filmmaking; es la culminación de múltiples pasiones.
-    Como ex-chef, entiendo la composición, la textura y el arte de la presentación en la gastronomía.
-  </p>
 
-  <p>
-    Como DJ aficionado, aporto un sentido innato del ritmo y la cadencia, que se traduce en transiciones
-    fluidas y una narrativa dinámica en mis videos.
-  </p>
+    <p>
+      y mi trabajo no es solo fotografía o filmmaking; es la culminación de múltiples pasiones.
+      Como ex-chef, entiendo la composición, la textura y el arte de la presentación en la gastronomía.
+    </p>
 
-  <p>
-    Pero lo que realmente me define es mi experiencia como instructor de deportes náuticos 
-    (kitesurf, windsurf, efoil, etc.): he aprendido a leer la luz en su momento más espectacular desde
-    el amanecer hasta el atardecer, a interpretar el misterio de las estrellas y la luna, y a capturar
-    la energía humana en su estado más puro.
-  </p>
+    <p>
+      Como DJ aficionado, aporto un sentido innato del ritmo y la cadencia, que se traduce en transiciones
+      fluidas y una narrativa dinámica en mis videos.
+    </p>
 
-  <p>
-    Soy un creativo que combina la técnica con una perspectiva vibrante y sensorial para bodas, deportes,
-    gastronomía y lifestyle.
-  </p>
-</section>
+    <p>
+      Pero lo que realmente me define es mi experiencia como instructor de deportes náuticos 
+      (kitesurf, windsurf, efoil, etc.): he aprendido a leer la luz en su momento más espectacular desde
+      el amanecer hasta el atardecer, a interpretar el misterio de las estrellas y la luna, y a capturar
+      la energía humana en su estado más puro.
+    </p>
+
+    <p>
+      Soy un creativo que combina la técnica con una perspectiva vibrante y sensorial para bodas, deportes,
+      gastronomía y lifestyle.
+    </p>
+  </section>
 
   <!-- WHY -->
   <section class="why">
     <h2>¿Por qué elegir trabajar conmigo?</h2>
-   <p>
-    La respuesta es simple: no solo documento momentos, sino que los vivo y los siento antes de capturarlos.
-    Mi experiencia con mi estilo de vida me ha enseñado el valor de la energía, la conexión humana y el ritmo perfecto.
-  </p>
 
-  <p>
-    Traslado esa intensidad a cada proyecto, ya sea inmortalizando la adrenalina pura de un evento deportivo,
-    la emoción íntima de una boda, la pasión detrás de un plato gastronómico o la esencia auténtica del lifestyle.
-  </p>
+    <p>
+      La respuesta es simple: no solo documento momentos, sino que los vivo y los siento antes de capturarlos.
+      Mi experiencia con mi estilo de vida me ha enseñado el valor de la energía, la conexión humana y el ritmo perfecto.
+    </p>
 
-  <p>
-    Busco la luz, la historia y la chispa vital que hace que tus proyectos sean inolvidables.
-  </p>
+    <p>
+      Traslado esa intensidad a cada proyecto, ya sea inmortalizando la adrenalina pura de un evento deportivo,
+      la emoción íntima de una boda, la pasión detrás de un plato gastronómico o la esencia auténtica del lifestyle.
+    </p>
 
-  <p>
-    Si buscas un filmmaker y fotógrafo que combine la visión artística con la experiencia real y la capacidad
-    de adaptación, has encontrado a tu aliado.
-  </p>
-</section>
+    <p>
+      Busco la luz, la historia y la chispa vital que hace que tus proyectos sean inolvidables.
+    </p>
 
-  <!-- SECCIÓN FINAL -->
+    <p>
+      Si buscas un filmmaker y fotógrafo que combine la visión artística con la experiencia real y la capacidad
+      de adaptación, has encontrado a tu aliado.
+    </p>
+  </section>
+
+  <!-- FINAL CONTACT SECTION -->
   <section class="contact-strip" id="contacto">
+
+    <!-- TEXTO PINCELADO SOBRE LA IMAGEN -->
+    <div class="contact-strip-title">
+      el arte de expresar sin palabras
+    </div>
+
     <img src="pagina 3.jpg" class="contact-strip-image" alt="Contacto Charlie en Mallorca" />
 
     <div class="contact-strip-info">
@@ -342,6 +279,8 @@
 
 </body>
 </html>
+
+
 
 
 
