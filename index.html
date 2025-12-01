@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Charlie...</title>
 
-  <!-- Fuente Parisienne -->
+  <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -97,7 +98,7 @@
       color: #ffffff;
       background: none;
       padding: 0;
-    } 
+    }
 
     /* CATEGORÍAS */
     .categories {
@@ -149,8 +150,182 @@
       font-size: 0.95rem;
     }
 
-    /* FOOTER (PRIMERA IMAGEN) */
-    .footer {
-      margin-top: 80px;
+    /* SECCIÓN FINAL: IMAGEN + CONTACTO */
+    .contact-strip {
+      position: relative;
+      margin-top: 40px;
     }
 
+    .contact-strip-image {
+      width: 100%;
+      max-height: 450px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .contact-strip-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 20px;
+    }
+
+    .contact-strip-overlay p {
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+      letter-spacing: 0.03em;
+    }
+
+    .contact-strip-overlay a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .contact-strip-overlay a:hover {
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .main-header {
+        padding: 12px 18px;
+      }
+
+      .main-nav {
+        display: none;
+      }
+
+      .hero-image {
+        height: 80vh;
+      }
+
+      .categories {
+        flex-direction: column;
+      }
+
+      .category img {
+        height: 280px;
+      }
+
+      .about,
+      .why {
+        margin: 40px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="logo">Charlie...</div>
+
+    <nav class="main-nav">
+      <a href="#dwellings">Dwellings</a>
+      <a href="#wedding">Wedding</a>
+      <a href="#gastronomy">Gastronomy</a>
+      <a href="#lifestyle">Lifestyle</a>
+      <a href="#sports">Sports</a>
+    </nav>
+
+    <div class="header-icons">
+      <a href="https://wa.me/34671310241" target="_blank" class="icon">WhatsApp</a>
+      <span class="icon">📍</span>
+    </div>
+  </header>
+
+  <!-- HERO PRINCIPAL -->
+  <section class="hero">
+    <img src="palmeras.jpg" alt="Atardecer en la playa" class="hero-image" />
+    <div class="hero-text">
+      Contar historias con luz, naturaleza y emociones reales
+    </div>
+  </section>
+
+  <!-- CATEGORÍAS -->
+  <section class="categories">
+    <div class="category" id="dwellings">
+      <img src="ana_piso.jpg" alt="Dwellings" />
+      <h3>Dwellings</h3>
+    </div>
+
+    <div class="category" id="wedding">
+      <img src="boda.png" alt="Wedding" />
+      <h3>Wedding</h3>
+    </div>
+
+    <div class="category" id="gastronomy">
+      <img src="food.jpg" alt="Gastronomy" />
+      <h3>Gastronomy</h3>
+    </div>
+
+    <div class="category" id="lifestyle">
+      <img src="modelo orange.jpg" alt="Lifestyle" />
+      <h3>Lifestyle</h3>
+    </div>
+
+    <div class="category" id="sports">
+      <img src="luzkite1.png" alt="Sports" />
+      <h3>Sports</h3>
+    </div>
+  </section>
+
+  <!-- SOBRE TI -->
+  <section class="about">
+    <h2>Soy Charlie,</h2>
+    <p>
+      y mi trabajo no es solo fotografía o filmmaking; es la culminación de múltiples pasiones.
+      Como ex-chef, entiendo la composición, la textura y el arte de la presentación en la gastronomía.
+      Como DJ aficionado, aporto un sentido innato del ritmo y la cadencia que se traduce en transiciones
+      fluidas y una narrativa dinámica en mis videos.
+    </p>
+    <p>
+      Pero lo que realmente me define es mi experiencia como instructor de deportes náuticos
+      (kitesurf, windsurf, efoil, etc.): he aprendido a leer la luz en su momento más espectacular
+      —desde el amanecer hasta el atardecer—, y el misterio de las estrellas y la luna,
+      y a capturar la energía humana en su estado más puro.
+    </p>
+    <p>
+      Soy un creativo que combina la técnica con una perspectiva vibrante
+      y sensorial para bodas, deportes, gastronomía o lifestyle.
+    </p>
+  </section>
+
+  <!-- POR QUÉ TRABAJAR CONTIGO -->
+  <section class="why">
+    <h2>¿Por qué elegir trabajar conmigo?</h2>
+    <p>
+      La respuesta es simple: no solo documento momentos, sino que los vivo y los siento antes
+      de capturarlos. Mi experiencia con mi estilo de vida me ha enseñado el valor de la energía,
+      la conexión humana y la calidez de los buenos momentos compartidos.
+    </p>
+    <p>
+      Traslado esa intensidad a cada proyecto, ya sea inmortalizando la adrenalina pura 
+      de un evento deportivo, la emoción íntima de una boda, la pasión detrás de un plato gastronómico
+      o la esencia auténtica del lifestyle. Busco la luz, la historia y la chispa vital que hace 
+      que tus proyectos sean inolvidables.
+    </p>
+    <p>
+      Si buscas un filmmaker y fotógrafo que combine la visión artística con la experiencia real 
+      y la capacidad de adaptación, has encontrado a tu aliado.
+    </p>
+  </section>
+
+  <!-- SECCIÓN FINAL: IMAGEN + CONTACTO -->
+  <section class="contact-strip">
+    <img src="pagina3.jpg" alt="Contacto Charlie en Mallorca" class="contact-strip-image">
+
+    <div class="contact-strip-overlay">
+      <p>📍 Mallorca, España</p>
+      <p>📧 <a href="mailto:carlos.seguin@gmail.com">carlos.seguin@gmail.com</a></p>
+      <p>📱 <a href="https://wa.me/34671310241" target="_blank">WhatsApp: +34 671 310 241</a></p>
+    </div>
+  </section>
+
+</body>
+</html>
