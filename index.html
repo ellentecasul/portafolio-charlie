@@ -4,16 +4,245 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Charlie...</title>
-  <link rel="stylesheet" href="style.css" />
 
-  <!-- Fuentes de ejemplo (puedes cambiarlas) -->
+  <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      color: #f2f2f2;
+      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+
+    .main-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 24px;
+      font-size: 0.9rem;
+    }
+
+    .main-nav a {
+      color: #f2f2f2;
+      text-decoration: none;
+      text-transform: lowercase;
+      letter-spacing: 0.08em;
+    }
+
+    .main-nav a:hover {
+      opacity: 0.7;
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.8rem;
+    }
+
+    .header-icons .icon {
+      color: #f2f2f2;
+      text-decoration: none;
+    }
+
+    /* HERO */
+
+    .hero {
+      margin-top: 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 0.95rem;
+      text-transform: lowercase;
+      letter-spacing: 0.15em;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 10px 24px;
+    }
+
+    /* CATEGORÍAS */
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #000;
+    }
+
+    .category {
+      flex: 1 1 20%;
+      min-width: 160px;
+      text-align: center;
+      position: relative;
+    }
+
+    .category img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .category h3 {
+      margin: 8px 0 16px;
+      font-size: 0.9rem;
+      text-transform: lowercase;
+    }
+
+    /* SECCIONES DE TEXTO */
+
+    .about,
+    .why {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .about h2,
+    .why h2 {
+      font-family: "Playfair Display", serif;
+      margin-bottom: 22px;
+      font-size: 1.4rem;
+    }
+
+    .about p,
+    .why p {
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      margin-top: 80px;
+    }
+
+    .footer-image-wrapper {
+      position: relative;
+    }
+
+    .footer-image {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .footer-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .footer-phrase {
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .footer-contact p {
+      font-size: 0.9rem;
+    }
+
+    .footer-contact a {
+      color: #f2f2f2;
+      text-decoration: none;
+    }
+
+    .footer-contact a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-signature {
+      margin-top: 16px;
+      font-family: "Playfair Display", serif;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .main-header {
+        padding: 12px 18px;
+      }
+
+      .main-nav {
+        display: none; /* luego se puede hacer un menú hamburguesa */
+      }
+
+      .hero-image {
+        height: 80vh;
+      }
+
+      .categories {
+        flex-direction: column;
+      }
+
+      .category img {
+        height: 280px;
+      }
+
+      .about,
+      .why {
+        margin: 40px auto;
+      }
+
+      .footer-overlay {
+        justify-content: flex-end;
+        padding-bottom: 40px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- HEADER / MENÚ SUPERIOR -->
+  <!-- HEADER -->
   <header class="main-header">
     <div class="logo">Charlie...</div>
 
@@ -26,50 +255,48 @@
     </nav>
 
     <div class="header-icons">
-      <!-- Cambia el número de WhatsApp -->
-      <a href="https://wa.me/34600000000" target="_blank" class="icon">WhatsApp</a>
-      <!-- El botón del mapa puede ir a Google Maps o a tu sección contacto -->
+      <a href="https://wa.me/34671310241" target="_blank" class="icon">WhatsApp</a>
       <a href="#contacto" class="icon">📍</a>
     </div>
   </header>
 
-  <!-- HERO / FOTO GRANDE -->
+  <!-- FOTO PRINCIPAL (usa palmeras.jpg que ya tienes en el repo) -->
   <section class="hero">
-    <img src="img/hero.jpg" alt="Fotografía de atardecer" class="hero-image" />
+    <img src="palmeras.jpg" alt="Atardecer en la playa" class="hero-image" />
     <div class="hero-text">
       Contar historias con luz, naturaleza y emociones reales
     </div>
   </section>
 
-  <!-- GALERÍA DE CATEGORÍAS -->
+  <!-- CATEGORÍAS (usando tus fotos existentes) -->
   <section class="categories">
     <div class="category" id="dwellings">
-      <img src="img/dwellings.jpg" alt="Dwellings" />
+      <img src="ana_piso.jpg" alt="Dwellings" />
       <h3>Dwellings</h3>
     </div>
 
     <div class="category" id="wedding">
-      <img src="img/wedding.jpg" alt="Wedding" />
+      <img src="boda.png" alt="Wedding" />
       <h3>Wedding</h3>
     </div>
 
     <div class="category" id="gastronomy">
-      <img src="img/gastronomy.jpg" alt="Gastronomy" />
+      <img src="food.jpg" alt="Gastronomy" />
       <h3>Gastronomy</h3>
     </div>
 
     <div class="category" id="lifestyle">
-      <img src="img/lifestyle.jpg" alt="Lifestyle" />
+      <img src="modelo orange.jpg" alt="Lifestyle" />
       <h3>Lifestyle</h3>
     </div>
 
     <div class="category" id="sports">
-      <img src="img/sports.jpg" alt="Sports" />
+      <img src="luzkite1.png" alt="Sports" />
       <h3>Sports</h3>
     </div>
   </section>
 
-  <!-- TEXTO SOBRE TI -->
+  <!-- SOBRE TI -->
   <section class="about">
     <h2>Soy Charlie,</h2>
     <p>
@@ -100,32 +327,4 @@
       la conexión humana y el ritmo perfecto.
     </p>
     <p>
-      Traslado esa intensidad a cada proyecto, ya sea inmortalizando la adrenalina pura de un evento
-      deportivo, la emoción íntima de una boda, la pasión detrás de un plato gastronómico o la esencia
-      auténtica del lifestyle. Busco la luz, la historia y la chispa vital que hace que tus proyectos
-      sean inolvidables.
-    </p>
-    <p>
-      Si buscas un filmmaker y fotógrafo que combine la visión artística con la experiencia real y la
-      capacidad de adaptación, has encontrado a tu aliado.
-    </p>
-  </section>
-
-  <!-- PIE DE PÁGINA / CONTACTO -->
-  <footer class="footer" id="contacto">
-    <div class="footer-image-wrapper">
-      <img src="img/footer.jpg" alt="Fotografía submarina" class="footer-image" />
-      <div class="footer-overlay">
-        <p class="footer-phrase">el arte de expresar sin palabras</p>
-        <div class="footer-contact">
-          <p>📧 <a href="mailto:carlos.seguin@gmail.com">carlos.seguin@gmail.com</a></p>
-          <p>📷 @ellenteocasualdecharlie</p>
-          <p>📞 +34 671 310 241</p>
-          <p class="footer-signature">Charlie...</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-</body>
-</html>
+      Traslado esa intensidad a cada proyec
