@@ -93,33 +93,45 @@
     }
 
    .category {
-    flex: 0 0 20%;            /* EXACTAMENTE 1/5 del espacio */
+     flex: 1 1 20%;
+     min-width: 160px;
+     position: relative; /* necesario para colocar el título encima */
+     text-align: center;
    }
 
-    /* EFECTO BLANCO Y NEGRO → COLOR EN HOVER */
-    .category img {
+    /* IMAGEN — NO SE TOCA EL ESTILO */
+   .category img {
      width: 100%;
-     aspect-ratio: 271 / 558;
+     height: 360px;
      object-fit: cover;
      display: block;
-     margin: 0;                /* SIN separación */
-     border-radius: 0;         /* sin bordes redondeados para unión perfecta */
 
-     filter: grayscale(100%);
+     filter: grayscale(100%) brightness(70%);
      transition: filter 0.4s ease;
     }
 
-   .category img:hover {
-      filter: grayscale(0%);
+   /* EFECTO COLOR AL HOVER (ya lo tenías y se mantiene) */
+   .category:hover img {
+      filter: grayscale(0%) brightness(100%);
     }
 
-    .category h3 {
-      font-size: 1rem;
-      margin-top: 4px;
-      letter-spacing: 0.05em;
-      text-transform: lowercase;
+   /* TÍTULO SOBRE LA IMAGEN */
+   .category h3 {
+     position: absolute;
+     bottom: 20px;              /* aparece cerca del borde inferior */
+     left: 50%;
+     transform: translateX(-50%);
+     color: white;
+     font-size: 1.1rem;
+     opacity: 0;                /* invisible al inicio */
+     letter-spacing: 0.05em;
+     text-shadow: 0 0 8px rgba(0,0,0,0.8); /* sombra para contraste */
+     transition: opacity 0.4s ease;
     }
-
+   /* TÍTULO APARECE EN HOVER */
+    .category:hover h3 {
+     opacity: 1;
+    }
     /* TEXT SECTIONS */
     .about,
     .why {
@@ -292,6 +304,7 @@
 
 </body>
 </html>
+
 
 
 
