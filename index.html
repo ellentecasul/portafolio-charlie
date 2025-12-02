@@ -91,17 +91,17 @@
     }
 
     .category {
-      flex: 1 1 20%;
-      min-width: 160px;
-      text-align: center;
+      flex: 0 0 20%;        /* 5 imágenes por fila */
+      display: flex;
+      justify-content: center;
     }
 
     .category img {
-      width: 217px;       /* ➜ ancho exacto */
-      height: 558px;      /* ➜ alto exacto */
-      object-fit: cover;  /* ➜ mantiene proporción */
-     display: block;
-     margin: 0 auto;     /* ➜ centra cada imagen */
+      width: 90%;            /* Ocupa casi todo su 20% */
+      aspect-ratio: 217 / 558; /* Mantiene proporción exacta */
+      object-fit: cover;     /* Rellena sin deformar */
+      display: block;
+
     }
 
     .category h3 {
@@ -282,6 +282,7 @@
 
 </body>
 </html>
+
 
 
 
