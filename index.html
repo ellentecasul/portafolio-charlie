@@ -93,10 +93,11 @@
       letter-spacing: 0.12em;
     }
 
-   .categories {
+  /* === CATEGORÍAS SIN ESPACIOS, GRANDES Y PROPORCIONALES === */
+.categories {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columnas iguales */
-  gap: 0;                                /* SIN ESPACIOS */
+  grid-template-columns: repeat(5, 1fr);   /* 5 columnas iguales */
+  gap: 0;                                   /* SIN espacios */
   width: 100%;
   margin-top: 120px;
 }
@@ -106,23 +107,25 @@
   overflow: hidden;
 }
 
-/* IMÁGENES GRANDES, SIN SEPARACIONES */
+/* IMAGEN GRANDE, PROPORCIÓN EXACTA 271 x 558 */
 .category img {
   width: 100%;
-  height: 450px;         /* Ajusta aquí si quieres aún más grande */
-  object-fit: cover;
+  aspect-ratio: 271 / 558;  /* ⭐ PROPORCIÓN PERFECTA */
+  object-fit: cover;         /* NO se deforma */
   display: block;
+
   filter: grayscale(100%) brightness(70%);
+  transform: scale(1);
   transition: filter 0.4s ease, transform 0.4s ease;
 }
 
-/* Hover suave */
+/* Hover PROFESIONAL (zoom leve, no exagerado) */
 .category:hover img {
   filter: grayscale(0%) brightness(100%);
   transform: scale(1.02);
 }
 
-/* TÍTULO SOBRE IMAGEN */
+/* TÍTULO SOBRE LA IMAGEN */
 .category h3 {
   position: absolute;
   bottom: 20px;
@@ -132,9 +135,12 @@
   font-size: 1.1rem;
   opacity: 0;
   text-shadow: 0 0 8px rgba(0,0,0,0.8);
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
   transition: opacity 0.4s ease;
 }
 
+/* aparece en hover */
 .category:hover h3 {
   opacity: 1;
 }
@@ -371,6 +377,7 @@
 
 </body>
 </html>
+
 
 
 
