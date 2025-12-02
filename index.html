@@ -93,58 +93,51 @@
       letter-spacing: 0.12em;
     }
 
-    /* --- CATEGORÍAS GRANDES + EFECTOS --- */
-    .categories {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 120px;  /* espacio entre palmeras y grid */
-    }
+   .categories {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columnas iguales */
+  gap: 0;                                /* SIN ESPACIOS */
+  width: 100%;
+  margin-top: 120px;
+}
 
-    .category {
-      flex: 1 1 20%;          /* 5 columnas */
-      min-width: 160px;
-      position: relative;
-      text-align: center;
-      overflow: hidden;       /* para que el zoom no se salga */
-    }
+.category {
+  position: relative;
+  overflow: hidden;
+}
 
-    /* IMÁGENES GRANDES COMO ANTES SIN DEFORMARSE */
+/* IMÁGENES GRANDES, SIN SEPARACIONES */
 .category img {
   width: 100%;
-  height: 360px;              /* EL TAMAÑO ORIGINAL (grande y bonito) */
-  object-fit: cover;          /* NO se deforma, recorte elegante */
+  height: 450px;         /* Ajusta aquí si quieres aún más grande */
+  object-fit: cover;
   display: block;
-
   filter: grayscale(100%) brightness(70%);
-  transform: scale(1);
   transition: filter 0.4s ease, transform 0.4s ease;
 }
 
-/* Hover suave SIN zoom exagerado */
+/* Hover suave */
 .category:hover img {
   filter: grayscale(0%) brightness(100%);
-  transform: scale(1.02);     /* Zoom suave y elegante */
+  transform: scale(1.02);
+}
 
-    /* TÍTULO SOBRE LA IMAGEN (DESKTOP) */
-    .category h3 {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      font-size: 1.1rem;
-      opacity: 0;
-      text-shadow: 0 0 8px rgba(0,0,0,0.8);
-      letter-spacing: 0.05em;
-      text-transform: lowercase;
-      transition: opacity 0.4s ease;
-    }
+/* TÍTULO SOBRE IMAGEN */
+.category h3 {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 1.1rem;
+  opacity: 0;
+  text-shadow: 0 0 8px rgba(0,0,0,0.8);
+  transition: opacity 0.4s ease;
+}
 
-    /* Aparece en hover (DESKTOP) */
-    .category:hover h3 {
-      opacity: 1;
-    }
+.category:hover h3 {
+  opacity: 1;
+}
 
     /* SECCIONES DE TEXTO */
     .about,
@@ -378,6 +371,7 @@
 
 </body>
 </html>
+
 
 
 
