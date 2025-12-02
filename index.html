@@ -82,56 +82,56 @@
       color: #fff;
       letter-spacing: 0.12em;
     }
-
-    /* CATEGORÍAS */
-    .categories {
-     display: flex;
-     flex-wrap: nowrap;        /* todas en una fila */
-     justify-content: center;
-     gap: 0;                   /* SIN separación */
-     margin-top: 120px;
-    }
+   /* --- CATEGORÍAS COMO ANTES, GRANDES --- */
+   .categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 120px;  /* el espacio grande que te gusta */
+   }
 
    .category {
-     flex: 1 1 20%;
+     flex: 1 1 20%;          /* esto deja 5 columnas iguales */
      min-width: 160px;
-     position: relative; /* necesario para colocar el título encima */
+     position: relative;
      text-align: center;
    }
 
-    /* IMAGEN — NO SE TOCA EL ESTILO */
-   .category img {
+/* --- IMAGENES GRANDES COMO ANTES --- */
+  .category img {
      width: 100%;
-     height: 360px;
+     height: 360px;          /* EL TAMAÑO ORIGINAL (grande) */
      object-fit: cover;
      display: block;
 
-     filter: grayscale(100%) brightness(70%);
+     filter: grayscale(100%) brightness(70%);  /* B/N y un poco oscura */
      transition: filter 0.4s ease;
-    }
+   }
 
-   /* EFECTO COLOR AL HOVER (ya lo tenías y se mantiene) */
-   .category:hover img {
-      filter: grayscale(0%) brightness(100%);
-    }
+  /* Hover vuelve al color */
+ .category:hover img {
+    filter: grayscale(0%) brightness(100%);
+   }
 
-   /* TÍTULO SOBRE LA IMAGEN */
-   .category h3 {
-     position: absolute;
-     bottom: 20px;              /* aparece cerca del borde inferior */
-     left: 50%;
-     transform: translateX(-50%);
-     color: white;
-     font-size: 1.1rem;
-     opacity: 0;                /* invisible al inicio */
-     letter-spacing: 0.05em;
-     text-shadow: 0 0 8px rgba(0,0,0,0.8); /* sombra para contraste */
+  /* --- TÍTULO SOBRE LA IMAGEN --- */
+ .category h3 {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 1.1rem;
+    opacity: 0;  
+    text-shadow: 0 0 8px rgba(0,0,0,0.8);
      transition: opacity 0.4s ease;
-    }
-   /* TÍTULO APARECE EN HOVER */
+   }
+
+/* Aparece en hover */
     .category:hover h3 {
-     opacity: 1;
+    opacity: 1;
     }
+    
+    
     /* TEXT SECTIONS */
     .about,
     .why {
@@ -304,6 +304,7 @@
 
 </body>
 </html>
+
 
 
 
