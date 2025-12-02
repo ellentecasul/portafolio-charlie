@@ -85,35 +85,32 @@
 
     /* CATEGORÍAS */
     .categories {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 120px;   /* ⬅️ ESPACIO grande entre palmeras e imágenes */
+     display: flex;
+     flex-wrap: nowrap;        /* todas en una fila */
+     justify-content: center;
+     gap: 0;                   /* SIN separación */
+     margin-top: 120px;
     }
 
-    .category {
-      flex: 0 0 20%;             /* 5 imágenes por fila */
-      display: flex;
-      flex-direction: column;    /* texto debajo */
-      align-items: center;
-      margin-bottom: 50px;       /* ESPACIO HACIA ABAJO MEJORADO */
-    }
+   .category {
+    flex: 0 0 20%;            /* EXACTAMENTE 1/5 del espacio */
+   }
 
     /* EFECTO BLANCO Y NEGRO → COLOR EN HOVER */
     .category img {
-      width: 90%;
-      aspect-ratio: 271 / 558;
-      object-fit: cover;
-      border-radius: 3px;
-      margin-bottom: 14px;
-      display: block;
+     width: 100%;
+     aspect-ratio: 271 / 558;
+     object-fit: cover;
+     display: block;
+     margin: 0;                /* SIN separación */
+     border-radius: 0;         /* sin bordes redondeados para unión perfecta */
 
-      filter: grayscale(100%);       /* blanco y negro por defecto */
-      transition: filter 0.4s ease;  /* animación suave */
+     filter: grayscale(100%);
+     transition: filter 0.4s ease;
     }
 
-    .category img:hover {
-      filter: grayscale(0%);         /* vuelve a color al pasar el mouse */
+   .category img:hover {
+      filter: grayscale(0%);
     }
 
     .category h3 {
@@ -295,6 +292,7 @@
 
 </body>
 </html>
+
 
 
 
