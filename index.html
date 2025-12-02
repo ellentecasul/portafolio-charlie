@@ -55,16 +55,26 @@
 
     .main-nav a:hover { opacity: 0.7; }
 
+    .header-icons {
+      display: flex;
+      gap: 16px;
+      font-size: 0.9rem;
+    }
+
     .header-icons .icon,
     .header-icons .icon:visited {
       color: #f2f2f2;
       text-decoration: none;
     }
 
-    .header-icons { display: flex; gap: 16px; }
+    .header-icons .icon:hover { opacity: 0.7; }
 
     /* HERO */
-    .hero { margin-top: 70px; position: relative; overflow: hidden; }
+    .hero {
+      margin-top: 70px;
+      position: relative;
+      overflow: hidden;
+    }
 
     .hero-image {
       width: 100%;
@@ -82,57 +92,63 @@
       color: #fff;
       letter-spacing: 0.12em;
     }
-   /* --- CATEGORÍAS COMO ANTES, GRANDES --- */
-   .categories {
+
+    /* --- CATEGORÍAS GRANDES + EFECTOS --- */
+    .categories {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 120px;  /* el espacio grande que te gusta */
-   }
-
-   .category {
-     flex: 1 1 20%;          /* esto deja 5 columnas iguales */
-     min-width: 160px;
-     position: relative;
-     text-align: center;
-   }
-
-/* --- IMAGENES GRANDES COMO ANTES --- */
-  .category img {
-     width: 100%;
-     height: 360px;          /* EL TAMAÑO ORIGINAL (grande) */
-     object-fit: cover;
-     display: block;
-
-     filter: grayscale(100%) brightness(70%);  /* B/N y un poco oscura */
-     transition: filter 0.4s ease;
-   }
-
-  /* Hover vuelve al color */
- .category:hover img {
-    filter: grayscale(0%) brightness(100%);
-   }
-
-  /* --- TÍTULO SOBRE LA IMAGEN --- */
- .category h3 {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    font-size: 1.1rem;
-    opacity: 0;  
-    text-shadow: 0 0 8px rgba(0,0,0,0.8);
-     transition: opacity 0.4s ease;
-   }
-
-/* Aparece en hover */
-    .category:hover h3 {
-    opacity: 1;
+      margin-top: 120px;  /* espacio entre palmeras y grid */
     }
-    
-    
-    /* TEXT SECTIONS */
+
+    .category {
+      flex: 1 1 20%;          /* 5 columnas */
+      min-width: 160px;
+      position: relative;
+      text-align: center;
+      overflow: hidden;       /* para que el zoom no se salga */
+    }
+
+    .category img {
+      width: 100%;
+      height: 360px;          /* tamaño grande como antes */
+      object-fit: cover;
+      display: block;
+
+      filter: grayscale(100%) brightness(70%);  /* B/N y un poco oscura */
+      transform: scale(1);
+      transition:
+        filter 0.4s ease,
+        transform 0.4s ease;
+    }
+
+    /* Hover: color + zoom suave */
+    .category:hover img {
+      filter: grayscale(0%) brightness(100%);
+      transform: scale(1.06);
+    }
+
+    /* TÍTULO SOBRE LA IMAGEN (DESKTOP) */
+    .category h3 {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 1.1rem;
+      opacity: 0;
+      text-shadow: 0 0 8px rgba(0,0,0,0.8);
+      letter-spacing: 0.05em;
+      text-transform: lowercase;
+      transition: opacity 0.4s ease;
+    }
+
+    /* Aparece en hover (DESKTOP) */
+    .category:hover h3 {
+      opacity: 1;
+    }
+
+    /* SECCIONES DE TEXTO */
     .about,
     .why {
       max-width: 1100px;
@@ -167,14 +183,14 @@
     /* TÍTULO PINCELADO SOBRE IMAGEN */
     .contact-strip-title {
       position: absolute;
-      top: 58%;                                   /* posición debajo del centro */
+      top: 58%;                                   /* debajo del centro */
       left: 50%;
       transform: translate(-50%, -50%);
       font-family: "Caveat", cursive;
       font-size: 3rem;
-      color: #ffffff;                              /* ➜ TEXTO EN BLANCO */
-      text-shadow: 0 0 8px rgba(0,0,0,0.8),        /* sombra fuerte */
-                   0 0 15px rgba(0,0,0,0.6);       /* doble sombra suave */
+      color: #ffffff;
+      text-shadow: 0 0 8px rgba(0,0,0,0.8),
+                   0 0 15px rgba(0,0,0,0.6);
       pointer-events: none;
       white-space: nowrap;
     }
@@ -198,6 +214,53 @@
 
     .contact-strip-info a:hover { text-decoration: underline; }
 
+    /* RESPONSIVE / MÓVIL */
+    @media (max-width: 900px) {
+
+      .main-header {
+        padding: 12px 18px;
+      }
+
+      .main-nav {
+        display: none;
+      }
+
+      .hero-image {
+        height: 70vh;
+      }
+
+      .categories {
+        flex-wrap: wrap;
+        margin-top: 80px;
+      }
+
+      .category {
+        flex: 0 0 50%;     /* 2 columnas en móvil */
+        margin-bottom: 12px;
+      }
+
+      .category img {
+        height: 280px;     /* un poco más baja en móvil */
+        filter: grayscale(10%) brightness(95%); /* casi a color siempre */
+        transform: scale(1);                   /* sin zoom fijo */
+      }
+
+      /* TEXTO SIEMPRE VISIBLE EN MÓVIL */
+      .category h3 {
+        opacity: 1;
+        font-size: 1rem;
+      }
+
+      .contact-strip {
+        margin: 60px auto 200px;
+        padding: 0 20px;
+      }
+
+      .contact-strip-title {
+        font-size: 2.2rem;
+        top: 55%;
+      }
+    }
   </style>
 </head>
 
@@ -227,11 +290,26 @@
 
   <!-- CATEGORÍAS -->
   <section class="categories">
-    <div class="category" id="dwellings"><img src="dwellings.jpg"><h3>Dwellings</h3></div>
-    <div class="category" id="wedding"><img src="wedding.jpg"><h3>Wedding</h3></div>
-    <div class="category" id="gastronomy"><img src="gastronomy.jpg"><h3>Gastronomy</h3></div>
-    <div class="category" id="lifestyle"><img src="lifestyle.jpg"><h3>Lifestyle</h3></div>
-    <div class="category" id="sports"><img src="saul.jpg"><h3>Sports</h3></div>
+    <div class="category" id="dwellings">
+      <img src="dwellings.jpg" alt="Dwellings" />
+      <h3>Dwellings</h3>
+    </div>
+    <div class="category" id="wedding">
+      <img src="wedding.jpg" alt="Wedding" />
+      <h3>Wedding</h3>
+    </div>
+    <div class="category" id="gastronomy">
+      <img src="gastronomy.jpg" alt="Gastronomy" />
+      <h3>Gastronomy</h3>
+    </div>
+    <div class="category" id="lifestyle">
+      <img src="lifestyle.jpg" alt="Lifestyle" />
+      <h3>Lifestyle</h3>
+    </div>
+    <div class="category" id="sports">
+      <img src="saul.jpg" alt="Sports" />
+      <h3>Sports</h3>
+    </div>
   </section>
 
   <!-- ABOUT -->
@@ -244,7 +322,7 @@
     </p>
 
     <p>
-      Como DJ aficionado, aporto un sentido innato del ritmo y la cadencia, que se traduce en transiciones
+      Como amante a la musica, aporto un sentido innato del ritmo y la cadencia, que se traduce en transiciones
       fluidas y una narrativa dinámica en mis videos.
     </p>
 
@@ -287,8 +365,6 @@
 
   <!-- FINAL CONTACT SECTION -->
   <section class="contact-strip" id="contacto">
-
-    <!-- TEXTO PINCELADO SOBRE LA IMAGEN -->
     <div class="contact-strip-title">
       el arte de expresar sin palabras
     </div>
@@ -304,6 +380,7 @@
 
 </body>
 </html>
+
 
 
 
