@@ -91,22 +91,27 @@
     }
 
     .category {
-      flex: 0 0 20%;        /* 5 imágenes por fila */
+      flex: 0 0 20%;             /* 5 imágenes por fila */
       display: flex;
-      justify-content: center;
+      flex-direction: column;    /* texto debajo */
+      align-items: center;
+      margin-bottom: 50px;       /* ESPACIO HACIA ABAJO MEJORADO */
     }
 
     .category img {
-      width: 90%;            /* Ocupa casi todo su 20% */
-      aspect-ratio: 217 / 558; /* Mantiene proporción exacta */
-      object-fit: cover;     /* Rellena sin deformar */
+      width: 90%;                /* ocupa casi todo su 20% */
+      aspect-ratio: 271 / 558;   /* PROPORCIÓN EXACTA NUEVA */
+      object-fit: cover;         /* no deforma la imagen */
+      border-radius: 3px;        /* opcional, elegante */
+      margin-bottom: 14px;       /* espacio entre imagen y texto */
       display: block;
 
     }
 
     .category h3 {
-      margin: 8px 0 16px;
-      font-size: 0.9rem;
+      font-size: 1rem;
+      margin-top: 4px;
+      letter-spacing: 0.05em;
       text-transform: lowercase;
     }
 
@@ -282,6 +287,7 @@
 
 </body>
 </html>
+
 
 
 
