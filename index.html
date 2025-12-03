@@ -257,7 +257,35 @@
         font-size: 2.2rem;
         top: 55%;
       }
-    }
+      /* === VERSIÓN MÓVIL ELEGANTE === */
+@media (max-width: 900px) {
+
+  /* SOLO 1 IMAGEN POR FILA EN MÓVIL */
+  .categories {
+    grid-template-columns: 1fr;
+    gap: 40px;                 /* espacio elegante entre imágenes */
+    margin-top: 80px;
+    padding: 0 20px;           /* un poco de margen lateral */
+  }
+
+  /* IMÁGENES GRANDES, PROPORCIÓN 271x558 */
+  .category img {
+    width: 100%;
+    aspect-ratio: 271 / 558;
+    height: auto;
+    object-fit: cover;
+
+    filter: grayscale(15%) brightness(95%); /* casi color en móvil */
+    transform: none;                        /* sin zoom */
+  }
+
+  /* TÍTULO SIEMPRE VISIBLE EN MÓVIL */
+  .category h3 {
+    opacity: 1;
+    font-size: 1.2rem;
+    bottom: 16px;
+  }
+   }  
   </style>
 </head>
 
@@ -377,6 +405,7 @@
 
 </body>
 </html>
+
 
 
 
