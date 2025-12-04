@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dwellings | Charlie</title>
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: "Montserrat", sans-serif;
+      line-height: 1.8;
+    }
+
+    /* HEADER SIMPLE */
+    header {
+      padding: 22px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.85);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(6px);
+    }
+
+    .logo {
+      font-family: "Parisienne", cursive;
+      font-size: 1.8rem;
+      letter-spacing: 0.3em;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 0.9rem;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+    }
+
+    .hero-text h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.4rem;
+      margin-bottom: 6px;
+    }
+
+    .hero-text p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* TEXT BLOCK */
+    .content {
+      max-width: 1100px;
+      margin: 60px auto;
+      text-align: center;
+      padding: 0 40px;
+      font-size: 1.05rem;
+    }
+
+    .content p {
+      margin-bottom: 28px;
+    }
+
+    /* GALLERY GRID */
+    .gallery {
+      max-width: 1200px;
+      margin: 0 auto 120px;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery img:hover {
+      opacity: 0.85;
+    }
+
+    @media(max-width:900px){
+      .hero img{
+        height:260px;
+      }
+      .gallery{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo">Charlie...</a>
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <img src="dwellings-hero.jpg" alt="Dwellings">
+  <div class="hero-text">
+    <h1>Dwellings</h1>
+    <p>La Esencia de los Espacios Habitables</p>
+  </div>
+</section>
+
+<section class="content">
+  <p><strong>En Fotografía de Decoración (Interiorismo):</strong><br>
+  La luz como diseño: mi objetivo es resaltar la funcionalidad y la estética...</p>
+
+  <p><strong>En Fotografía de Real Estate (Bienes Raíces):</strong><br>
+  Imágenes que venden...</p>
+
+  <p><strong>En Fotografía Arquitectónica:</strong><br>
+  Honrar la estructura...</p>
+</section>
+
+<section class="gallery">
+  <img src="dwell1.jpg">
+  <img src="dwell2.jpg">
+  <img src="dwell3.jpg">
+  <img src="dwell4.jpg">
+  <img src="dwell5.jpg">
+  <img src="dwell6.jpg">
+  <img src="dwell7.jpg">
+  <img src="dwell8.jpg">
+  <img src="dwell9.jpg">
+  <img src="dwell10.jpg">
+  <img src="dwell11.jpg">
+  <img src="dwell12.jpg">
+</section>
+
+</body>
+</html>
