@@ -16,7 +16,29 @@
       background-color: #000;
       color: #fff;
       font-family: "Montserrat", sans-serif;
-      line-height: 1.8;
+      line-height: 1.9;
+    }
+
+    /* HEADER */
+   <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dwellings | Charlie</title>
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: "Montserrat", sans-serif;
+      line-height: 1.9;
     }
 
     /* HEADER SIMPLE */
@@ -29,6 +51,7 @@
       position: sticky;
       top: 0;
       backdrop-filter: blur(6px);
+      z-index:100;
     }
 
     .logo {
@@ -46,56 +69,59 @@
       font-size: 0.9rem;
     }
 
-    /* HERO SECTION */
-    .hero {
-      position: relative;
-    }
-
+    /* HERO */
     .hero img {
       width: 100%;
-      height: 420px;
+      height: 430px;
       object-fit: cover;
       display: block;
     }
 
     .hero-text {
       position: absolute;
-      bottom: 40px;
-      left: 40px;
+      bottom: 48px;
+      left: 48px;
     }
 
     .hero-text h1 {
       font-family: "Playfair Display", serif;
-      font-size: 2.4rem;
-      margin-bottom: 6px;
+      font-size: 2.8rem;
+      margin-bottom: 8px;
     }
 
     .hero-text p {
-      font-size: 1rem;
+      font-size: 1.1rem;
       opacity: 0.9;
     }
 
-    /* TEXT BLOCK */
+    /* TEXTO DESCRIPTIVO */
     .content {
       max-width: 1100px;
-      margin: 60px auto;
-      text-align: center;
+      margin: 90px auto;
       padding: 0 40px;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
+      text-align: center;
     }
 
     .content p {
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
 
-    /* GALLERY GRID */
+    .content strong {
+      font-size: 1.15rem;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* GALERÍA – MÁS GRANDE Y ELEGANTE */
     .gallery {
       max-width: 1200px;
       margin: 0 auto 120px;
       padding: 0 40px;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
     }
 
     .gallery img {
@@ -104,19 +130,34 @@
       object-fit: cover;
       border-radius: 14px;
       display: block;
-      transition: opacity 0.3s ease;
+      transition: transform 0.4s ease, opacity 0.4s ease;
     }
 
     .gallery img:hover {
-      opacity: 0.85;
+      transform: scale(1.03);
+      opacity: 0.92;
     }
 
+    /* RESPONSIVE */
     @media(max-width:900px){
       .hero img{
         height:260px;
       }
+      .hero-text h1{
+        font-size:2.2rem;
+      }
       .gallery{
         grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:600px){
+      .gallery{
+        grid-template-columns:1fr;
+      }
+      .content{
+        margin:60px auto;
+        padding:0 22px;
       }
     }
   </style>
@@ -135,19 +176,27 @@
   <img src="dwellingcabeza1.jpg" alt="Dwellings">
   <div class="hero-text">
     <h1>Dwellings</h1>
-    <p>La Esencia de los Espacios Habitables</p>
+    <p>La esencia de los espacios habitables</p>
   </div>
 </section>
 
 <section class="content">
-  <p><strong>En Fotografía de Decoración (Interiorismo):</strong><br>
-  La luz como diseño: mi objetivo es resaltar la funcionalidad y la estética...</p>
 
-  <p><strong>En Fotografía de Real Estate (Bienes Raíces):</strong><br>
-  Imágenes que venden...</p>
+  <p>
+    <strong>En Fotografía de Decoración (Interiorismo):</strong>
+    La Luz como Diseño: Mi objetivo es resaltar la funcionalidad y la estética. Busco la luz natural que enmarca cada detalle, capturando texturas y materiales de una manera que invite al espectador a sentir el espacio, destacando la armonía y el cuidado del diseño interior.
+  </p>
 
-  <p><strong>En Fotografía Arquitectónica:</strong><br>
-  Honrar la estructura...</p>
+  <p>
+    <strong>En Fotografía de Real Estate (Bienes Raíces):</strong>
+    Imágenes que Venden, no solo Muestran: Entiendo que cada foto es una herramienta de marketing. Mi enfoque está en maximizar la percepción de amplitud, luz y flujo del espacio. Utilizo técnicas que minimizan las distorsiones y presento la propiedad de la forma más atractiva y fiel posible, acelerando el interés del comprador o inquilino potencial.
+  </p>
+
+  <p>
+    <strong>En Fotografía Arquitectónica:</strong>
+    Honrar la Estructura y la Intención: Me concentro en la precisión de las líneas, la simetría y la relación de la edificación con su entorno. Mi visión es capturar la intención del arquitecto, revelando la solidez, la escala y el diálogo entre el material y el diseño, ya sea de un exterior monumental o de un interior detallado.
+  </p>
+
 </section>
 
 <section class="gallery">
