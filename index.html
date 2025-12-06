@@ -234,16 +234,21 @@
 
       /* Texto sobre la imagen de palmeras (hero) */
       .hero-text {
-        bottom: 20%;              /* más abajo, más centrado en móvil */
+        bottom: 30%;              /* más abajo y centrado en móvil */
         font-size: 1.25rem;       /* más pequeño, más limpio */
-        letter-spacing: 0.08em;   /* menos separación, más elegante */
-        padding: 0 18px;          /* margen lateral para que no pegue a los bordes */
+        letter-spacing: 0.01em;   /* menos separación entre letras */
+        line-height: 1.25;        /* compacto como título, no párrafo */
+        width: 88%;               /* deja margen a los lados */
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0;
+        text-align: center;
       }
 
-      /* Categorías una debajo de otra → scroll hacia abajo */
+      /* Categorías una debajo de otra → scroll vertical */
       .categories {
         grid-template-columns: 1fr;
-        margin-top: 60px;         /* un poco menos de espacio, pero siguen abajo del hero */
+        margin-top: 60px;
       }
 
       .category img {
