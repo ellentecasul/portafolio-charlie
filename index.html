@@ -232,6 +232,30 @@
     /* ===== AJUSTES SOLO PARA MÓVIL ===== */
     @media (max-width: 600px) {
 
+      /* HEADER RESPONSIVE PARA QUE NO SE CORTEN LAS CATEGORÍAS */
+      .main-header {
+        padding: 10px 16px;
+        flex-direction: column;         /* logo + menú + iconos en columna */
+        align-items: center;
+        gap: 8px;
+      }
+
+      .logo {
+        font-size: 1.1rem;
+        letter-spacing: 0.22em;
+      }
+
+      .main-nav {
+        flex-wrap: wrap;               /* permite 2 filas si hace falta */
+        justify-content: center;
+        gap: 10px;
+        font-size: 0.78rem;            /* un poco más pequeño para que quepa */
+      }
+
+      .header-icons {
+        font-size: 0.8rem;
+      }
+
       /* Texto sobre la imagen de palmeras (hero) */
       .hero-text {
         bottom: 30%;              /* más abajo y centrado en móvil */
