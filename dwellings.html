@@ -59,12 +59,12 @@
       transition: color 0.35s ease;
     }
 
-    /* 🔥 Solo “Home” es negro al inicio (sobre fondo claro) */
+    /* Solo “Home” es negro al inicio (sobre fondo claro) */
     header nav a[href="index.html"] {
       color: #000;
     }
 
-    /* 🔥 Cuando el header es scrolled, Home se vuelve blanco */
+    /* Cuando el header es scrolled, Home se vuelve blanco */
     header.scrolled nav a[href="index.html"] {
       color: #fff;
     }
@@ -139,11 +139,85 @@
       border-radius: 14px;
       display: block;
       transition: transform 0.45s ease, opacity 0.4s ease;
+      cursor: pointer;
     }
 
     .gallery img:hover {
       transform: scale(1.04);
       opacity: 0.92;
+    }
+
+    /* LIGHTBOX / BANNER GRANDE */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: none;                 /* hidden por defecto */
+      align-items: center;
+      justify-content: center;
+      z-index: 200;                  /* por encima del header */
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 14px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.7);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      font-size: 1.6rem;
+      color: #fff;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+    }
+
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2.4rem;
+      color: #fff;
+      cursor: pointer;
+      background: rgba(0,0,0,0.3);
+      border-radius: 50%;
+      width: 46px;
+      height: 46px;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-arrow.left {
+      left: -60px;
+    }
+
+    .lightbox-arrow.right {
+      right: -60px;
+    }
+
+    .lightbox-arrow:hover,
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.08);
     }
 
     /* RESPONSIVE */
@@ -161,6 +235,13 @@
       .gallery{
         grid-template-columns:repeat(2,1fr);
       }
+
+      .lightbox-arrow.left {
+        left: -40px;
+      }
+      .lightbox-arrow.right {
+        right: -40px;
+      }
     }
 
     @media(max-width:600px){
@@ -171,10 +252,26 @@
         margin:70px auto;
         padding:0 22px;
       }
-      /* En mobile “Home” negro podría no leerse según imagen,
-         si quieres aquí podemos forzar blanco */
+      .lightbox-inner {
+        max-width: 94vw;
+        max-height: 80vh;
+      }
+      .lightbox-arrow {
+        font-size: 1.9rem;
+        width: 40px;
+        height: 40px;
+      }
+      .lightbox-arrow.left {
+        left: 10px;
+      }
+      .lightbox-arrow.right {
+        right: 10px;
+      }
+      .lightbox-close {
+        top: -32px;
+        right: 4px;
+      }
     }
-
   </style>
 </head>
 
@@ -215,19 +312,29 @@
 </section>
 
 <section class="gallery">
-  <img src="d1.jpg" alt="">
-  <img src="d2.jpg" alt="">
-  <img src="d3.jpg" alt="">
-  <img src="d4.jpg" alt="">
-  <img src="d5.jpg" alt="">
-  <img src="d6.jpg" alt="">
-  <img src="d7.jpg" alt="">
-  <img src="d8.jpg" alt="">
-  <img src="d9.jpg" alt="">
-  <img src="d10.jpg" alt="">
-  <img src="d11.jpg" alt="">
-  <img src="d12.jpg" alt="">
+  <img src="d1.jpg" alt="Dwellings 1">
+  <img src="d2.jpg" alt="Dwellings 2">
+  <img src="d3.jpg" alt="Dwellings 3">
+  <img src="d4.jpg" alt="Dwellings 4">
+  <img src="d5.jpg" alt="Dwellings 5">
+  <img src="d6.jpg" alt="Dwellings 6">
+  <img src="d7.jpg" alt="Dwellings 7">
+  <img src="d8.jpg" alt="Dwellings 8">
+  <img src="d9.jpg" alt="Dwellings 9">
+  <img src="d10.jpg" alt="Dwellings 10">
+  <img src="d11.jpg" alt="Dwellings 11">
+  <img src="d12.jpg" alt="Dwellings 12">
 </section>
+
+<!-- LIGHTBOX / BANNER FULLSCREEN -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" aria-label="Cerrar">&times;</button>
+    <button class="lightbox-arrow left" aria-label="Anterior">&#8249;</button>
+    <img src="" alt="Foto ampliada" class="lightbox-img" id="lightbox-img">
+    <button class="lightbox-arrow right" aria-label="Siguiente">&#8250;</button>
+  </div>
+</div>
 
 <script>
   // Header transparente → oscuro + blur al hacer scroll
@@ -238,6 +345,61 @@
     } else {
       header.classList.remove('scrolled');
     }
+  });
+
+  // LIGHTBOX / BANNER
+  const galleryImages = document.querySelectorAll('.gallery img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.querySelector('.lightbox-close');
+  const prevBtn = document.querySelector('.lightbox-arrow.left');
+  const nextBtn = document.querySelector('.lightbox-arrow.right');
+
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    const img = galleryImages[currentIndex];
+    lightboxImg.src = img.src;
+    lightbox.classList.add('open');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightboxImg.src = '';
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    lightboxImg.src = galleryImages[currentIndex].src;
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    lightboxImg.src = galleryImages[currentIndex].src;
+  }
+
+  galleryImages.forEach((img, index) => {
+    img.addEventListener('click', () => openLightbox(index));
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  nextBtn.addEventListener('click', showNext);
+  prevBtn.addEventListener('click', showPrev);
+
+  // Cerrar al clicar fuera del contenido
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Navegación con teclado
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
+    if (e.key === 'Escape') closeLightbox();
   });
 </script>
 
