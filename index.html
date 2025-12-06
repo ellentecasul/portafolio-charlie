@@ -188,16 +188,16 @@
 
     .contact-strip-title {
       position: absolute;
-      bottom: 52%;                        /* ⬆️ subimos el texto */
+      bottom: 52%;                        /* subido un poco más */
       left: 50%;
       transform: translateX(-50%);
-      white-space: nowrap;                /* 1 línea siempre */
+      white-space: nowrap;                /* una sola línea */
       font-family: "Caveat", cursive;
       font-size: 3.3rem;
-      color: #ffffff;                     /* ✔️ blanco */
-      text-shadow: 0 0 14px rgba(0,0,0,0.85); /* ✔️ sombra negra */
+      color: #ffffff;
+      text-shadow: 0 0 14px rgba(0,0,0,0.85);
       letter-spacing: 0.02em;
-   }
+    }
 
     .contact-strip-image {
       width: 100%;
@@ -228,13 +228,35 @@
     .footer-content a:hover {
       color: #fff;
     }
-/* 👇 pega aquí */
-@media(max-width: 600px) {
-  .contact-strip-title {
-    font-size: 7vw;
-    bottom: 55%;
-  }
-}
+
+    /* ===== AJUSTES SOLO PARA MÓVIL ===== */
+    @media (max-width: 600px) {
+
+      /* Texto sobre la imagen de palmeras (hero) */
+      .hero-text {
+        bottom: 20%;              /* más abajo, más centrado en móvil */
+        font-size: 1.25rem;       /* más pequeño, más limpio */
+        letter-spacing: 0.08em;   /* menos separación, más elegante */
+        padding: 0 18px;          /* margen lateral para que no pegue a los bordes */
+      }
+
+      /* Categorías una debajo de otra → scroll hacia abajo */
+      .categories {
+        grid-template-columns: 1fr;
+        margin-top: 60px;         /* un poco menos de espacio, pero siguen abajo del hero */
+      }
+
+      .category img {
+        aspect-ratio: 4 / 5;      /* relación más natural en móvil */
+      }
+
+      /* Título final adaptado a móvil pero 1 línea */
+      .contact-strip-title {
+        font-size: 7vw;           /* se adapta al ancho de pantalla */
+        bottom: 58%;
+      }
+    }
+
   </style>
 </head>
 
@@ -258,17 +280,17 @@
 
 
 <section class="hero">
-  <img src="palmeras.jpg" class="hero-image">
+  <img src="palmeras.jpg" class="hero-image" alt="Palmeras">
   <div class="hero-text">Contar historias con luz, naturaleza y emociones reales</div>
 </section>
 
 
 <section class="categories">
-  <a class="category" href="dwellings.html"><img src="dwellings.jpg"><h3>Dwellings</h3></a>
-  <a class="category" href="wedding.html"><img src="wedding.jpg"><h3>Wedding</h3></a>
-  <a class="category" href="gastronomy.html"><img src="gastronomy.jpg"><h3>Gastronomy</h3></a>
-  <a class="category" href="lifestyle.html"><img src="lifestyle.jpg"><h3>Lifestyle</h3></a>
-  <a class="category" href="sports.html"><img src="saul.jpg"><h3>Sports</h3></a>
+  <a class="category" href="dwellings.html"><img src="dwellings.jpg" alt="Dwellings"><h3>Dwellings</h3></a>
+  <a class="category" href="wedding.html"><img src="wedding.jpg" alt="Wedding"><h3>Wedding</h3></a>
+  <a class="category" href="gastronomy.html"><img src="gastronomy.jpg" alt="Gastronomy"><h3>Gastronomy</h3></a>
+  <a class="category" href="lifestyle.html"><img src="lifestyle.jpg" alt="Lifestyle"><h3>Lifestyle</h3></a>
+  <a class="category" href="sports.html"><img src="saul.jpg" alt="Sports"><h3>Sports</h3></a>
 </section>
 
 
@@ -326,6 +348,3 @@
 
 </body>
 </html>
-
-
-
