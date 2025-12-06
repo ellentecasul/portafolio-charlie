@@ -54,10 +54,10 @@
       margin-left: 22px;
       font-size: 0.9rem;
       transition: color 0.35s ease;
-      color: #000;
+      color: #000;          /* negro al inicio */
     }
     header.scrolled nav a {
-      color: #fff;
+      color: #fff;          /* blanco al hacer scroll */
     }
 
     /* HERO */
@@ -104,10 +104,15 @@
       line-height: 1.65;
     }
 
-    .content strong {
+    /* subtítulos tipo home (Playfair) */
+    .section-subtitle {
+      font-family: "Playfair Display", serif;
+      font-size: 2.25rem;
       font-weight: 500;
-      display: block;
-      margin-bottom: 4px;
+      margin-bottom: 26px;
+      margin-top: 90px;
+      letter-spacing: -0.01em;
+      text-align: center;
     }
 
     /* CARRUSEL ELEGANTE */
@@ -130,7 +135,7 @@
 
     .carousel-main img {
       max-width: 100%;
-      max-height: 72vh; /* 🔥 más grande que antes */
+      max-height: 72vh; /* más grande pero sin ocupar todo */
       object-fit: cover;
       border-radius: 16px;
       box-shadow: 0 18px 40px rgba(0,0,0,0.7);
@@ -181,7 +186,7 @@
 
     .carousel-thumb {
       flex: 0 0 auto;
-      width: 150px;              /* 🔥 más grandes */
+      width: 150px;              /* miniaturas más grandes */
       aspect-ratio: 3/2;
       border-radius: 10px;
       overflow: hidden;
@@ -280,20 +285,22 @@
 </section>
 
 <section class="content">
+
+  <h3 class="section-subtitle">En Fotografía de Decoración (Interiorismo)</h3>
   <p>
-    <strong>En Fotografía de Decoración (Interiorismo):</strong>
     La Luz como Diseño: Mi objetivo es resaltar la funcionalidad y la estética. Busco la luz natural que enmarca cada detalle, capturando texturas y materiales de una manera que invite al espectador a sentir el espacio, destacando la armonía y el cuidado del diseño interior.
   </p>
 
+  <h3 class="section-subtitle">En Fotografía de Real Estate (Bienes Raíces)</h3>
   <p>
-    <strong>En Fotografía de Real Estate (Bienes Raíces):</strong>
     Imágenes que Venden, no solo Muestran: Entiendo que cada foto es una herramienta de marketing. Mi enfoque está en maximizar la percepción de amplitud, luz y flujo del espacio. Utilizo técnicas que minimizan las distorsiones y presento la propiedad de la forma más atractiva y fiel posible, acelerando el interés del comprador o inquilino potencial.
   </p>
 
+  <h3 class="section-subtitle">En Fotografía Arquitectónica</h3>
   <p>
-    <strong>En Fotografía Arquitectónica:</strong>
     Honrar la Estructura y la Intención: Me concentro en la precisión de las líneas, la simetría y la relación de la edificación con su entorno. Mi visión es capturar la intención del arquitecto, revelando la solidez, la escala y el diálogo entre el material y el diseño, ya sea de un exterior monumental o de un interior detallado.
   </p>
+
 </section>
 
 <section class="gallery-carousel">
@@ -374,4 +381,3 @@
 
 </body>
 </html>
-
