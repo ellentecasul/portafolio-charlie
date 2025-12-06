@@ -19,16 +19,15 @@
       line-height: 1.9;
     }
 
-    /* CONTENEDOR GENERAL PARA PODER APLICAR BLUR */
+    /* Wrapper para blur global */
     .page-wrapper {
       transition: filter 0.35s ease;
     }
-
     .page-wrapper.blurred {
       filter: blur(10px);
     }
 
-    /* HEADER — como la Home: transparente arriba, cristal al hacer scroll */
+    /* HEADER — transparente arriba y cristal al hacer scroll */
     header {
       position: fixed;
       top: 0; left: 0;
@@ -37,14 +36,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0,0,0,0);   /* FULL transparente arriba */
+      background: rgba(0,0,0,0);
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
       z-index: 100;
       transition: background 0.35s ease, backdrop-filter 0.35s ease;
     }
-
-    /* Estado al hacer scroll: oscuro + blur */
     header.scrolled {
       background: rgba(0,0,0,0.55);
       backdrop-filter: blur(14px);
@@ -60,21 +57,14 @@
       transition: color 0.35s ease;
     }
 
-    /* Links */
     header nav a {
       text-decoration: none;
       margin-left: 22px;
       font-size: 0.9rem;
       transition: color 0.35s ease;
-    }
-
-    /* Solo “Home” es negro al inicio (sobre fondo claro) */
-    header nav a[href="index.html"] {
       color: #000;
     }
-
-    /* Cuando el header es scrolled, Home se vuelve blanco */
-    header.scrolled nav a[href="index.html"] {
+    header.scrolled nav a {
       color: #fff;
     }
 
@@ -82,28 +72,24 @@
     .hero {
       position: relative;
     }
-
     .hero img {
       width: 100%;
       height: 480px;
       object-fit: cover;
       display: block;
     }
-
     .hero-text {
       position: absolute;
       top: 70%;
       left: 60px;
       transform: translateY(-50%);
     }
-
     .hero-text h1 {
       font-family: "Playfair Display", serif;
       font-size: 2.8rem;
       margin-bottom: 2px;
       line-height: 1.1;
     }
-
     .hero-text p {
       font-size: 1.1rem;
       opacity: 0.9;
@@ -111,7 +97,7 @@
       margin-top: 0;
     }
 
-    /* TEXTO DESCRIPTIVO */
+    /* CONTENIDO */
     .content {
       max-width: 1100px;
       margin: 100px auto 80px;
@@ -119,11 +105,7 @@
       font-size: 1.1rem;
       text-align: center;
     }
-
-    .content p {
-      margin-bottom: 38px;
-    }
-
+    .content p { margin-bottom: 38px; }
     .content strong {
       font-size: 1.2rem;
       font-weight: 500;
@@ -131,68 +113,62 @@
       margin-bottom: 10px;
     }
 
-    /* GALERÍA → miniaturas más pequeñas (4 columnas en desktop) */
+    /* GALERÍA — 12 fotos, miniaturas elegantes */
     .gallery {
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto 140px;
       padding: 0 40px;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(4, 1fr);  /* 4 columnas = miniaturas */
+      gap: 18px;
     }
-
     .gallery img {
       width: 100%;
-      aspect-ratio: 4/3;
+      aspect-ratio: 3/2;
       object-fit: cover;
-      border-radius: 12px;
+      border-radius: 14px;
       display: block;
-      transition: transform 0.45s ease, opacity 0.4s ease;
       cursor: pointer;
+      transition: transform 0.45s ease, opacity 0.4s ease;
     }
-
     .gallery img:hover {
       transform: scale(1.03);
-      opacity: 0.94;
+      opacity: 0.90;
     }
 
-    /* LIGHTBOX / BANNER GRANDE */
+    /* LIGHTBOX FULLSCREEN */
     .lightbox {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.7);    /* un poco más transparente para que se intuya el blur detrás */
+      background: rgba(0,0,0,0.7);  /* deja intuir el blur detrás */
       display: none;
       align-items: center;
       justify-content: center;
       z-index: 200;
     }
-
-    .lightbox.open {
-      display: flex;
-    }
+    .lightbox.open { display: flex; }
 
     .lightbox-inner {
       position: relative;
-      max-width: 90vw;
-      max-height: 90vh;
+      max-width: 92vw;
+      max-height: 92vh;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-
     .lightbox-img {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      border-radius: 14px;
-      box-shadow: 0 0 40px rgba(0,0,0,0.7);
+      border-radius: 16px;
+      box-shadow: 0 0 60px rgba(0,0,0,0.6);
     }
 
     .lightbox-close {
       position: absolute;
-      top: -40px;
+      top: -48px;
       right: 0;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       color: #fff;
       cursor: pointer;
       background: transparent;
@@ -203,82 +179,49 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 2.4rem;
+      font-size: 2.6rem;
       color: #fff;
       cursor: pointer;
-      background: rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.35);
       border-radius: 50%;
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       border: none;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background 0.25s ease;
     }
-
-    .lightbox-arrow.left {
-      left: -60px;
-    }
-
-    .lightbox-arrow.right {
-      right: -60px;
-    }
-
     .lightbox-arrow:hover,
     .lightbox-close:hover {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.1);
     }
+    .lightbox-arrow.left { left: -64px; }
+    .lightbox-arrow.right { right: -64px; }
 
     /* RESPONSIVE */
-    @media(max-width:900px){
-      .hero img{
-        height:280px;
+    @media(max-width:1100px){
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
       }
-      .hero-text {
-        top: 54%;
-        left: 30px;
-      }
-      .hero-text h1{
-        font-size:2.2rem;
-      }
-      .gallery{
-        grid-template-columns:repeat(3,1fr);   /* 3 columnas en tablet */
-      }
-
-      .lightbox-arrow.left {
-        left: -40px;
-      }
-      .lightbox-arrow.right {
-        right: -40px;
-      }
+      .lightbox-arrow.left { left: -40px; }
+      .lightbox-arrow.right { right: -40px; }
     }
-
-    @media(max-width:600px){
-      .gallery{
-        grid-template-columns:1fr;             /* 1 columna en móvil */
+    @media(max-width:700px){
+      .gallery {
+        grid-template-columns: 1fr;
       }
-      .content{
-        margin:70px auto;
-        padding:0 22px;
-      }
-      .lightbox-inner {
-        max-width: 94vw;
-        max-height: 80vh;
-      }
+      .hero img { height: 280px; }
+      .hero-text { top: 52%; left: 28px; }
       .lightbox-arrow {
-        font-size: 1.9rem;
-        width: 40px;
-        height: 40px;
+        width: 42px; height: 42px;
+        font-size: 2.0rem;
       }
-      .lightbox-arrow.left {
-        left: 10px;
-      }
-      .lightbox-arrow.right {
-        right: 10px;
-      }
+      .lightbox-arrow.left { left: 6px; }
+      .lightbox-arrow.right { right: 6px; }
       .lightbox-close {
-        top: -32px;
-        right: 4px;
+        top: -36px;
+        right: 8px;
       }
     }
   </style>
@@ -287,76 +230,74 @@
 <body>
 
 <div class="page-wrapper">
-  <header>
-    <a href="index.html" class="logo">Charlie...</a>
-    <nav>
-      <a href="index.html">Home</a>
-    </nav>
-  </header>
+<header>
+  <a href="index.html" class="logo">Charlie...</a>
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
+</header>
 
-  <section class="hero">
-    <img src="dwellingcabeza1.jpg" alt="Dwellings">
-    <div class="hero-text">
-      <h1>Dwellings</h1>
-      <p>La esencia de los espacios habitables</p>
-    </div>
-  </section>
+<section class="hero">
+  <img src="dwellingcabeza1.jpg" alt="Dwellings">
+  <div class="hero-text">
+    <h1>Dwellings</h1>
+    <p>La esencia de los espacios habitables</p>
+  </div>
+</section>
 
-  <section class="content">
-    <p>
-      <strong>En Fotografía de Decoración (Interiorismo):</strong>
-      La Luz como Diseño: Mi objetivo es resaltar la funcionalidad y la estética. Busco la luz natural que enmarca cada detalle, capturando texturas y materiales de una manera que invite al espectador a sentir el espacio, destacando la armonía y el cuidado del diseño interior.
-    </p>
+<section class="content">
 
-    <p>
-      <strong>En Fotografía de Real Estate (Bienes Raíces):</strong>
-      Imágenes que Venden, no solo Muestran: Entiendo que cada foto es una herramienta de marketing. Mi enfoque está en maximizar la percepción de amplitud, luz y flujo del espacio. Utilizo técnicas que minimizan las distorsiones y presento la propiedad de la forma más atractiva y fiel posible, acelerando el interés del comprador o inquilino potencial.
-    </p>
+  <p>
+    <strong>En Fotografía de Decoración (Interiorismo):</strong>
+    La Luz como Diseño: Mi objetivo es resaltar la funcionalidad y la estética. Busco la luz natural que enmarca cada detalle, capturando texturas y materiales de una manera que invite al espectador a sentir el espacio, destacando la armonía y el cuidado del diseño interior.
+  </p>
 
-    <p>
-      <strong>En Fotografía Arquitectónica:</strong>
-      Honrar la Estructura y la Intención: Me concentro en la precisión de las líneas, la simetría y la relación de la edificación con su entorno. Mi visión es capturar la intención del arquitecto, revelando la solidez, la escala y el diálogo entre el material y el diseño, ya sea de un exterior monumental o de un interior detallado.
-    </p>
-  </section>
+  <p>
+    <strong>En Fotografía de Real Estate (Bienes Raíces):</strong>
+    Imágenes que Venden, no solo Muestran: Entiendo que cada foto es una herramienta de marketing. Mi enfoque está en maximizar la percepción de amplitud, luz y flujo del espacio. Utilizo técnicas que minimizan las distorsiones y presento la propiedad de la forma más atractiva y fiel posible, acelerando el interés del comprador o inquilino potencial.
+  </p>
 
-  <section class="gallery">
-    <img src="d1.jpg" alt="Dwellings 1">
-    <img src="d2.jpg" alt="Dwellings 2">
-    <img src="d3.jpg" alt="Dwellings 3">
-    <img src="d4.jpg" alt="Dwellings 4">
-    <img src="d5.jpg" alt="Dwellings 5">
-    <img src="d6.jpg" alt="Dwellings 6">
-    <img src="d7.jpg" alt="Dwellings 7">
-    <img src="d8.jpg" alt="Dwellings 8">
-    <img src="d9.jpg" alt="Dwellings 9">
-    <img src="d10.jpg" alt="Dwellings 10">
-    <img src="d11.jpg" alt="Dwellings 11">
-    <img src="d12.jpg" alt="Dwellings 12">
-  </section>
+  <p>
+    <strong>En Fotografía Arquitectónica:</strong>
+    Honrar la Estructura y la Intención: Me concentro en la precisión de las líneas, la simetría y la relación de la edificación con su entorno. Mi visión es capturar la intención del arquitecto, revelando la solidez, la escala y el diálogo entre el material y el diseño, ya sea de un exterior monumental o de un interior detallado.
+  </p>
+
+</section>
+
+<section class="gallery">
+  <img src="d1.jpg">
+  <img src="d2.jpg">
+  <img src="d3.jpg">
+  <img src="d4.jpg">
+  <img src="d5.jpg">
+  <img src="d6.jpg">
+  <img src="d7.jpg">
+  <img src="d8.jpg">
+  <img src="d9.jpg">
+  <img src="d10.jpg">
+  <img src="d11.jpg">
+  <img src="d12.jpg">
+</section>
 </div>
 
-<!-- LIGHTBOX / BANNER FULLSCREEN -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <div class="lightbox-inner">
-    <button class="lightbox-close" aria-label="Cerrar">&times;</button>
-    <button class="lightbox-arrow left" aria-label="Anterior">&#8249;</button>
-    <img src="" alt="Foto ampliada" class="lightbox-img" id="lightbox-img">
-    <button class="lightbox-arrow right" aria-label="Siguiente">&#8250;</button>
+    <button class="lightbox-close">&times;</button>
+    <button class="lightbox-arrow left">&#8249;</button>
+    <img src="" class="lightbox-img" id="lightbox-img">
+    <button class="lightbox-arrow right">&#8250;</button>
   </div>
 </div>
 
 <script>
-  // Header transparente → oscuro + blur al hacer scroll
-  window.addEventListener("scroll", function() {
+  // Header scroll
+  window.addEventListener("scroll", () => {
     const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
+    header.classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // LIGHTBOX / BANNER + BLUR DE FONDO
+  // Lightbox
   const galleryImages = document.querySelectorAll('.gallery img');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
@@ -364,54 +305,44 @@
   const prevBtn = document.querySelector('.lightbox-arrow.left');
   const nextBtn = document.querySelector('.lightbox-arrow.right');
   const pageWrapper = document.querySelector('.page-wrapper');
-
   let currentIndex = 0;
 
-  function openLightbox(index) {
-    currentIndex = index;
-    const img = galleryImages[currentIndex];
-    lightboxImg.src = img.src;
+  function openLightbox(i) {
+    currentIndex = i;
+    lightboxImg.src = galleryImages[i].src;
     lightbox.classList.add('open');
-    pageWrapper.classList.add('blurred');   // 🔥 desenfoca el fondo
+    pageWrapper.classList.add('blurred'); 
   }
-
   function closeLightbox() {
     lightbox.classList.remove('open');
     lightboxImg.src = '';
-    pageWrapper.classList.remove('blurred'); // 🔥 quita el blur del fondo
+    pageWrapper.classList.remove('blurred');
   }
-
-  function showNext() {
+  function next() {
     currentIndex = (currentIndex + 1) % galleryImages.length;
     lightboxImg.src = galleryImages[currentIndex].src;
   }
-
-  function showPrev() {
+  function prev() {
     currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
     lightboxImg.src = galleryImages[currentIndex].src;
   }
 
-  galleryImages.forEach((img, index) => {
-    img.addEventListener('click', () => openLightbox(index));
+  galleryImages.forEach((img, idx) => {
+    img.addEventListener('click', () => openLightbox(idx));
   });
-
   closeBtn.addEventListener('click', closeLightbox);
-  nextBtn.addEventListener('click', showNext);
-  prevBtn.addEventListener('click', showPrev);
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
 
-  // Cerrar al clicar fuera del contenido
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      closeLightbox();
-    }
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
   });
 
-  // Navegación con teclado
-  document.addEventListener('keydown', (e) => {
+  document.addEventListener('keydown', e => {
     if (!lightbox.classList.contains('open')) return;
-    if (e.key === 'ArrowRight') showNext();
-    if (e.key === 'ArrowLeft') showPrev();
     if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
   });
 </script>
 
