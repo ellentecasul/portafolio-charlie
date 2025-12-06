@@ -183,16 +183,16 @@
       border: 1px solid rgba(255,255,255,0.12);
       transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
     }
-    .carousel-thumb.active {
-      opacity: 1;
-      border-color: rgba(255,255,255,0.9);
-      transform: translateY(-3px);
-    }
     .carousel-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+    .carousel-thumb.active {
+      opacity: 1;
+      border-color: rgba(255,255,255,0.9);
+      transform: translateY(-3px);
     }
     .carousel-thumbs::-webkit-scrollbar {
       height: 6px;
@@ -239,9 +239,17 @@
       opacity: 0.8;
     }
 
+    @media (max-width: 700px) {
+      .hero img { height: 280px; }
+      .hero-text { top: 52%; left: 24px; }
+      .gallery-carousel { padding: 0 22px; margin-bottom: 90px; }
+      .carousel-main { padding: 18px 18px; border-radius: 16px; }
+      .carousel-main img { max-height: 68vh; }
+      .carousel-thumb { width: 110px; border-radius: 8px; }
+      .contact-strip { padding: 0 20px; margin: 120px auto 140px; }
+    }
   </style>
 </head>
-
 
 <body>
 
@@ -260,48 +268,52 @@
   </div>
 </section>
 
-
 <section class="content">
 
   <h3 class="section-subtitle">En Fotografía de Decoración (Interiorismo)</h3>
   <p>
-    La Luz como Diseño: Mi objetivo es resaltar la funcionalidad y la estética…
+    La luz como diseño: mi objetivo es resaltar la funcionalidad y la estética. Busco la luz natural que enmarca cada detalle, capturando texturas y materiales de una manera que invite al espectador a sentir el espacio, destacando la armonía y el cuidado del diseño interior.
   </p>
 
   <h3 class="section-subtitle">En Fotografía de Real Estate (Bienes Raíces)</h3>
   <p>
-    Imágenes que Venden, no solo Muestran…
+    Imágenes que venden, no solo muestran: entiendo que cada foto es una herramienta de marketing. Mi enfoque está en maximizar la percepción de amplitud, luz y flujo del espacio. Utilizo técnicas que minimizan las distorsiones y presento la propiedad de la forma más atractiva y fiel posible, acelerando el interés del comprador o inquilino potencial.
   </p>
 
   <h3 class="section-subtitle">En Fotografía Arquitectónica</h3>
   <p>
-    Honrar la Estructura y la Intención…
+    Honrar la estructura y la intención: me concentro en la precisión de las líneas, la simetría y la relación de la edificación con su entorno. Mi visión es capturar la intención del arquitecto, revelando la solidez, la escala y el diálogo entre el material y el diseño, ya sea de un exterior monumental o de un interior detallado.
   </p>
 
 </section>
 
-
 <section class="gallery-carousel">
   <div class="carousel-main">
-    <button class="carousel-arrow left">&#8249;</button>
-    <img src="d1.jpg" id="carousel-main-img" class="active">
-    <button class="carousel-arrow right">&#8250;</button>
+    <button class="carousel-arrow left" aria-label="Anterior">&#8249;</button>
+    <img src="d1.jpg" id="carousel-main-img" class="active" alt="Dwellings principal">
+    <button class="carousel-arrow right" aria-label="Siguiente">&#8250;</button>
   </div>
 
   <div class="carousel-thumbs">
-    <div class="carousel-thumb active" data-index="0"><img src="d1.jpg"></div>
-    <div class="carousel-thumb" data-index="1"><img src="d2.jpg"></div>
-    <!-- ... hasta d12 igual que antes -->
+    <div class="carousel-thumb active" data-index="0"><img src="d1.jpg" alt="Dwellings 1"></div>
+    <div class="carousel-thumb" data-index="1"><img src="d2.jpg" alt="Dwellings 2"></div>
+    <div class="carousel-thumb" data-index="2"><img src="d3.jpg" alt="Dwellings 3"></div>
+    <div class="carousel-thumb" data-index="3"><img src="d4.jpg" alt="Dwellings 4"></div>
+    <div class="carousel-thumb" data-index="4"><img src="d5.jpg" alt="Dwellings 5"></div>
+    <div class="carousel-thumb" data-index="5"><img src="d6.jpg" alt="Dwellings 6"></div>
+    <div class="carousel-thumb" data-index="6"><img src="d7.jpg" alt="Dwellings 7"></div>
+    <div class="carousel-thumb" data-index="7"><img src="d8.jpg" alt="Dwellings 8"></div>
+    <div class="carousel-thumb" data-index="8"><img src="d9.jpg" alt="Dwellings 9"></div>
+    <div class="carousel-thumb" data-index="9"><img src="d10.jpg" alt="Dwellings 10"></div>
+    <div class="carousel-thumb" data-index="10"><img src="d11.jpg" alt="Dwellings 11"></div>
+    <div class="carousel-thumb" data-index="11"><img src="d12.jpg" alt="Dwellings 12"></div>
   </div>
 </section>
-
 
 <div class="footer-line"></div>
 
 <section class="contact-strip" id="contacto">
-
   <div class="contact-strip-info">
-
     <p class="contact-label">based in</p>
     <p>Mallorca, España — proyectos donde llegue la luz</p>
 
@@ -314,11 +326,8 @@
     <p class="contact-label">instagram</p>
     <p><a href="https://instagram.com/ellentecasualdecharlie" target="_blank">@ellentecasualdecharlie</a></p>
     <p><a href="https://instagram.com/unportafoliocasual" target="_blank">@unportafoliocasual</a></p>
-
   </div>
-
 </section>
-
 
 <script>
   // Header scroll
@@ -337,22 +346,27 @@
 
   function setActive(index) {
     currentIndex = index;
-    document.querySelector('.carousel-thumb.active').classList.remove('active');
+    const currentActive = document.querySelector('.carousel-thumb.active');
+    if (currentActive) currentActive.classList.remove('active');
     thumbs[currentIndex].classList.add('active');
     mainImg.src = thumbs[currentIndex].querySelector('img').src;
   }
 
   thumbs.forEach(thumb => {
     thumb.addEventListener('click', () => {
-      setActive(parseInt(thumb.getAttribute('data-index'), 10));
+      const index = parseInt(thumb.getAttribute('data-index'), 10);
+      setActive(index);
     });
   });
 
   arrowRight.addEventListener('click', () => {
-    setActive((currentIndex + 1) % thumbs.length);
+    const nextIndex = (currentIndex + 1) % thumbs.length;
+    setActive(nextIndex);
   });
+
   arrowLeft.addEventListener('click', () => {
-    setActive((currentIndex - 1 + thumbs.length) % thumbs.length);
+    const prevIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
+    setActive(prevIndex);
   });
 </script>
 
