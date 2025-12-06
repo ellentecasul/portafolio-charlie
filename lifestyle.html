@@ -19,17 +19,25 @@
       line-height: 1.9;
     }
 
-    /* HEADER */
+    /* HEADER — transparente arriba y cristal al hacer scroll */
     header {
-      padding: 22px 40px;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      padding: 18px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0,0,0,0.85);
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(6px);
-      z-index:100;
+      background: rgba(0,0,0,0);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      z-index: 100;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease;
+    }
+    header.scrolled {
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     .logo {
@@ -38,40 +46,42 @@
       letter-spacing: 0.3em;
       color: #fff;
       text-decoration: none;
+      transition: color 0.35s ease;
     }
 
     header nav a {
-      color: #fff;
       text-decoration: none;
       margin-left: 22px;
       font-size: 0.9rem;
+      transition: color 0.35s ease;
+      color: #000;
+    }
+    header.scrolled nav a {
+      color: #fff;
     }
 
     /* HERO */
     .hero {
       position: relative;
     }
-
     .hero img {
       width: 100%;
-      height: 430px;
+      height: 480px;
       object-fit: cover;
       display: block;
     }
-
     .hero-text {
       position: absolute;
-      bottom: 48px;
-      left: 48px;
+      top: 70%;
+      left: 60px;
+      transform: translateY(-50%);
     }
-
     .hero-text h1 {
       font-family: "Playfair Display", serif;
       font-size: 2.8rem;
       margin-bottom: 2px;
       line-height: 1.1;
     }
-
     .hero-text p {
       font-size: 1.1rem;
       opacity: 0.9;
@@ -79,71 +89,164 @@
       margin-top: 0;
     }
 
-    /* TEXTO DESCRIPTIVO */
+    /* CONTENIDO estilo Home */
     .content {
-      max-width: 1100px;
-      margin: 90px auto;
-      padding: 0 40px;
-      font-size: 1.1rem;
+      max-width: 1300px;
+      margin: 120px auto 90px;
+      padding: 0 6vw;
+      text-align: center;
+    }
+    .content p {
+      max-width: 1200px;
+      margin: 0 auto 26px;
+      font-size: 1.32rem;
+      line-height: 1.65;
+    }
+    .section-subtitle {
+      font-family: "Playfair Display", serif;
+      font-size: 2.25rem;
+      font-weight: 500;
+      margin-bottom: 26px;
+      margin-top: 90px;
+      letter-spacing: -0.01em;
       text-align: center;
     }
 
-    .content p {
-      margin-bottom: 32px;
+    /* CARRUSEL */
+    .gallery-carousel {
+      max-width: 1400px;
+      margin: 0 auto 130px;
+      padding: 0 30px;
     }
-
-    .content strong {
-      font-size: 1.15rem;
-      font-weight: 500;
-      display: block;
-      margin-bottom: 8px;
+    .carousel-main {
+      position: relative;
+      background: radial-gradient(circle at top left, #222 0, #050505 45%, #000 100%);
+      border-radius: 20px;
+      padding: 26px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
-
-    /* GALERÍA */
-    .gallery {
-      max-width: 1200px;
-      margin: 0 auto 120px;
-      padding: 0 40px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 26px;
-    }
-
-    .gallery img {
-      width: 100%;
-      aspect-ratio: 4/3;
+    .carousel-main img {
+      max-width: 100%;
+      max-height: 72vh;
       object-fit: cover;
-      border-radius: 14px;
+      border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+      transition: transform 0.4s ease;
+    }
+    .carousel-main img.active {
+      transform: scale(1.015);
+    }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 2.2rem;
+      color: #fff;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+    .carousel-arrow.left { left: 18px; }
+    .carousel-arrow.right { right: 18px; }
+    .carousel-arrow:hover {
+      background: rgba(255,255,255,0.14);
+      transform: translateY(-50%) scale(1.04);
+    }
+    .carousel-thumbs {
+      margin-top: 22px;
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .carousel-thumb {
+      flex: 0 0 auto;
+      width: 150px;
+      aspect-ratio: 3/2;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      opacity: 0.55;
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    }
+    .carousel-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
-      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+    .carousel-thumb.active {
+      opacity: 1;
+      border-color: rgba(255,255,255,0.9);
+      transform: translateY(-3px);
+    }
+    .carousel-thumbs::-webkit-scrollbar {
+      height: 6px;
+    }
+    .carousel-thumbs::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.18);
+      border-radius: 999px;
     }
 
-    .gallery img:hover {
-      transform: scale(1.03);
-      opacity: 0.92;
+    /* Línea antes del contacto */
+    .footer-line {
+      width: 100%;
+      max-width: 1100px;
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      margin: 140px auto 80px;
     }
 
-    /* RESPONSIVE */
-    @media(max-width:900px){
-      .hero img{
-        height:260px;
-      }
-      .hero-text h1{
-        font-size:2.2rem;
-      }
-      .gallery{
-        grid-template-columns:repeat(2,1fr);
-      }
+    /* CONTACTO minimal */
+    .contact-strip {
+      max-width: 1100px;
+      margin: 0 auto 160px;
+      padding: 0 40px;
+      text-align: center;
+    }
+    .contact-label {
+      font-family: "Playfair Display", serif;
+      font-size: 1.4rem;
+      margin-top: 28px;
+      margin-bottom: 4px;
+      text-transform: lowercase;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.03em;
+    }
+    .contact-strip-info p {
+      margin: 8px 0;
+      font-size: 1rem;
+    }
+    .contact-strip-info a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .contact-strip-info a:hover {
+      opacity: 0.8;
     }
 
-    @media(max-width:600px){
-      .gallery{
-        grid-template-columns:1fr;
-      }
-      .content{
-        margin:60px auto;
-        padding:0 22px;
-      }
+    @media (max-width: 700px) {
+      .hero img { height: 280px; }
+      .hero-text { top: 52%; left: 24px; }
+      .gallery-carousel { padding: 0 22px; margin-bottom: 90px; }
+      .carousel-main { padding: 18px 18px; border-radius: 16px; }
+      .carousel-main img { max-height: 68vh; }
+      .carousel-thumb { width: 110px; border-radius: 8px; }
+      .contact-strip { padding: 0 20px; margin: 120px auto 140px; }
     }
   </style>
 </head>
@@ -157,51 +260,118 @@
   </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-  <!-- Usa la imagen que ya tienes en la home -->
-  <img src="lifestyle.jpg" alt="Lifestyle">
+  <!-- Cambia lifestylecabeza1.jpg por tu imagen real de cabecera si el nombre es otro -->
+  <img src="lifestylecabeza1.jpg" alt="Lifestyle">
   <div class="hero-text">
     <h1>Lifestyle</h1>
-    <p>Actitud, energía y momentos reales</p>
+    <p>Vida real, energía auténtica y momentos en movimiento</p>
   </div>
 </section>
 
-<!-- TEXTO DESCRIPTIVO -->
 <section class="content">
 
+  <h3 class="section-subtitle">Historias vividas, no posadas</h3>
   <p>
-    <strong>Más que poses: presencia</strong>
-    En lifestyle no busco personas perfectas, busco personas presentes. Gestos auténticos, miradas sinceras, cuerpos en movimiento.
-    Cada sesión es una experiencia donde la cámara acompaña, no invade.
+    En lifestyle trabajo desde la naturalidad. Prefiero que la acción suceda delante de la cámara en lugar de inventarla. Me interesa cómo te mueves, cómo te relacionas con tu entorno y qué te hace único, más que construir una versión perfecta de ti que no exista fuera de la foto.
   </p>
 
+  <h3 class="section-subtitle">Luz, entorno y actitud</h3>
   <p>
-    <strong>Luz natural, emociones naturales</strong>
-    Trabajo con la luz disponible y el entorno real para mantener una estética orgánica. El objetivo es que las imágenes se sientan
-    vivas, cercanas y coherentes con la esencia de quien tengo delante.
+    La luz, el lugar y tu propia energía son la base. Sea en ciudad, playa o montaña, busco encajar cada elemento para que el resultado se sienta honesto y estético a la vez. No se trata solo de verte bien, sino de reconocerte en las imágenes que vamos a crear.
   </p>
 
+  <h3 class="section-subtitle">Contenido con intención</h3>
   <p>
-    <strong>Creación de contenido con alma</strong>
-    Ya sea para marcas personales, proyectos creativos o contenido para redes, mi enfoque es construir imágenes que comuniquen estilo,
-    autenticidad y forma de vida, no solo una estética vacía.
+    Ya sea para marca personal, redes, campañas o proyectos creativos, mi objetivo es que el contenido tenga coherencia con lo que quieres transmitir. Visualmente atractivo, sí, pero también conectado con tu forma de vivir, comunicar y relacionarte con los demás.
   </p>
 
 </section>
 
-<!-- GALERÍA -->
-<section class="gallery">
-  <img src="l1.jpg" alt="Lifestyle 1">
-  <img src="l2.jpg" alt="Lifestyle 2">
-  <img src="l3.jpg" alt="Lifestyle 3">
-  <img src="l4.jpg" alt="Lifestyle 4">
-  <img src="l5.jpg" alt="Lifestyle 5">
-  <img src="l6.jpg" alt="Lifestyle 6">
-  <img src="l7.jpg" alt="Lifestyle 7">
-  <img src="l8.jpg" alt="Lifestyle 8">
-  <img src="l9.jpg" alt="Lifestyle 9">
+<section class="gallery-carousel">
+  <div class="carousel-main">
+    <button class="carousel-arrow left" aria-label="Anterior">&#8249;</button>
+    <!-- Cambia l1.jpg si tu primera foto tiene otro nombre -->
+    <img src="l1.jpg" id="carousel-main-img" class="active" alt="Lifestyle principal">
+    <button class="carousel-arrow right" aria-label="Siguiente">&#8250;</button>
+  </div>
+
+  <div class="carousel-thumbs">
+    <!-- Ajusta los nombres l1.jpg...l12.jpg a tus archivos reales -->
+    <div class="carousel-thumb active" data-index="0"><img src="l1.jpg"  alt="Lifestyle 1"></div>
+    <div class="carousel-thumb" data-index="1"><img src="l2.jpg"  alt="Lifestyle 2"></div>
+    <div class="carousel-thumb" data-index="2"><img src="l3.jpg"  alt="Lifestyle 3"></div>
+    <div class="carousel-thumb" data-index="3"><img src="l4.jpg"  alt="Lifestyle 4"></div>
+    <div class="carousel-thumb" data-index="4"><img src="l5.jpg"  alt="Lifestyle 5"></div>
+    <div class="carousel-thumb" data-index="5"><img src="l6.jpg"  alt="Lifestyle 6"></div>
+    <div class="carousel-thumb" data-index="6"><img src="l7.jpg"  alt="Lifestyle 7"></div>
+    <div class="carousel-thumb" data-index="7"><img src="l8.jpg"  alt="Lifestyle 8"></div>
+    <div class="carousel-thumb" data-index="8"><img src="l9.jpg"  alt="Lifestyle 9"></div>
+    <div class="carousel-thumb" data-index="9"><img src="l10.jpg" alt="Lifestyle 10"></div>
+    <div class="carousel-thumb" data-index="10"><img src="l11.jpg" alt="Lifestyle 11"></div>
+    <div class="carousel-thumb" data-index="11"><img src="l12.jpg" alt="Lifestyle 12"></div>
+  </div>
 </section>
+
+<div class="footer-line"></div>
+
+<section class="contact-strip" id="contacto">
+  <div class="contact-strip-info">
+    <p class="contact-label">based in</p>
+    <p>Mallorca, España — proyectos donde llegue la luz</p>
+
+    <p class="contact-label">whatsapp</p>
+    <p><a href="https://wa.me/34671310241" target="_blank">+34 671 310 241</a></p>
+
+    <p class="contact-label">email</p>
+    <p><a href="mailto:carlos.sequini@gmail.com">carlos.sequini@gmail.com</a></p>
+
+    <p class="contact-label">instagram</p>
+    <p><a href="https://instagram.com/ellentecasualdecharlie" target="_blank">@ellentecasualdecharlie</a></p>
+    <p><a href="https://instagram.com/unportafoliocasual" target="_blank">@unportafoliocasual</a></p>
+  </div>
+</section>
+
+<script>
+  // Header scroll
+  window.addEventListener("scroll", () => {
+    const header = document.querySelector('header');
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Carrusel
+  const mainImg = document.getElementById('carousel-main-img');
+  const thumbs = document.querySelectorAll('.carousel-thumb');
+  const arrowLeft = document.querySelector('.carousel-arrow.left');
+  const arrowRight = document.querySelector('.carousel-arrow.right');
+
+  let currentIndex = 0;
+
+  function setActive(index) {
+    currentIndex = index;
+    const currentActive = document.querySelector('.carousel-thumb.active');
+    if (currentActive) currentActive.classList.remove('active');
+    thumbs[currentIndex].classList.add('active');
+    mainImg.src = thumbs[currentIndex].querySelector('img').src;
+  }
+
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const index = parseInt(thumb.getAttribute('data-index'), 10);
+      setActive(index);
+    });
+  });
+
+  arrowRight.addEventListener('click', () => {
+    const nextIndex = (currentIndex + 1) % thumbs.length;
+    setActive(nextIndex);
+  });
+
+  arrowLeft.addEventListener('click', () => {
+    const prevIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
+    setActive(prevIndex);
+  });
+</script>
 
 </body>
 </html>
