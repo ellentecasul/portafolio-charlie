@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lifestyle | Charlie</title>
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: "Montserrat", sans-serif;
+      line-height: 1.9;
+    }
+
+    /* HEADER */
+    header {
+      padding: 22px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.85);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(6px);
+      z-index:100;
+    }
+
+    .logo {
+      font-family: "Parisienne", cursive;
+      font-size: 1.8rem;
+      letter-spacing: 0.3em;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 0.9rem;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 430px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 48px;
+      left: 48px;
+    }
+
+    .hero-text h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.8rem;
+      margin-bottom: 2px;
+      line-height: 1.1;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      line-height: 1.1;
+      margin-top: 0;
+    }
+
+    /* TEXTO DESCRIPTIVO */
+    .content {
+      max-width: 1100px;
+      margin: 90px auto;
+      padding: 0 40px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .content p {
+      margin-bottom: 32px;
+    }
+
+    .content strong {
+      font-size: 1.15rem;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* GALERÍA */
+    .gallery {
+      max-width: 1200px;
+      margin: 0 auto 120px;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+      opacity: 0.92;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero img{
+        height:260px;
+      }
+      .hero-text h1{
+        font-size:2.2rem;
+      }
+      .gallery{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:600px){
+      .gallery{
+        grid-template-columns:1fr;
+      }
+      .content{
+        margin:60px auto;
+        padding:0 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo">Charlie...</a>
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Usa la imagen que ya tienes en la home -->
+  <img src="lifestyle.jpg" alt="Lifestyle">
+  <div class="hero-text">
+    <h1>Lifestyle</h1>
+    <p>Actitud, energía y momentos reales</p>
+  </div>
+</section>
+
+<!-- TEXTO DESCRIPTIVO -->
+<section class="content">
+
+  <p>
+    <strong>Más que poses: presencia</strong>
+    En lifestyle no busco personas perfectas, busco personas presentes. Gestos auténticos, miradas sinceras, cuerpos en movimiento.
+    Cada sesión es una experiencia donde la cámara acompaña, no invade.
+  </p>
+
+  <p>
+    <strong>Luz natural, emociones naturales</strong>
+    Trabajo con la luz disponible y el entorno real para mantener una estética orgánica. El objetivo es que las imágenes se sientan
+    vivas, cercanas y coherentes con la esencia de quien tengo delante.
+  </p>
+
+  <p>
+    <strong>Creación de contenido con alma</strong>
+    Ya sea para marcas personales, proyectos creativos o contenido para redes, mi enfoque es construir imágenes que comuniquen estilo,
+    autenticidad y forma de vida, no solo una estética vacía.
+  </p>
+
+</section>
+
+<!-- GALERÍA -->
+<section class="gallery">
+  <img src="l1.jpg" alt="Lifestyle 1">
+  <img src="l2.jpg" alt="Lifestyle 2">
+  <img src="l3.jpg" alt="Lifestyle 3">
+  <img src="l4.jpg" alt="Lifestyle 4">
+  <img src="l5.jpg" alt="Lifestyle 5">
+  <img src="l6.jpg" alt="Lifestyle 6">
+  <img src="l7.jpg" alt="Lifestyle 7">
+  <img src="l8.jpg" alt="Lifestyle 8">
+  <img src="l9.jpg" alt="Lifestyle 9">
+</section>
+
+</body>
+</html>
