@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports | Charlie</title>
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: "Montserrat", sans-serif;
+      line-height: 1.9;
+    }
+
+    /* HEADER */
+    header {
+      padding: 22px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.85);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(6px);
+      z-index:100;
+    }
+
+    .logo {
+      font-family: "Parisienne", cursive;
+      font-size: 1.8rem;
+      letter-spacing: 0.3em;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 0.9rem;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 430px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 48px;
+      left: 48px;
+    }
+
+    .hero-text h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.8rem;
+      margin-bottom: 2px;
+      line-height: 1.1;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      line-height: 1.1;
+      margin-top: 0;
+    }
+
+    /* DESCRIPCIÓN */
+    .content {
+      max-width: 1100px;
+      margin: 90px auto;
+      padding: 0 40px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .content p {
+      margin-bottom: 32px;
+    }
+
+    .content strong {
+      font-size: 1.15rem;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* GALERIA */
+    .gallery {
+      max-width: 1200px;
+      margin: 0 auto 120px;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+      opacity: 0.92;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero img{
+        height:260px;
+      }
+      .hero-text h1{
+        font-size:2.2rem;
+      }
+      .gallery{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:600px){
+      .gallery{
+        grid-template-columns:1fr;
+      }
+      .content{
+        margin:60px auto;
+        padding:0 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo">Charlie...</a>
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="saul.jpg" alt="Sports">
+  <div class="hero-text">
+    <h1>Sports</h1>
+    <p>Energía, movimiento y adrenalina real</p>
+  </div>
+</section>
+
+<!-- DESCRIPTION -->
+<section class="content">
+
+  <p>
+    <strong>La acción como lenguaje visual</strong>
+    La fotografía deportiva es un instante irrepetible. Un gesto milimétrico, una caída,
+    una mirada de concentración. Mi trabajo es capturar la intensidad del momento sin
+    interferir, permitiendo que la acción hable por sí misma.
+  </p>
+
+  <p>
+    <strong>Luz extrema, situaciones extremas</strong>
+    Trabajo en condiciones cambiantes: contraluz, agua, viento, velocidad.
+    Mi conocimiento técnico y mi experiencia en deportes náuticos me permiten estar
+    dentro de la acción, anticipar el movimiento y asegurar imágenes potentes.
+  </p>
+
+  <p>
+    <strong>Historias de pasión y disciplina</strong>
+    Más allá del deporte, retrato a la persona: su dedicación, su camino, su vínculo
+    con el mar y el viento. Cada fotografía es una historia de superación y libertad.
+  </p>
+
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <img src="s1.jpg" alt="Sports 1">
+  <img src="s2.jpg" alt="Sports 2">
+  <img src="s3.jpg" alt="Sports 3">
+  <img src="s4.jpg" alt="Sports 4">
+  <img src="s5.jpg" alt="Sports 5">
+  <img src="s6.jpg" alt="Sports 6">
+  <img src="s7.jpg" alt="Sports 7">
+  <img src="s8.jpg" alt="Sports 8">
+  <img src="s9.jpg" alt="Sports 9">
+</section>
+
+</body>
+</html>
