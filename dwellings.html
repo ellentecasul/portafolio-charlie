@@ -54,10 +54,10 @@
       margin-left: 22px;
       font-size: 0.9rem;
       transition: color 0.35s ease;
-      color: #000;          /* negro al inicio */
+      color: #000;
     }
     header.scrolled nav a {
-      color: #fff;          /* blanco al hacer scroll */
+      color: #fff;
     }
 
     /* HERO */
@@ -89,22 +89,19 @@
       margin-top: 0;
     }
 
-    /* CONTENIDO — estilo similar al home */
+    /* CONTENIDO — estilo similar al Home */
     .content {
       max-width: 1300px;
       margin: 120px auto 90px;
       padding: 0 6vw;
       text-align: center;
     }
-
     .content p {
       max-width: 1200px;
       margin: 0 auto 26px;
       font-size: 1.32rem;
       line-height: 1.65;
     }
-
-    /* subtítulos tipo home (Playfair) */
     .section-subtitle {
       font-family: "Playfair Display", serif;
       font-size: 2.25rem;
@@ -115,269 +112,5 @@
       text-align: center;
     }
 
-    /* CARRUSEL ELEGANTE */
+    /* CARRUSEL */
     .gallery-carousel {
-      max-width: 1400px;
-      margin: 0 auto 130px;
-      padding: 0 30px;
-    }
-
-    .carousel-main {
-      position: relative;
-      background: radial-gradient(circle at top left, #222 0, #050505 45%, #000 100%);
-      border-radius: 20px;
-      padding: 26px 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .carousel-main img {
-      max-width: 100%;
-      max-height: 72vh; /* más grande pero sin ocupar todo */
-      object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-      transition: transform 0.4s ease;
-    }
-
-    .carousel-main img.active {
-      transform: scale(1.015);
-    }
-
-    .carousel-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 2.2rem;
-      color: #fff;
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      transition: background 0.25s ease, transform 0.25s ease;
-    }
-
-    .carousel-arrow.left { left: 18px; }
-    .carousel-arrow.right { right: 18px; }
-
-    .carousel-arrow:hover {
-      background: rgba(255,255,255,0.14);
-      transform: translateY(-50%) scale(1.04);
-    }
-
-    /* Tira de miniaturas más protagonista */
-    .carousel-thumbs {
-      margin-top: 22px;
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      padding-bottom: 10px;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .carousel-thumb {
-      flex: 0 0 auto;
-      width: 150px;              /* miniaturas más grandes */
-      aspect-ratio: 3/2;
-      border-radius: 10px;
-      overflow: hidden;
-      cursor: pointer;
-      opacity: 0.55;
-      border: 1px solid rgba(255,255,255,0.12);
-      transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
-    }
-
-    .carousel-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .carousel-thumb.active {
-      opacity: 1;
-      border-color: rgba(255,255,255,0.9);
-      transform: translateY(-3px);
-    }
-
-    .carousel-thumb:hover {
-      opacity: 0.9;
-    }
-
-    /* Scrollbar discreta */
-    .carousel-thumbs::-webkit-scrollbar {
-      height: 6px;
-    }
-    .carousel-thumbs::-webkit-scrollbar-track {
-      background: rgba(255,255,255,0.02);
-    }
-    .carousel-thumbs::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.18);
-      border-radius: 999px;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 1100px) {
-      .carousel-main {
-        padding: 22px 40px;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .hero img { height: 280px; }
-      .hero-text { top: 52%; left: 24px; }
-
-      .gallery-carousel {
-        padding: 0 22px;
-        margin-bottom: 90px;
-      }
-
-      .carousel-main {
-        padding: 18px 18px;
-        border-radius: 16px;
-      }
-
-      .carousel-main img {
-        max-height: 68vh;
-      }
-
-      .carousel-arrow {
-        width: 38px;
-        height: 38px;
-        font-size: 1.8rem;
-      }
-
-      .carousel-arrow.left { left: 10px; }
-      .carousel-arrow.right { right: 10px; }
-
-      .carousel-thumb {
-        width: 110px;
-        border-radius: 8px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <a href="index.html" class="logo">Charlie...</a>
-  <nav>
-    <a href="index.html">Home</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <img src="dwellingcabeza1.jpg" alt="Dwellings">
-  <div class="hero-text">
-    <h1>Dwellings</h1>
-    <p>La esencia de los espacios habitables</p>
-  </div>
-</section>
-
-<section class="content">
-
-  <h3 class="section-subtitle">En Fotografía de Decoración (Interiorismo)</h3>
-  <p>
-    La Luz como Diseño: Mi objetivo es resaltar la funcionalidad y la estética. Busco la luz natural que enmarca cada detalle, capturando texturas y materiales de una manera que invite al espectador a sentir el espacio, destacando la armonía y el cuidado del diseño interior.
-  </p>
-
-  <h3 class="section-subtitle">En Fotografía de Real Estate (Bienes Raíces)</h3>
-  <p>
-    Imágenes que Venden, no solo Muestran: Entiendo que cada foto es una herramienta de marketing. Mi enfoque está en maximizar la percepción de amplitud, luz y flujo del espacio. Utilizo técnicas que minimizan las distorsiones y presento la propiedad de la forma más atractiva y fiel posible, acelerando el interés del comprador o inquilino potencial.
-  </p>
-
-  <h3 class="section-subtitle">En Fotografía Arquitectónica</h3>
-  <p>
-    Honrar la Estructura y la Intención: Me concentro en la precisión de las líneas, la simetría y la relación de la edificación con su entorno. Mi visión es capturar la intención del arquitecto, revelando la solidez, la escala y el diálogo entre el material y el diseño, ya sea de un exterior monumental o de un interior detallado.
-  </p>
-
-</section>
-
-<section class="gallery-carousel">
-  <div class="carousel-main">
-    <button class="carousel-arrow left" aria-label="Anterior">&#8249;</button>
-    <img src="d1.jpg" alt="Dwellings principal" id="carousel-main-img" class="active">
-    <button class="carousel-arrow right" aria-label="Siguiente">&#8250;</button>
-  </div>
-
-  <div class="carousel-thumbs">
-    <div class="carousel-thumb active" data-index="0"><img src="d1.jpg" alt=""></div>
-    <div class="carousel-thumb" data-index="1"><img src="d2.jpg" alt=""></div>
-    <div class="carousel-thumb" data-index="2"><img src="d3.jpg" alt=""></div>
-    <div class="carousel-thumb" data-index="3"><img src="d4.jpg" alt=""></div>
-    <div class="carousel-thumb" data-index="4"><img src="d5.jpg" alt=""></div>
-    <div class="carousel-thumb" data-index="5"><img src="d6.jpg" alt=""></div>
-    <div class="carousel-thumb" data-index="6"><img src="d7.jpg" alt=""></div>
-    <div class="carousel-thumb" data-index="7"><img src="d8.jpg" alt=""></div>
-    <div class="carousel-thumb" data-index="8"><img src="d9.jpg" alt=""></div>
-    <div class="carousel-thumb" data-index="9"><img src="d10.jpg" alt=""></div>
-    <div class="carousel-thumb" data-index="10"><img src="d11.jpg" alt=""></div>
-    <div class="carousel-thumb" data-index="11"><img src="d12.jpg" alt=""></div>
-  </div>
-</section>
-
-<script>
-  // Header scroll: transparente → cristal
-  window.addEventListener("scroll", () => {
-    const header = document.querySelector('header');
-    header.classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  // Carrusel
-  const mainImg = document.getElementById('carousel-main-img');
-  const thumbs = document.querySelectorAll('.carousel-thumb');
-  const arrowLeft = document.querySelector('.carousel-arrow.left');
-  const arrowRight = document.querySelector('.carousel-arrow.right');
-
-  let currentIndex = 0;
-
-  function setActive(index) {
-    currentIndex = index;
-
-    const activeThumb = document.querySelector('.carousel-thumb.active');
-    if (activeThumb) activeThumb.classList.remove('active');
-
-    const newActive = thumbs[currentIndex];
-    if (newActive) newActive.classList.add('active');
-
-    mainImg.src = newActive.querySelector('img').src;
-  }
-
-  thumbs.forEach(thumb => {
-    thumb.addEventListener('click', () => {
-      const index = parseInt(thumb.getAttribute('data-index'), 10);
-      setActive(index);
-    });
-  });
-
-  arrowRight.addEventListener('click', () => {
-    let nextIndex = currentIndex + 1;
-    if (nextIndex >= thumbs.length) nextIndex = 0;
-    setActive(nextIndex);
-  });
-
-  arrowLeft.addEventListener('click', () => {
-    let prevIndex = currentIndex - 1;
-    if (prevIndex < 0) prevIndex = thumbs.length - 1;
-    setActive(prevIndex);
-  });
-
-  // Navegación con teclado
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight') arrowRight.click();
-    if (e.key === 'ArrowLeft') arrowLeft.click();
-  });
-</script>
-
-</body>
-</html>
