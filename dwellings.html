@@ -19,17 +19,26 @@
       line-height: 1.9;
     }
 
-    /* HEADER SIMPLE */
+    /* HEADER — igual concepto que en la home: transparente al inicio, cristal oscuro al hacer scroll */
     header {
-      padding: 22px 40px;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      padding: 18px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0,0,0,0.85);
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(6px);
+      background: rgba(0,0,0,0);        /* transparente total al inicio */
+      backdrop-filter: none;            /* sin blur al inicio */
+      -webkit-backdrop-filter: none;
       z-index: 100;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease;
+    }
+
+    header.scrolled {
+      background: rgba(0,0,0,0.55);     /* oscuro al hacer scroll */
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     .logo {
@@ -50,6 +59,7 @@
     /* HERO */
     .hero {
       position: relative;
+      /* dejamos que el header se monte encima de la imagen */
     }
 
     .hero img {
@@ -61,23 +71,23 @@
 
     .hero-text {
       position: absolute;
-      top: 70%;         /* ↓ Lo baja un poco */
+      top: 70%;
       left: 60px;
       transform: translateY(-50%);
     }
 
-   .hero-text h1 {
-     font-family: "Playfair Display", serif;
-     font-size: 2.8rem;
-     margin-bottom: 2px;   /* 🔥 mucho más juntos */
-     line-height: 1.1;     /* compacta el conjunto */
+    .hero-text h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.8rem;
+      margin-bottom: 2px;
+      line-height: 1.1;
     }
 
-   .hero-text p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    line-height: 1.1;     /* 🔥 sube la línea, más compacto */
-    margin-top: 0;        /* elimina espacio extra */
+    .hero-text p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      line-height: 1.1;
+      margin-top: 0;
     }
 
     /* TEXTO DESCRIPTIVO */
@@ -190,21 +200,31 @@
 </section>
 
 <section class="gallery">
-  <img src="d1.jpg">
-  <img src="d2.jpg">
-  <img src="d3.jpg">
-  <img src="d4.jpg">
-  <img src="d5.jpg">
-  <img src="d6.jpg">
-  <img src="d7.jpg">
-  <img src="d8.jpg">
-  <img src="d9.jpg">
-  <img src="d10.jpg">
-  <img src="d11.jpg">
-  <img src="d12.jpg">
+  <img src="d1.jpg" alt="">
+  <img src="d2.jpg" alt="">
+  <img src="d3.jpg" alt="">
+  <img src="d4.jpg" alt="">
+  <img src="d5.jpg" alt="">
+  <img src="d6.jpg" alt="">
+  <img src="d7.jpg" alt="">
+  <img src="d8.jpg" alt="">
+  <img src="d9.jpg" alt="">
+  <img src="d10.jpg" alt="">
+  <img src="d11.jpg" alt="">
+  <img src="d12.jpg" alt="">
 </section>
 
-</body>
-</html>
+<script>
+  // Header transparente → oscuro con blur al hacer scroll
+  window.addEventListener("scroll", function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+</script>
 
+</body>
 </html>
