@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gastronomy | Charlie</title>
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: "Montserrat", sans-serif;
+      line-height: 1.9;
+    }
+
+    /* HEADER */
+    header {
+      padding: 22px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.85);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(6px);
+      z-index:100;
+    }
+
+    .logo {
+      font-family: "Parisienne", cursive;
+      font-size: 1.8rem;
+      letter-spacing: 0.3em;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 0.9rem;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 430px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 48px;
+      left: 48px;
+    }
+
+    .hero-text h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 2.8rem;
+      margin-bottom: 2px;
+      line-height: 1.1;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      line-height: 1.1;
+      margin-top: 0;
+    }
+
+    /* TEXTO DESCRIPTIVO */
+    .content {
+      max-width: 1100px;
+      margin: 90px auto;
+      padding: 0 40px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .content p {
+      margin-bottom: 32px;
+    }
+
+    .content strong {
+      font-size: 1.15rem;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* GALERÍA */
+    .gallery {
+      max-width: 1200px;
+      margin: 0 auto 120px;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+      opacity: 0.92;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero img{
+        height:260px;
+      }
+      .hero-text h1{
+        font-size:2.2rem;
+      }
+      .gallery{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:600px){
+      .gallery{
+        grid-template-columns:1fr;
+      }
+      .content{
+        margin:60px auto;
+        padding:0 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo">Charlie...</a>
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Usa la imagen que ya tienes en la home -->
+  <img src="gastronomy.jpg" alt="Gastronomy">
+  <div class="hero-text">
+    <h1>Gastronomy</h1>
+    <p>Sabor, textura y luz en un solo plano</p>
+  </div>
+</section>
+
+<!-- TEXTO DESCRIPTIVO -->
+<section class="content">
+
+  <p>
+    <strong>La mirada de un ex-chef detrás de la cámara</strong>
+    No solo fotografío platos: los entiendo desde dentro. Como ex-chef, sé cómo se construye un emplatado, cómo respira una salsa
+    y qué quiere comunicar cada textura. Mi objetivo es que quien mire la imagen casi pueda oler y saborear lo que ve.
+  </p>
+
+  <p>
+    <strong>Luz, color y detalle al servicio del apetito visual</strong>
+    Trabajo la luz para resaltar volúmenes, brillos y contrastes sin perder la naturalidad del alimento. Cada fotografía busca
+    provocar deseo, curiosidad y hambre visual, respetando siempre la esencia del producto y del concepto gastronómico.
+  </p>
+
+  <p>
+    <strong>Fotografía para restaurantes, marcas y proyectos culinarios</strong>
+    Ya sea para un restaurante, una carta, un producto gourmet o una campaña digital, adapto el estilo visual a la identidad de la marca:
+    desde la rusticidad cálida de un bistró hasta la precisión minimalista de una cocina de autor.
+  </p>
+
+</section>
+
+<!-- GALERÍA -->
+<section class="gallery">
+  <img src="g1.jpg" alt="Gastronomy 1">
+  <img src="g2.jpg" alt="Gastronomy 2">
+  <img src="g3.jpg" alt="Gastronomy 3">
+  <img src="g4.jpg" alt="Gastronomy 4">
+  <img src="g5.jpg" alt="Gastronomy 5">
+  <img src="g6.jpg" alt="Gastronomy 6">
+  <img src="g7.jpg" alt="Gastronomy 7">
+  <img src="g8.jpg" alt="Gastronomy 8">
+  <img src="g9.jpg" alt="Gastronomy 9">
+  <img src="g9.jpg" alt="Gastronomy 10">
+  <img src="g9.jpg" alt="Gastronomy 11">
+  <img src="g9.jpg" alt="Gastronomy 12">
+</section>
+
+</body>
+</html>
