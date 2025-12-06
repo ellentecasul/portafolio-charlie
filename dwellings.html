@@ -54,10 +54,10 @@
       margin-left: 22px;
       font-size: 0.9rem;
       transition: color 0.35s ease;
-      color: #000;
+      color: #000;          /* negro al inicio (sobre imagen clara) */
     }
     header.scrolled nav a {
-      color: #fff;
+      color: #fff;          /* blanco al hacer scroll */
     }
 
     /* HERO */
@@ -157,6 +157,7 @@
       color: #fff;
       background: rgba(0,0,0,0.4);
       backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       transition: background 0.25s ease, transform 0.25s ease;
     }
     .carousel-arrow.left { left: 18px; }
@@ -197,7 +198,6 @@
       transform: translateY(-3px);
     }
 
-    /* SCROLLBAR miniaturas */
     .carousel-thumbs::-webkit-scrollbar {
       height: 6px;
     }
@@ -370,7 +370,8 @@
 
   function setActive(index) {
     currentIndex = index;
-    document.querySelector('.carousel-thumb.active').classList.remove('active');
+    const activeThumb = document.querySelector('.carousel-thumb.active');
+    if (activeThumb) activeThumb.classList.remove('active');
     thumbs[currentIndex].classList.add('active');
     mainImg.src = thumbs[currentIndex].querySelector('img').src;
   }
@@ -384,6 +385,7 @@
   arrowRight.addEventListener('click', () => {
     setActive((currentIndex + 1) % thumbs.length);
   });
+
   arrowLeft.addEventListener('click', () => {
     setActive((currentIndex - 1 + thumbs.length) % thumbs.length);
   });
