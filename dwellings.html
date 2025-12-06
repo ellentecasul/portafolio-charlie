@@ -24,7 +24,7 @@
       transition: filter 0.35s ease;
     }
     .page-wrapper.blurred {
-      filter: blur(10px);
+      filter: blur(14px); /* blur un poco más profundo */
     }
 
     /* HEADER — transparente arriba y cristal al hacer scroll */
@@ -100,12 +100,12 @@
     /* CONTENIDO */
     .content {
       max-width: 1100px;
-      margin: 100px auto 80px;
+      margin: 80px auto 70px;
       padding: 0 40px;
       font-size: 1.1rem;
       text-align: center;
     }
-    .content p { margin-bottom: 38px; }
+    .content p { margin-bottom: 34px; }
     .content strong {
       font-size: 1.2rem;
       font-weight: 500;
@@ -116,10 +116,10 @@
     /* GALERÍA — 12 fotos, miniaturas elegantes */
     .gallery {
       max-width: 1300px;
-      margin: 0 auto 140px;
+      margin: 0 auto 120px;
       padding: 0 40px;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);  /* 4 columnas = miniaturas */
+      grid-template-columns: repeat(4, 1fr);
       gap: 18px;
     }
     .gallery img {
@@ -140,7 +140,7 @@
     .lightbox {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.7);  /* deja intuir el blur detrás */
+      background: rgba(0,0,0,0.8);  /* un poco más oscuro */
       display: none;
       align-items: center;
       justify-content: center;
@@ -150,8 +150,8 @@
 
     .lightbox-inner {
       position: relative;
-      max-width: 92vw;
-      max-height: 92vh;
+      max-width: 94vw;   /* un poco más grande */
+      max-height: 94vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -213,6 +213,11 @@
       }
       .hero img { height: 280px; }
       .hero-text { top: 52%; left: 28px; }
+
+      .lightbox-inner {
+        max-width: 94vw;
+        max-height: 86vh;
+      }
       .lightbox-arrow {
         width: 42px; height: 42px;
         font-size: 2.0rem;
@@ -230,74 +235,72 @@
 <body>
 
 <div class="page-wrapper">
-<header>
-  <a href="index.html" class="logo">Charlie...</a>
-  <nav>
-    <a href="index.html">Home</a>
-  </nav>
-</header>
+  <header>
+    <a href="index.html" class="logo">Charlie...</a>
+    <nav>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
 
-<section class="hero">
-  <img src="dwellingcabeza1.jpg" alt="Dwellings">
-  <div class="hero-text">
-    <h1>Dwellings</h1>
-    <p>La esencia de los espacios habitables</p>
-  </div>
-</section>
+  <section class="hero">
+    <img src="dwellingcabeza1.jpg" alt="Dwellings">
+    <div class="hero-text">
+      <h1>Dwellings</h1>
+      <p>La esencia de los espacios habitables</p>
+    </div>
+  </section>
 
-<section class="content">
+  <section class="content">
+    <p>
+      <strong>En Fotografía de Decoración (Interiorismo):</strong>
+      La Luz como Diseño: Mi objetivo es resaltar la funcionalidad y la estética. Busco la luz natural que enmarca cada detalle, capturando texturas y materiales de una manera que invite al espectador a sentir el espacio, destacando la armonía y el cuidado del diseño interior.
+    </p>
 
-  <p>
-    <strong>En Fotografía de Decoración (Interiorismo):</strong>
-    La Luz como Diseño: Mi objetivo es resaltar la funcionalidad y la estética. Busco la luz natural que enmarca cada detalle, capturando texturas y materiales de una manera que invite al espectador a sentir el espacio, destacando la armonía y el cuidado del diseño interior.
-  </p>
+    <p>
+      <strong>En Fotografía de Real Estate (Bienes Raíces):</strong>
+      Imágenes que Venden, no solo Muestran: Entiendo que cada foto es una herramienta de marketing. Mi enfoque está en maximizar la percepción de amplitud, luz y flujo del espacio. Utilizo técnicas que minimizan las distorsiones y presento la propiedad de la forma más atractiva y fiel posible, acelerando el interés del comprador o inquilino potencial.
+    </p>
 
-  <p>
-    <strong>En Fotografía de Real Estate (Bienes Raíces):</strong>
-    Imágenes que Venden, no solo Muestran: Entiendo que cada foto es una herramienta de marketing. Mi enfoque está en maximizar la percepción de amplitud, luz y flujo del espacio. Utilizo técnicas que minimizan las distorsiones y presento la propiedad de la forma más atractiva y fiel posible, acelerando el interés del comprador o inquilino potencial.
-  </p>
+    <p>
+      <strong>En Fotografía Arquitectónica:</strong>
+      Honrar la Estructura y la Intención: Me concentro en la precisión de las líneas, la simetría y la relación de la edificación con su entorno. Mi visión es capturar la intención del arquitecto, revelando la solidez, la escala y el diálogo entre el material y el diseño, ya sea de un exterior monumental o de un interior detallado.
+    </p>
+  </section>
 
-  <p>
-    <strong>En Fotografía Arquitectónica:</strong>
-    Honrar la Estructura y la Intención: Me concentro en la precisión de las líneas, la simetría y la relación de la edificación con su entorno. Mi visión es capturar la intención del arquitecto, revelando la solidez, la escala y el diálogo entre el material y el diseño, ya sea de un exterior monumental o de un interior detallado.
-  </p>
-
-</section>
-
-<section class="gallery">
-  <img src="d1.jpg">
-  <img src="d2.jpg">
-  <img src="d3.jpg">
-  <img src="d4.jpg">
-  <img src="d5.jpg">
-  <img src="d6.jpg">
-  <img src="d7.jpg">
-  <img src="d8.jpg">
-  <img src="d9.jpg">
-  <img src="d10.jpg">
-  <img src="d11.jpg">
-  <img src="d12.jpg">
-</section>
+  <section class="gallery">
+    <img src="d1.jpg" alt="">
+    <img src="d2.jpg" alt="">
+    <img src="d3.jpg" alt="">
+    <img src="d4.jpg" alt="">
+    <img src="d5.jpg" alt="">
+    <img src="d6.jpg" alt="">
+    <img src="d7.jpg" alt="">
+    <img src="d8.jpg" alt="">
+    <img src="d9.jpg" alt="">
+    <img src="d10.jpg" alt="">
+    <img src="d11.jpg" alt="">
+    <img src="d12.jpg" alt="">
+  </section>
 </div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <div class="lightbox-inner">
-    <button class="lightbox-close">&times;</button>
-    <button class="lightbox-arrow left">&#8249;</button>
-    <img src="" class="lightbox-img" id="lightbox-img">
-    <button class="lightbox-arrow right">&#8250;</button>
+    <button class="lightbox-close" aria-label="Cerrar">&times;</button>
+    <button class="lightbox-arrow left" aria-label="Anterior">&#8249;</button>
+    <img src="" class="lightbox-img" id="lightbox-img" alt="Foto ampliada">
+    <button class="lightbox-arrow right" aria-label="Siguiente">&#8250;</button>
   </div>
 </div>
 
 <script>
-  // Header scroll
+  // Header scroll: transparente → cristal
   window.addEventListener("scroll", () => {
     const header = document.querySelector('header');
     header.classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // Lightbox
+  // Lightbox + blur de fondo
   const galleryImages = document.querySelectorAll('.gallery img');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
@@ -311,17 +314,20 @@
     currentIndex = i;
     lightboxImg.src = galleryImages[i].src;
     lightbox.classList.add('open');
-    pageWrapper.classList.add('blurred'); 
+    pageWrapper.classList.add('blurred');
   }
+
   function closeLightbox() {
     lightbox.classList.remove('open');
     lightboxImg.src = '';
     pageWrapper.classList.remove('blurred');
   }
+
   function next() {
     currentIndex = (currentIndex + 1) % galleryImages.length;
     lightboxImg.src = galleryImages[currentIndex].src;
   }
+
   function prev() {
     currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
     lightboxImg.src = galleryImages[currentIndex].src;
