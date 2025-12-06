@@ -19,17 +19,25 @@
       line-height: 1.9;
     }
 
-    /* HEADER */
+    /* HEADER — transparente arriba y cristal al hacer scroll */
     header {
-      padding: 22px 40px;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      padding: 18px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0,0,0,0.85);
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(6px);
-      z-index:100;
+      background: rgba(0,0,0,0);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      z-index: 100;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease;
+    }
+    header.scrolled {
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     .logo {
@@ -38,40 +46,42 @@
       letter-spacing: 0.3em;
       color: #fff;
       text-decoration: none;
+      transition: color 0.35s ease;
     }
 
     header nav a {
-      color: #fff;
       text-decoration: none;
       margin-left: 22px;
       font-size: 0.9rem;
+      transition: color 0.35s ease;
+      color: #000;
+    }
+    header.scrolled nav a {
+      color: #fff;
     }
 
     /* HERO */
     .hero {
       position: relative;
     }
-
     .hero img {
       width: 100%;
-      height: 430px;
+      height: 480px;
       object-fit: cover;
       display: block;
     }
-
     .hero-text {
       position: absolute;
-      bottom: 48px;
-      left: 48px;
+      top: 70%;
+      left: 60px;
+      transform: translateY(-50%);
     }
-
     .hero-text h1 {
       font-family: "Playfair Display", serif;
       font-size: 2.8rem;
       margin-bottom: 2px;
       line-height: 1.1;
     }
-
     .hero-text p {
       font-size: 1.1rem;
       opacity: 0.9;
@@ -79,71 +89,164 @@
       margin-top: 0;
     }
 
-    /* TEXTO DESCRIPTIVO */
+    /* CONTENIDO estilo Home */
     .content {
-      max-width: 1100px;
-      margin: 90px auto;
-      padding: 0 40px;
-      font-size: 1.1rem;
+      max-width: 1300px;
+      margin: 120px auto 90px;
+      padding: 0 6vw;
+      text-align: center;
+    }
+    .content p {
+      max-width: 1200px;
+      margin: 0 auto 26px;
+      font-size: 1.32rem;
+      line-height: 1.65;
+    }
+    .section-subtitle {
+      font-family: "Playfair Display", serif;
+      font-size: 2.25rem;
+      font-weight: 500;
+      margin-bottom: 26px;
+      margin-top: 90px;
+      letter-spacing: -0.01em;
       text-align: center;
     }
 
-    .content p {
-      margin-bottom: 32px;
+    /* CARRUSEL */
+    .gallery-carousel {
+      max-width: 1400px;
+      margin: 0 auto 130px;
+      padding: 0 30px;
     }
-
-    .content strong {
-      font-size: 1.15rem;
-      font-weight: 500;
-      display: block;
-      margin-bottom: 8px;
+    .carousel-main {
+      position: relative;
+      background: radial-gradient(circle at top left, #222 0, #050505 45%, #000 100%);
+      border-radius: 20px;
+      padding: 26px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
-
-    /* GALERÍA */
-    .gallery {
-      max-width: 1200px;
-      margin: 0 auto 120px;
-      padding: 0 40px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 26px;
-    }
-
-    .gallery img {
-      width: 100%;
-      aspect-ratio: 4/3;
+    .carousel-main img {
+      max-width: 100%;
+      max-height: 72vh;
       object-fit: cover;
-      border-radius: 14px;
+      border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+      transition: transform 0.4s ease;
+    }
+    .carousel-main img.active {
+      transform: scale(1.015);
+    }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 2.2rem;
+      color: #fff;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+    .carousel-arrow.left { left: 18px; }
+    .carousel-arrow.right { right: 18px; }
+    .carousel-arrow:hover {
+      background: rgba(255,255,255,0.14);
+      transform: translateY(-50%) scale(1.04);
+    }
+    .carousel-thumbs {
+      margin-top: 22px;
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .carousel-thumb {
+      flex: 0 0 auto;
+      width: 150px;
+      aspect-ratio: 3/2;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      opacity: 0.55;
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    }
+    .carousel-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
-      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+    .carousel-thumb.active {
+      opacity: 1;
+      border-color: rgba(255,255,255,0.9);
+      transform: translateY(-3px);
+    }
+    .carousel-thumbs::-webkit-scrollbar {
+      height: 6px;
+    }
+    .carousel-thumbs::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.18);
+      border-radius: 999px;
     }
 
-    .gallery img:hover {
-      transform: scale(1.03);
-      opacity: 0.92;
+    /* Línea antes del contacto */
+    .footer-line {
+      width: 100%;
+      max-width: 1100px;
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      margin: 140px auto 80px;
     }
 
-    /* RESPONSIVE */
-    @media(max-width:900px){
-      .hero img{
-        height:260px;
-      }
-      .hero-text h1{
-        font-size:2.2rem;
-      }
-      .gallery{
-        grid-template-columns:repeat(2,1fr);
-      }
+    /* CONTACTO minimal */
+    .contact-strip {
+      max-width: 1100px;
+      margin: 0 auto 160px;
+      padding: 0 40px;
+      text-align: center;
+    }
+    .contact-label {
+      font-family: "Playfair Display", serif;
+      font-size: 1.4rem;
+      margin-top: 28px;
+      margin-bottom: 4px;
+      text-transform: lowercase;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.03em;
+    }
+    .contact-strip-info p {
+      margin: 8px 0;
+      font-size: 1rem;
+    }
+    .contact-strip-info a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .contact-strip-info a:hover {
+      opacity: 0.8;
     }
 
-    @media(max-width:600px){
-      .gallery{
-        grid-template-columns:1fr;
-      }
-      .content{
-        margin:60px auto;
-        padding:0 22px;
-      }
+    @media (max-width: 700px) {
+      .hero img { height: 280px; }
+      .hero-text { top: 52%; left: 24px; }
+      .gallery-carousel { padding: 0 22px; margin-bottom: 90px; }
+      .carousel-main { padding: 18px 18px; border-radius: 16px; }
+      .carousel-main img { max-height: 68vh; }
+      .carousel-thumb { width: 110px; border-radius: 8px; }
+      .contact-strip { padding: 0 20px; margin: 120px auto 140px; }
     }
   </style>
 </head>
@@ -157,54 +260,118 @@
   </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-  <!-- Usa la imagen que ya tienes en la home -->
-  <img src="gastronomy.jpg" alt="Gastronomy">
+  <!-- Cambia gastronomycabeza1.jpg por tu imagen real de cabecera si el nombre es otro -->
+  <img src="gastronomycabeza1.jpg" alt="Gastronomy">
   <div class="hero-text">
     <h1>Gastronomy</h1>
-    <p>Sabor, textura y luz en un solo plano</p>
+    <p>Sabores, texturas y fuego en imágenes vivas</p>
   </div>
 </section>
 
-<!-- TEXTO DESCRIPTIVO -->
 <section class="content">
 
+  <h3 class="section-subtitle">La mirada de un ex–chef</h3>
   <p>
-    <strong>La mirada de un ex-chef detrás de la cámara</strong>
-    No solo fotografío platos: los entiendo desde dentro. Como ex-chef, sé cómo se construye un emplatado, cómo respira una salsa
-    y qué quiere comunicar cada textura. Mi objetivo es que quien mire la imagen casi pueda oler y saborear lo que ve.
+    Antes de estar detrás de la cámara estuve detrás de los fogones. Eso me permite entender la lógica de un pase, el lenguaje de la cocina y el respeto por el producto. No solo fotografío platos: cuento el trabajo, el calor y la dedicación que hay detrás de cada servicio.
   </p>
 
+  <h3 class="section-subtitle">Platos que se sienten, no solo se ven</h3>
   <p>
-    <strong>Luz, color y detalle al servicio del apetito visual</strong>
-    Trabajo la luz para resaltar volúmenes, brillos y contrastes sin perder la naturalidad del alimento. Cada fotografía busca
-    provocar deseo, curiosidad y hambre visual, respetando siempre la esencia del producto y del concepto gastronómico.
+    Busco la luz que realce texturas, contrastes y puntos de cocción. Trabajo con composiciones limpias y un ritmo visual que haga que el espectador casi pueda oler, saborear y tocar lo que está viendo. Desde un fine dining preciso hasta una brasa informal, adapto mi lenguaje a la esencia de cada propuesta gastronómica.
   </p>
 
+  <h3 class="section-subtitle">Espacios, equipo y ritual</h3>
   <p>
-    <strong>Fotografía para restaurantes, marcas y proyectos culinarios</strong>
-    Ya sea para un restaurante, una carta, un producto gourmet o una campaña digital, adapto el estilo visual a la identidad de la marca:
-    desde la rusticidad cálida de un bistró hasta la precisión minimalista de una cocina de autor.
+    La gastronomía también son barras, salas, manos, fuegos abiertos y mesas compartidas. Documento el ambiente, el servicio y el equipo en movimiento para construir una historia completa: no solo el plato final, sino todo el universo que lo hace posible.
   </p>
 
 </section>
 
-<!-- GALERÍA -->
-<section class="gallery">
-  <img src="g1.jpg" alt="Gastronomy 1">
-  <img src="g2.jpg" alt="Gastronomy 2">
-  <img src="g3.jpg" alt="Gastronomy 3">
-  <img src="g4.jpg" alt="Gastronomy 4">
-  <img src="g5.jpg" alt="Gastronomy 5">
-  <img src="g6.jpg" alt="Gastronomy 6">
-  <img src="g7.jpg" alt="Gastronomy 7">
-  <img src="g8.jpg" alt="Gastronomy 8">
-  <img src="g9.jpg" alt="Gastronomy 9">
-  <img src="g9.jpg" alt="Gastronomy 10">
-  <img src="g9.jpg" alt="Gastronomy 11">
-  <img src="g9.jpg" alt="Gastronomy 12">
+<section class="gallery-carousel">
+  <div class="carousel-main">
+    <button class="carousel-arrow left" aria-label="Anterior">&#8249;</button>
+    <!-- Cambia g1.jpg si tu primera foto tiene otro nombre -->
+    <img src="g1.jpg" id="carousel-main-img" class="active" alt="Gastronomy principal">
+    <button class="carousel-arrow right" aria-label="Siguiente">&#8250;</button>
+  </div>
+
+  <div class="carousel-thumbs">
+    <!-- Ajusta los nombres g1.jpg...g12.jpg a tus archivos reales -->
+    <div class="carousel-thumb active" data-index="0"><img src="g1.jpg"  alt="Gastronomy 1"></div>
+    <div class="carousel-thumb" data-index="1"><img src="g2.jpg"  alt="Gastronomy 2"></div>
+    <div class="carousel-thumb" data-index="2"><img src="g3.jpg"  alt="Gastronomy 3"></div>
+    <div class="carousel-thumb" data-index="3"><img src="g4.jpg"  alt="Gastronomy 4"></div>
+    <div class="carousel-thumb" data-index="4"><img src="g5.jpg"  alt="Gastronomy 5"></div>
+    <div class="carousel-thumb" data-index="5"><img src="g6.jpg"  alt="Gastronomy 6"></div>
+    <div class="carousel-thumb" data-index="6"><img src="g7.jpg"  alt="Gastronomy 7"></div>
+    <div class="carousel-thumb" data-index="7"><img src="g8.jpg"  alt="Gastronomy 8"></div>
+    <div class="carousel-thumb" data-index="8"><img src="g9.jpg"  alt="Gastronomy 9"></div>
+    <div class="carousel-thumb" data-index="9"><img src="g10.jpg" alt="Gastronomy 10"></div>
+    <div class="carousel-thumb" data-index="10"><img src="g11.jpg" alt="Gastronomy 11"></div>
+    <div class="carousel-thumb" data-index="11"><img src="g12.jpg" alt="Gastronomy 12"></div>
+  </div>
 </section>
+
+<div class="footer-line"></div>
+
+<section class="contact-strip" id="contacto">
+  <div class="contact-strip-info">
+    <p class="contact-label">based in</p>
+    <p>Mallorca, España — proyectos donde llegue la luz</p>
+
+    <p class="contact-label">whatsapp</p>
+    <p><a href="https://wa.me/34671310241" target="_blank">+34 671 310 241</a></p>
+
+    <p class="contact-label">email</p>
+    <p><a href="mailto:carlos.sequini@gmail.com">carlos.sequini@gmail.com</a></p>
+
+    <p class="contact-label">instagram</p>
+    <p><a href="https://instagram.com/ellentecasualdecharlie" target="_blank">@ellentecasualdecharlie</a></p>
+    <p><a href="https://instagram.com/unportafoliocasual" target="_blank">@unportafoliocasual</a></p>
+  </div>
+</section>
+
+<script>
+  // Header scroll
+  window.addEventListener("scroll", () => {
+    const header = document.querySelector('header');
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Carrusel
+  const mainImg = document.getElementById('carousel-main-img');
+  const thumbs = document.querySelectorAll('.carousel-thumb');
+  const arrowLeft = document.querySelector('.carousel-arrow.left');
+  const arrowRight = document.querySelector('.carousel-arrow.right');
+
+  let currentIndex = 0;
+
+  function setActive(index) {
+    currentIndex = index;
+    const currentActive = document.querySelector('.carousel-thumb.active');
+    if (currentActive) currentActive.classList.remove('active');
+    thumbs[currentIndex].classList.add('active');
+    mainImg.src = thumbs[currentIndex].querySelector('img').src;
+  }
+
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const index = parseInt(thumb.getAttribute('data-index'), 10);
+      setActive(index);
+    });
+  });
+
+  arrowRight.addEventListener('click', () => {
+    const nextIndex = (currentIndex + 1) % thumbs.length;
+    setActive(nextIndex);
+  });
+
+  arrowLeft.addEventListener('click', () => {
+    const prevIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
+    setActive(prevIndex);
+  });
+</script>
 
 </body>
 </html>
