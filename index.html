@@ -18,10 +18,9 @@
       color: #f2f2f2;
       font-family: "Montserrat", sans-serif;
       line-height: 1.6;
-      overflow-x:hidden;
     }
 
-    /* HEADER TRANSPARENTE */
+    /* HEADER */
     .main-header {
       position: fixed;
       top: 0; left: 0;
@@ -30,14 +29,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: transparent;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
       z-index: 100;
-      transition: background 0.4s ease, backdrop-filter 0.4s ease;
-    }
-
-    .main-header.scrolled {
-      background: rgba(0, 0, 0, 0.72);
-      backdrop-filter: blur(6px);
+      transition: background 0.4s ease;
     }
 
     .logo {
@@ -58,20 +53,10 @@
       text-decoration: none;
       text-transform: lowercase;
       letter-spacing: 0.08em;
-      position:relative;
+      transition: opacity 0.3s ease;
     }
 
-    /* Subrayado moderno */
-    .main-nav a:hover:after {
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-4px;
-      width:100%;
-      height:1px;
-      background:#fff;
-      opacity:.8;
-    }
+    .main-nav a:hover { opacity: 0.7; }
 
     .header-icons {
       display: flex;
@@ -85,172 +70,205 @@
       text-decoration: none;
     }
 
-    /* HERO pantalla completa */
+    .header-icons .icon:hover { opacity: 0.7; }
+
+    /* HERO */
     .hero {
-      margin-top: 0;
-      height:100vh;
+      margin-top: 70px;
       position: relative;
       overflow: hidden;
     }
 
     .hero-image {
       width: 100%;
-      height: 100%;
+      height: 100vh;
       object-fit: cover;
       display: block;
     }
 
     .hero-text {
       position: absolute;
-      top: 62%; left: 50%;
-      transform: translate(-50%, -50%);
+      bottom: 30%;
+      left: 50%;
+      transform: translateX(-50%);
       text-align: center;
       font-size: 1.5rem;
       color: #fff;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.1em;
     }
 
-    /* --- CATEGORÍAS --- */
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0;
-      width: 100%;
-      margin-top: 140px;
-    }
+  /* === CATEGORÍAS === */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  width: 100%;
+  margin-top: 160px;
+}
 
-    .category {
-      position: relative;
-      overflow: hidden;
-    }
+.category {
+  position: relative;
+  overflow: hidden;
+}
 
-    .category img {
-      width: 100%;
-      aspect-ratio: 271 / 558;
-      object-fit: cover;
-      display: block;
-      filter:grayscale(100%) brightness(70%);
-      transition:filter .4s ease, transform .4s ease;
-    }
+.category img {
+  width: 100%;
+  aspect-ratio: 271 / 558;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(70%);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
 
-    .category:hover img {
-      filter:grayscale(0%) brightness(100%);
-      transform:scale(1.02);
-    }
+.category:hover img {
+  filter: grayscale(0%) brightness(100%);
+  transform: scale(1.02);
+}
 
-    .category h3 {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      font-size: 1.1rem;
-      opacity: 0;
-      text-shadow: 0 0 8px rgba(0,0,0,0.8);
-      letter-spacing: 0.05em;
-      transition: opacity 0.4s ease;
-    }
+.category h3 {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 1.1rem;
+  opacity: 0;
+  text-shadow: 0 0 8px rgba(0,0,0,0.8);
+  text-transform: lowercase;
+  transition: opacity 0.4s ease;
+}
+.category:hover h3 { opacity: 1; }
 
-    .category:hover h3 {
-      opacity: 1;
-    }
 
-    /* --- ANIMACIÓN scroll --- */
-    .fade-up {
-      opacity:0;
-      transform: translateY(40px);
-      transition: opacity .8s ease, transform .8s ease;
-    }
+/* === ABOUT / WHY === */
+.about, .why {
+  max-width: 820px;
+  margin: 120px auto;
+  padding: 0 20px;
+  text-align: center;
+}
 
-    .fade-up.visible {
-      opacity:1;
-      transform: translateY(0);
-    }
+.about-title,
+.why-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.3rem;
+  margin-bottom: 48px;
+}
 
-    /* --- ABOUT / WHY --- */
-    .about,
-    .why {
-      max-width: 1100px;
-      margin: 140px auto;
-      padding: 0 40px;
-      text-align: center;
-    }
+.about-text,
+.why-text {
+  font-size: 1.18rem;
+  line-height: 1.95;
+  max-width: 760px;
+  margin: 0 auto;
+}
 
-    .about p,
-    .why p {
-      font-size: 1.1rem;
-      line-height:1.9;
-      margin-bottom:26px;
-    }
+.about-text p,
+.why-text p {
+  margin-bottom: 30px;
+}
 
-    /* --- CONTACT STRIP --- */
-    .contact-strip {
-      max-width: 1100px;
-      margin: 120px auto 280px;
-      padding: 0 40px;
-      position: relative;
-      text-align:center;
-    }
 
-    .contact-strip-title {
-      position: absolute;
-      top:55%;
-      left:50%;
-      transform: translate(-50%, -50%);
-      font-family: "Caveat";
-      font-size: 3rem;
-      color:#fff;
-      text-shadow:0 0 8px rgba(0,0,0,.9);
-    }
+/* === CONTACT SECTION === */
+.contact-strip {
+  max-width: 1100px;
+  margin: 160px auto 240px;
+  padding: 0 40px;
+  position: relative;
+  text-align: center;
+}
 
-    .contact-strip-image {
-      max-width:100%;
-      display:block;
-      margin:0 auto 32px;
-    }
+.contact-strip-title {
+  position: absolute;
+  bottom: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Caveat", cursive;
+  font-size: 3.3rem;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
 
-    @media(max-width:900px){
-      .categories {
-        grid-template-columns:1fr;
-        gap:40px;
-        padding:0 20px;
-      }
-      .hero-text{
-        font-size:1.2rem;
-      }
-      .contact-strip-title{
-        font-size:2.2rem;
-      }
-    }
+.contact-strip-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 32px;
+}
+
+.contact-strip-info p {
+  margin: 6px 0;
+  font-size: 1rem;
+}
+
+.contact-strip-info a {
+  color: #f2f2f2;
+  text-decoration: none;
+}
+.contact-strip-info a:hover {
+  text-decoration: underline;
+}
+
+
+/* === FOOTER === */
+.footer {
+  padding: 80px 0;
+  text-align: center;
+  color: #ccc;
+}
+
+.footer-line {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  margin-bottom: 40px;
+}
+
+.footer-content p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+.footer-content a {
+  color: #ccc;
+  text-decoration: none;
+}
+.footer-content a:hover {
+  color: #fff;
+}
+
+
+/* === MOBILE RESPONSIVE === */
+@media (max-width: 900px) {
+  .main-nav { display: none; }
+  .hero-image { height: 80vh; }
+
+  .categories {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding: 0 20px;
+    margin-top: 80px;
+  }
+
+  .category h3 {
+    opacity: 1;
+    bottom: 18px;
+  }
+
+  .contact-strip-title {
+    font-size: 2.3rem;
+    bottom: 42%;
+  }
+
+  .about, .why {
+    margin: 80px auto;
+  }
+}
   </style>
-
-  <script>
-    /* Header transparente → sólido al hacer scroll */
-    document.addEventListener("scroll", () => {
-      const header = document.querySelector(".main-header");
-      if(window.scrollY > 30){
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
-      }
-    });
-
-    /* Fade-up sections */
-    document.addEventListener("scroll", () => {
-      document.querySelectorAll(".fade-up").forEach(el=>{
-        const rect = el.getBoundingClientRect();
-        if(rect.top < window.innerHeight - 60){
-          el.classList.add("visible");
-        }
-      });
-    });
-  </script>
-
 </head>
 
 <body>
 
-  <!-- HEADER -->
   <header class="main-header">
     <div class="logo">Charlie...</div>
     <nav class="main-nav">
@@ -266,89 +284,83 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <img src="palmeras.jpg" class="hero-image" />
     <div class="hero-text">Contar historias con luz, naturaleza y emociones reales</div>
   </section>
 
-  <!-- CATEGORÍAS -->
-  <section class="categories fade-up">
-    <a class="category" href="dwellings.html">
-      <img src="dwellings.jpg"><h3>Dwellings</h3>
-    </a>
-    <a class="category" href="wedding.html">
-      <img src="wedding.jpg"><h3>Wedding</h3>
-    </a>
-    <a class="category" href="gastronomy.html">
-      <img src="gastronomy.jpg"><h3>Gastronomy</h3>
-    </a>
-    <a class="category" href="lifestyle.html">
-      <img src="lifestyle.jpg"><h3>Lifestyle</h3>
-    </a>
-    <a class="category" href="sports.html">
-      <img src="saul.jpg"><h3>Sports</h3>
-    </a>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about fade-up">
-    <h2>Soy Charlie,</h2>
- <!-- ABOUT -->
-<section class="about">
-    <p>
-    y mi trabajo no es solo fotografía o filmmaking; es la culminación de múltiples pasiones.
-    Como ex-chef, entiendo la composición, la textura y el arte de la presentación en la gastronomía.
-    Cada plato, cada mesa y cada atmósfera que capturo nace de esa comprensión sensorial.
-  </p>
-
-  <p>
-    Como amante de la música, aporto un sentido innato del ritmo y la cadencia,
-    que se traduce en transiciones fluidas y una narrativa dinámica en mis videos.
-    Creo que hay música incluso en el silencio de una imagen.
-  </p>
-
-  <p>
-    Pero lo que realmente me define es mi experiencia como instructor de deportes náuticos
-    (kitesurf, windsurf, efoil, etc.): he aprendido a leer la luz en su momento más espectacular,
-    desde el amanecer hasta el atardecer; a interpretar el misterio de las estrellas y la luna,
-    y a capturar la energía humana en su estado más puro.
-  </p>
-
-  <p>
-    Soy un creativo que combina técnica y sensibilidad —con una perspectiva vibrante y sensorial—
-    para bodas, deportes, gastronomía y lifestyle.
-  </p>
+<section class="categories">
+  <a class="category" href="dwellings.html">
+    <img src="dwellings.jpg" alt="Dwellings"><h3>Dwellings</h3>
+  </a>
+  <a class="category" href="wedding.html">
+    <img src="wedding.jpg" alt="Wedding"><h3>Wedding</h3>
+  </a>
+  <a class="category" href="gastronomy.html">
+    <img src="gastronomy.jpg" alt="Gastronomy"><h3>Gastronomy</h3>
+  </a>
+  <a class="category" href="lifestyle.html">
+    <img src="lifestyle.jpg" alt="Lifestyle"><h3>Lifestyle</h3>
+  </a>
+  <a class="category" href="sports.html">
+    <img src="saul.jpg" alt="Sports"><h3>Sports</h3>
+  </a>
 </section>
+
+
+<!-- ABOUT -->
+<section class="about">
+  <h2 class="about-title">Soy Charlie,</h2>
+  <div class="about-text">
+    <p>y mi trabajo no es solo fotografía o filmmaking; es la culminación de múltiples pasiones. Como ex-chef, entiendo la composición, la textura y el arte de la presentación en la gastronomía.</p>
+    <p>Como amante a la música, aporto un sentido innato del ritmo y la cadencia, que se traduce en transiciones fluidas y una narrativa dinámica en mis videos.</p>
+    <p>Pero lo que realmente me define es mi experiencia como instructor de deportes náuticos (kitesurf, windsurf, efoil, etc.): he aprendido a leer la luz desde el amanecer hasta el atardecer, interpretar el misterio de las estrellas y la luna, y capturar la energía humana en su estado más puro.</p>
+    <p>Soy un creativo que combina la técnica con una perspectiva vibrante y sensorial para bodas, deportes, gastronomía y lifestyle.</p>
+  </div>
+</section>
+
 
 <!-- WHY -->
 <section class="why">
-  <h2>¿Por qué elegir trabajar conmigo?</h2>
-
-  <p>
-    La respuesta es simple: no solo documento momentos, sino que los vivo y los siento antes de capturarlos.
-    Mi experiencia con mi estilo de vida me ha enseñado el valor de la energía, la conexión humana
-    y el ritmo perfecto para cada escena.
-  </p>
-
-  <p>
-    Traslado esa intensidad a cada proyecto, ya sea inmortalizando la adrenalina pura de un evento deportivo,
-    la emoción íntima de una boda, la pasión detrás de un plato gastronómico o la esencia auténtica del lifestyle.
-  </p>
-
-  <p>
-    Busco la luz, la historia y la chispa vital que hace que tus proyectos sean inolvidables.
-    Mi trabajo intenta transmitir sensaciones antes que información: quiero que la gente sienta algo
-    antes de pensar algo.
-  </p>
-
-  <p>
-    Si buscas un filmmaker y fotógrafo que combine visión artística con experiencia real
-    y una capacidad de adaptación profunda, has encontrado a tu aliado.
-  </p>
+  <h2 class="why-title">¿Por qué elegir trabajar conmigo?</h2>
+  <div class="why-text">
+    <p>La respuesta es simple: no solo documento momentos, sino que los vivo y los siento antes de capturarlos. Mi experiencia con mi estilo de vida me ha enseñado el valor de la energía, la conexión humana y el ritmo perfecto.</p>
+    <p>Traslado esa intensidad a cada proyecto, ya sea inmortalizando la adrenalina pura de un evento deportivo, la emoción íntima de una boda, la pasión detrás de un plato gastronómico o la esencia auténtica del lifestyle.</p>
+    <p>Busco la luz, la historia y la chispa vital que hace que tus proyectos sean inolvidables.</p>
+    <p>Si buscas un filmmaker y fotógrafo que combine la visión artística con la experiencia real y la capacidad de adaptación, has encontrado a tu aliado.</p>
+  </div>
 </section>
 
+
+<!-- FINAL CONTACT -->
+<section class="contact-strip" id="contacto">
+  <div class="contact-strip-title">el arte de expresar sin palabras</div>
+  <img src="pagina 3.jpg" class="contact-strip-image" />
+  <div class="contact-strip-info">
+    <p>📍 Mallorca, España</p>
+    <p>📧 <a href="mailto:carlos.seguin@gmail.com">carlos.seguin@gmail.com</a></p>
+    <p>📱 <a href="https://wa.me/34671310241" target="_blank">WhatsApp: +34 671 310 241</a></p>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer-line"></div>
+  <div class="footer-content">
+    <p>📍 Mallorca, España</p>
+    <p>📧 <a href="mailto:carlos.seguin@gmail.com">carlos.seguin@gmail.com</a></p>
+    <p>📱 <a href="https://wa.me/34671310241" target="_blank">WhatsApp: +34 671 310 241</a></p>
+    <p>📸 <a href="https://instagram.com/ellentecasualdecharlie" target="_blank">@ellentecasualdecharlie</a></p>
+  </div>
+</footer>
+
+
+</body>
+</html>
+
+
  
+
 
 
 
