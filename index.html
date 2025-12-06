@@ -20,7 +20,7 @@
       line-height: 1.6;
     }
 
-   /* Header transparente TOTAL al inicio */
+ /* HEADER — inicio transparente sin blur */
 .main-header {
   position: fixed;
   top: 0; left: 0;
@@ -29,19 +29,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0);      /* 0 = transparente real */
-  backdrop-filter: blur(16px) saturate(200%); 
-  -webkit-backdrop-filter: blur(16px) saturate(200%);
+  background: rgba(0, 0, 0, 0);     /* transparente real */
+  backdrop-filter: none;            /* sin blur */
+  -webkit-backdrop-filter: none;
   z-index: 100;
   transition: background 0.35s ease, backdrop-filter 0.35s ease;
 }
 
-/* Header oscuro al hacer scroll */
+/* HEADER — luego al hacer scroll aparece el cristal oscuro con blur */
 .main-header.scrolled {
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.55);         /* overlay oscuro */
+  backdrop-filter: blur(14px);             /* blur como lo tenías */
+  -webkit-backdrop-filter: blur(14px);
 }
+
 
 
     .logo {
@@ -379,4 +380,5 @@
 
 </body>
 </html>
+
 
