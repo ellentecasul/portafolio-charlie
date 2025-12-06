@@ -19,17 +19,25 @@
       line-height: 1.9;
     }
 
-    /* HEADER SIMPLE */
+    /* HEADER — transparente arriba y cristal al hacer scroll */
     header {
-      padding: 22px 40px;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      padding: 18px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0,0,0,0.85);
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(6px);
+      background: rgba(0,0,0,0);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       z-index: 100;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease;
+    }
+    header.scrolled {
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     .logo {
@@ -38,40 +46,42 @@
       letter-spacing: 0.3em;
       color: #fff;
       text-decoration: none;
+      transition: color 0.35s ease;
     }
 
     header nav a {
-      color: #fff;
       text-decoration: none;
       margin-left: 22px;
       font-size: 0.9rem;
+      transition: color 0.35s ease;
+      color: #000;
+    }
+    header.scrolled nav a {
+      color: #fff;
     }
 
-    /* HERO SECTION */
+    /* HERO */
     .hero {
       position: relative;
     }
-
     .hero img {
       width: 100%;
-      height: 430px;
+      height: 480px;
       object-fit: cover;
       display: block;
     }
-
     .hero-text {
       position: absolute;
-      bottom: 48px;
-      left: 48px;
+      top: 70%;
+      left: 60px;
+      transform: translateY(-50%);
     }
-
     .hero-text h1 {
       font-family: "Playfair Display", serif;
       font-size: 2.8rem;
-      margin-bottom: 2px; 
+      margin-bottom: 2px;
       line-height: 1.1;
     }
-
     .hero-text p {
       font-size: 1.1rem;
       opacity: 0.9;
@@ -79,71 +89,164 @@
       margin-top: 0;
     }
 
-    /* TEXTO DESCRIPTIVO */
+    /* CONTENIDO estilo Home */
     .content {
-      max-width: 1100px;
-      margin: 90px auto;
-      padding: 0 40px;
-      font-size: 1.1rem;
+      max-width: 1300px;
+      margin: 120px auto 90px;
+      padding: 0 6vw;
+      text-align: center;
+    }
+    .content p {
+      max-width: 1200px;
+      margin: 0 auto 26px;
+      font-size: 1.32rem;
+      line-height: 1.65;
+    }
+    .section-subtitle {
+      font-family: "Playfair Display", serif;
+      font-size: 2.25rem;
+      font-weight: 500;
+      margin-bottom: 26px;
+      margin-top: 90px;
+      letter-spacing: -0.01em;
       text-align: center;
     }
 
-    .content p {
-      margin-bottom: 32px;
+    /* CARRUSEL */
+    .gallery-carousel {
+      max-width: 1400px;
+      margin: 0 auto 130px;
+      padding: 0 30px;
     }
-
-    .content strong {
-      font-size: 1.15rem;
-      font-weight: 500;
-      display: block;
-      margin-bottom: 8px;
+    .carousel-main {
+      position: relative;
+      background: radial-gradient(circle at top left, #222 0, #050505 45%, #000 100%);
+      border-radius: 20px;
+      padding: 26px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
-
-    /* GALERÍA ELEGANTE */
-    .gallery {
-      max-width: 1200px;
-      margin: 0 auto 120px;
-      padding: 0 40px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 26px;
-    }
-
-    .gallery img {
-      width: 100%;
-      aspect-ratio: 4/3;
+    .carousel-main img {
+      max-width: 100%;
+      max-height: 72vh;
       object-fit: cover;
-      border-radius: 14px;
+      border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+      transition: transform 0.4s ease;
+    }
+    .carousel-main img.active {
+      transform: scale(1.015);
+    }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 2.2rem;
+      color: #fff;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+    .carousel-arrow.left { left: 18px; }
+    .carousel-arrow.right { right: 18px; }
+    .carousel-arrow:hover {
+      background: rgba(255,255,255,0.14);
+      transform: translateY(-50%) scale(1.04);
+    }
+    .carousel-thumbs {
+      margin-top: 22px;
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .carousel-thumb {
+      flex: 0 0 auto;
+      width: 150px;
+      aspect-ratio: 3/2;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      opacity: 0.55;
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    }
+    .carousel-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
-      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+    .carousel-thumb.active {
+      opacity: 1;
+      border-color: rgba(255,255,255,0.9);
+      transform: translateY(-3px);
+    }
+    .carousel-thumbs::-webkit-scrollbar {
+      height: 6px;
+    }
+    .carousel-thumbs::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.18);
+      border-radius: 999px;
     }
 
-    .gallery img:hover {
-      transform: scale(1.03);
-      opacity: 0.92;
+    /* Línea antes del contacto */
+    .footer-line {
+      width: 100%;
+      max-width: 1100px;
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      margin: 140px auto 80px;
     }
 
-    /* RESPONSIVE */
-    @media(max-width:900px){
-      .hero img{
-        height:260px;
-      }
-      .hero-text h1{
-        font-size:2.2rem;
-      }
-      .gallery{
-        grid-template-columns:repeat(2,1fr);
-      }
+    /* CONTACTO minimal (igual Dwellings) */
+    .contact-strip {
+      max-width: 1100px;
+      margin: 0 auto 160px;
+      padding: 0 40px;
+      text-align: center;
+    }
+    .contact-label {
+      font-family: "Playfair Display", serif;
+      font-size: 1.4rem;
+      margin-top: 28px;
+      margin-bottom: 4px;
+      text-transform: lowercase;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.03em;
+    }
+    .contact-strip-info p {
+      margin: 8px 0;
+      font-size: 1rem;
+    }
+    .contact-strip-info a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .contact-strip-info a:hover {
+      opacity: 0.8;
     }
 
-    @media(max-width:600px){
-      .gallery{
-        grid-template-columns:1fr;
-      }
-      .content{
-        margin:60px auto;
-        padding:0 22px;
-      }
+    @media (max-width: 700px) {
+      .hero img { height: 280px; }
+      .hero-text { top: 52%; left: 24px; }
+      .gallery-carousel { padding: 0 22px; margin-bottom: 90px; }
+      .carousel-main { padding: 18px 18px; border-radius: 16px; }
+      .carousel-main img { max-height: 68vh; }
+      .carousel-thumb { width: 110px; border-radius: 8px; }
+      .contact-strip { padding: 0 20px; margin: 120px auto 140px; }
     }
   </style>
 </head>
@@ -157,50 +260,118 @@
   </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-  <img src="wencabezado.jpg" alt="Wedding">
+  <!-- Cambia weddingcabeza1.jpg por tu imagen real de cabecera si el nombre es otro -->
+  <img src="weddingcabeza1.jpg" alt="Wedding">
   <div class="hero-text">
     <h1>Wedding</h1>
-    <p>Historias de amor reales</p>
+    <p>Historias honestas de amor y celebración</p>
   </div>
 </section>
 
-<!-- TEXTO -->
 <section class="content">
 
+  <h3 class="section-subtitle">Documentar sin interrumpir</h3>
   <p>
-    <strong>Un Enfoque Cinematográfico del Amor</strong>
-    No busco poses: busco verdad. Los gestos espontáneos, la emoción pura y el lenguaje íntimo entre dos personas. Cada boda es un universo de energía real, y mi trabajo consiste en capturarla de la forma más honesta, humana y estética posible.
+    Mi forma de trabajar en bodas se basa en observar más que dirigir. Me muevo de forma discreta, respetando los tiempos y el espacio de cada pareja, para capturar miradas, gestos y emociones reales, sin forzar poses ni momentos artificiales.
   </p>
 
+  <h3 class="section-subtitle">Luz, movimiento y atmósfera</h3>
   <p>
-    <strong>Fotografía como Recuerdo Vivo</strong>
-    No congelo momentos, los transformo en memoria. Registro la luz, la emoción, el sonido interno de cada instante para que puedan revivir su historia en cada imagen.
+    Busco la luz que mejor cuente vuestra historia: desde la calma del getting ready hasta la intensidad de la fiesta. Combino fotografía y vídeo con un enfoque orgánico, donde el movimiento, la música y el entorno se integran en una narrativa visual coherente y llena de detalle.
   </p>
 
+  <h3 class="section-subtitle">Más allá del gran día</h3>
   <p>
-    <strong>Visión Artística + Documental</strong>
-    Mi estilo mezcla sensibilidad cinematográfica con precisión documental. Cada toma está pensada para respetar el ambiente, la historia y la belleza del instante.
+    Una boda no es solo una fecha en el calendario, es todo lo que la rodea: las personas que os acompañan, el lugar que habéis elegido, los pequeños símbolos que tienen sentido solo para vosotros. Mi objetivo es que, al volver a ver las imágenes, sintáis no solo cómo se veía, sino cómo se vivió.
   </p>
 
 </section>
 
-<!-- GALERÍA -->
-<section class="gallery">
-  <img src="w1.jpg">
-  <img src="w2.jpg">
-  <img src="w3.jpg">
-  <img src="w4.jpg">
-  <img src="w5.jpg">
-  <img src="w6.jpg">
-  <img src="w7.jpg">
-  <img src="w8.jpg">
-  <img src="w9.jpg">
-  <img src="w10.jpg">
-  <img src="w11.jpg">
-  <img src="w12.jpg">
+<section class="gallery-carousel">
+  <div class="carousel-main">
+    <button class="carousel-arrow left" aria-label="Anterior">&#8249;</button>
+    <!-- Cambia w1.jpg si tu primera foto tiene otro nombre -->
+    <img src="w1.jpg" id="carousel-main-img" class="active" alt="Wedding principal">
+    <button class="carousel-arrow right" aria-label="Siguiente">&#8250;</button>
+  </div>
+
+  <div class="carousel-thumbs">
+    <!-- Ajusta los nombres w1.jpg...w12.jpg a tus archivos reales -->
+    <div class="carousel-thumb active" data-index="0"><img src="w1.jpg"  alt="Wedding 1"></div>
+    <div class="carousel-thumb" data-index="1"><img src="w2.jpg"  alt="Wedding 2"></div>
+    <div class="carousel-thumb" data-index="2"><img src="w3.jpg"  alt="Wedding 3"></div>
+    <div class="carousel-thumb" data-index="3"><img src="w4.jpg"  alt="Wedding 4"></div>
+    <div class="carousel-thumb" data-index="4"><img src="w5.jpg"  alt="Wedding 5"></div>
+    <div class="carousel-thumb" data-index="5"><img src="w6.jpg"  alt="Wedding 6"></div>
+    <div class="carousel-thumb" data-index="6"><img src="w7.jpg"  alt="Wedding 7"></div>
+    <div class="carousel-thumb" data-index="7"><img src="w8.jpg"  alt="Wedding 8"></div>
+    <div class="carousel-thumb" data-index="8"><img src="w9.jpg"  alt="Wedding 9"></div>
+    <div class="carousel-thumb" data-index="9"><img src="w10.jpg" alt="Wedding 10"></div>
+    <div class="carousel-thumb" data-index="10"><img src="w11.jpg" alt="Wedding 11"></div>
+    <div class="carousel-thumb" data-index="11"><img src="w12.jpg" alt="Wedding 12"></div>
+  </div>
 </section>
+
+<div class="footer-line"></div>
+
+<section class="contact-strip" id="contacto">
+  <div class="contact-strip-info">
+    <p class="contact-label">based in</p>
+    <p>Mallorca, España — proyectos donde llegue la luz</p>
+
+    <p class="contact-label">whatsapp</p>
+    <p><a href="https://wa.me/34671310241" target="_blank">+34 671 310 241</a></p>
+
+    <p class="contact-label">email</p>
+    <p><a href="mailto:carlos.sequini@gmail.com">carlos.sequini@gmail.com</a></p>
+
+    <p class="contact-label">instagram</p>
+    <p><a href="https://instagram.com/ellentecasualdecharlie" target="_blank">@ellentecasualdecharlie</a></p>
+    <p><a href="https://instagram.com/unportafoliocasual" target="_blank">@unportafoliocasual</a></p>
+  </div>
+</section>
+
+<script>
+  // Header scroll
+  window.addEventListener("scroll", () => {
+    const header = document.querySelector('header');
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Carrusel
+  const mainImg = document.getElementById('carousel-main-img');
+  const thumbs = document.querySelectorAll('.carousel-thumb');
+  const arrowLeft = document.querySelector('.carousel-arrow.left');
+  const arrowRight = document.querySelector('.carousel-arrow.right');
+
+  let currentIndex = 0;
+
+  function setActive(index) {
+    currentIndex = index;
+    const currentActive = document.querySelector('.carousel-thumb.active');
+    if (currentActive) currentActive.classList.remove('active');
+    thumbs[currentIndex].classList.add('active');
+    mainImg.src = thumbs[currentIndex].querySelector('img').src;
+  }
+
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const index = parseInt(thumb.getAttribute('data-index'), 10);
+      setActive(index);
+    });
+  });
+
+  arrowRight.addEventListener('click', () => {
+    const nextIndex = (currentIndex + 1) % thumbs.length;
+    setActive(nextIndex);
+  });
+
+  arrowLeft.addEventListener('click', () => {
+    const prevIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
+    setActive(prevIndex);
+  });
+</script>
 
 </body>
 </html>
