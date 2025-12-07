@@ -12,8 +12,11 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
+    html, body {
       background-color: #000;
+    }
+
+    body {
       color: #fff;
       font-family: "Montserrat", sans-serif;
       line-height: 1.9;
@@ -40,12 +43,12 @@
       -webkit-backdrop-filter: blur(14px);
     }
 
-    /* LOGO Y HOME SIEMPRE EN NEGRO */
+    /* LOGO Y HOME NEGRO */
     .logo {
       font-family: "Parisienne", cursive;
       font-size: 1.8rem;
       letter-spacing: 0.3em;
-      color: #000;              /* negro siempre */
+      color: #000;
       text-decoration: none;
       transition: color 0.35s ease;
     }
@@ -55,10 +58,9 @@
       margin-left: 22px;
       font-size: 0.9rem;
       transition: color 0.35s ease;
-      color: #000;              /* negro siempre */
+      color: #000;
     }
 
-    /* ya NO cambiamos a blanco al hacer scroll */
     header.scrolled .logo {
       color: #000;
     }
@@ -87,16 +89,16 @@
       font-size: 2.8rem;
       margin-bottom: 2px;
       line-height: 1.1;
-      color: #000; /* título negro sobre la imagen */
-      text-shadow: 0 2px 12px rgba(255,255,255,0.45);
+      color: #000; 
+      text-shadow: none;
     }
     .hero-text p {
       font-size: 1.1rem;
       opacity: 0.95;
       line-height: 1.1;
       margin-top: 0;
-      color: #000; /* subtítulo negro */
-      text-shadow: 0 2px 12px rgba(255,255,255,0.45);
+      color: #000;
+      text-shadow: none;
     }
 
     /* CONTENIDO estilo Home */
@@ -204,6 +206,13 @@
       border-color: rgba(255,255,255,0.9);
       transform: translateY(-3px);
     }
+    .carousel-thumbs::-webkit-scrollbar {
+      height: 6px;
+    }
+    .carousel-thumbs::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.18);
+      border-radius: 999px;
+    }
 
     .footer-line {
       width: 100%;
@@ -248,6 +257,15 @@
       .carousel-main img { max-height: 68vh; }
       .carousel-thumb { width: 110px; border-radius: 8px; }
       .contact-strip { padding: 0 20px; margin: 120px auto 140px; }
+    }
+
+    /* OVERRIDE DURO: header y hero SIEMPRE NEGRO */
+    header .logo,
+    header nav a,
+    .hero-text h1,
+    .hero-text p {
+      color: #000 !important;
+      text-shadow: none !important;
     }
   </style>
 </head>
@@ -331,7 +349,7 @@
 </section>
 
 <script>
-  // Header scroll (solo cambia fondo, ya no colores)
+  // Header scroll (solo cambia fondo)
   window.addEventListener("scroll", () => {
     const header = document.querySelector('header');
     header.classList.toggle('scrolled', window.scrollY > 50);
