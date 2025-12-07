@@ -44,7 +44,7 @@
       font-family: "Parisienne", cursive;
       font-size: 1.8rem;
       letter-spacing: 0.3em;
-      color: #fff;
+      color: #fff;              /* AHORA BLANCO */
       text-decoration: none;
       transition: color 0.35s ease;
     }
@@ -54,10 +54,10 @@
       margin-left: 22px;
       font-size: 0.9rem;
       transition: color 0.35s ease;
-      color: #000;
+      color: #fff;              /* AHORA BLANCO */
     }
     header.scrolled nav a {
-      color: #fff;
+      color: #fff;              /* se mantiene blanco al hacer scroll */
     }
 
     /* HERO */
@@ -81,6 +81,7 @@
       font-size: 2.8rem;
       margin-bottom: 2px;
       line-height: 1.1;
+      /* texto ya heredaba blanco, lo dejamos así */
     }
     .hero-text p {
       font-size: 1.1rem;
@@ -261,7 +262,6 @@
 </header>
 
 <section class="hero">
-  <!-- Cambia sportscabeza1.jpg por tu imagen real de cabecera si el nombre es otro -->
   <img src="sencabezado.jpg" alt="Sports">
   <div class="hero-text">
     <h1>Sports</h1>
@@ -291,16 +291,14 @@
 <section class="gallery-carousel">
   <div class="carousel-main">
     <button class="carousel-arrow left" aria-label="Anterior">&#8249;</button>
-    <!-- Cambia s1.jpg si tu primera foto tiene otro nombre -->
     <img src="s1.jpg" id="carousel-main-img" class="active" alt="Sports principal">
     <button class="carousel-arrow right" aria-label="Siguiente">&#8250;</button>
   </div>
 
   <div class="carousel-thumbs">
-    <!-- Ajusta los nombres s1.jpg...s12.jpg a tus archivos reales -->
     <div class="carousel-thumb active" data-index="0"><img src="s1.jpg"  alt="Sports 1"></div>
     <div class="carousel-thumb" data-index="1"><img src="s2.jpg"  alt="Sports 2"></div>
-    <div class="carousel-thumb" data-index="2"><img src="s3.jpg  " alt="Sports 3"></div>
+    <div class="carousel-thumb" data-index="2"><img src="s3.jpg"  alt="Sports 3"></div>
     <div class="carousel-thumb" data-index="3"><img src="s4.jpg"  alt="Sports 4"></div>
     <div class="carousel-thumb" data-index="4"><img src="s5.jpg"  alt="Sports 5"></div>
     <div class="carousel-thumb" data-index="5"><img src="s6.jpg"  alt="Sports 6"></div>
@@ -374,4 +372,4 @@
 </script>
 
 </body>
-</html> 
+</html>
