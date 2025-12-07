@@ -14,6 +14,7 @@
 
     html, body {
       background-color: #000;
+      min-height: 100%;
     }
 
     body {
@@ -43,31 +44,6 @@
       -webkit-backdrop-filter: blur(14px);
     }
 
-    /* LOGO Y HOME NEGRO */
-    .logo {
-      font-family: "Parisienne", cursive;
-      font-size: 1.8rem;
-      letter-spacing: 0.3em;
-      color: #000;
-      text-decoration: none;
-      transition: color 0.35s ease;
-    }
-
-    header nav a {
-      text-decoration: none;
-      margin-left: 22px;
-      font-size: 0.9rem;
-      transition: color 0.35s ease;
-      color: #000;
-    }
-
-    header.scrolled .logo {
-      color: #000;
-    }
-    header.scrolled nav a {
-      color: #000;
-    }
-
     /* HERO */
     .hero {
       position: relative;
@@ -83,22 +59,6 @@
       top: 80%;
       left: 60px;
       transform: translateY(-50%);
-    }
-    .hero-text h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 2.8rem;
-      margin-bottom: 2px;
-      line-height: 1.1;
-      color: #000; 
-      text-shadow: none;
-    }
-    .hero-text p {
-      font-size: 1.1rem;
-      opacity: 0.95;
-      line-height: 1.1;
-      margin-top: 0;
-      color: #000;
-      text-shadow: none;
     }
 
     /* CONTENIDO estilo Home */
@@ -132,7 +92,8 @@
     }
     .carousel-main {
       position: relative;
-      background: radial-gradient(circle at top left, #222 0, #050505 45%, #000 100%);
+      /* quitamos el banner gris/gradiente */
+      background: transparent;
       border-radius: 20px;
       padding: 26px 60px;
       display: flex;
@@ -206,20 +167,13 @@
       border-color: rgba(255,255,255,0.9);
       transform: translateY(-3px);
     }
-    .carousel-thumbs::-webkit-scrollbar {
-      height: 6px;
-    }
-    .carousel-thumbs::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.18);
-      border-radius: 999px;
-    }
 
     .footer-line {
       width: 100%;
       max-width: 1100px;
       height: 1px;
       background: rgba(255,255,255,0.12);
-      margin: 140px auto 80px; 
+      margin: 140px auto 80px;
     }
 
     .contact-strip {
@@ -258,32 +212,30 @@
       .carousel-thumb { width: 110px; border-radius: 8px; }
       .contact-strip { padding: 0 20px; margin: 120px auto 140px; }
     }
-
-    /* OVERRIDE DURO: header y hero SIEMPRE NEGRO */
-    header .logo,
-    header nav a,
-    .hero-text h1,
-    .hero-text p {
-      color: #000 !important;
-      text-shadow: none !important;
-    }
   </style>
 </head>
 
 <body>
 
 <header>
-  <a href="index.html" class="logo">Charlie...</a>
+  <!-- inline con !important para ganar a TODO -->
+  <a href="index.html" class="logo" style="color:#000 !important;">
+    Charlie...
+  </a>
   <nav>
-    <a href="index.html">Home</a>
+    <a href="index.html" style="color:#000 !important;">Home</a>
   </nav>
 </header>
 
 <section class="hero">
   <img src="sencabezado.jpg" alt="Sports">
   <div class="hero-text">
-    <h1>Sports</h1>
-    <p>Adrenalina, precisión y luz en pleno movimiento</p>
+    <h1 style="color:#000 !important; text-shadow:none !important;">
+      Sports
+    </h1>
+    <p style="color:#000 !important; text-shadow:none !important;">
+      Adrenalina, precisión y luz en pleno movimiento
+    </p>
   </div>
 </section>
 
