@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding | Charlie</title>
+  <title>Sports | Charlie</title>
 
   <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
@@ -12,8 +12,13 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    /* Fondo negro sólido en toda la ventana y altura mínima pantalla completa */
+    html, body {
+      background-color: #000; /* fondo negro para evitar gris extraño */
+      min-height: 100%;
+    }
+
     body {
-      background-color: #000;
       color: #fff;
       font-family: "Montserrat", sans-serif;
       line-height: 1.9;
@@ -40,7 +45,7 @@
       -webkit-backdrop-filter: blur(14px);
     }
 
-    /* Letras del header en negro */
+    /* LOGO Y HOME (letras en negro) */
     .logo {
       font-family: "Parisienne", cursive;
       font-size: 1.8rem;
@@ -55,6 +60,10 @@
       margin-left: 22px;
       font-size: 0.9rem;
       transition: color 0.35s ease;
+      color: #000;
+    }
+
+    header.scrolled .logo {
       color: #000;
     }
     header.scrolled nav a {
@@ -73,7 +82,7 @@
     }
     .hero-text {
       position: absolute;
-      top: 68%;
+      top: 80%;
       left: 60px;
       transform: translateY(-50%);
     }
@@ -82,12 +91,16 @@
       font-size: 2.8rem;
       margin-bottom: 2px;
       line-height: 1.1;
+      color: #000; /* título negro */
+      text-shadow: none;
     }
     .hero-text p {
       font-size: 1.1rem;
-      opacity: 0.9;
+      opacity: 0.95;
       line-height: 1.1;
       margin-top: 0;
+      color: #000; /* subtítulo negro */
+      text-shadow: none;
     }
 
     /* CONTENIDO estilo Home */
@@ -121,7 +134,7 @@
     }
     .carousel-main {
       position: relative;
-      background: radial-gradient(circle at top left, #222 0, #050505 45%, #000 100%);
+      background: #000; /* negro plano, sin banner gris */
       border-radius: 20px;
       padding: 26px 60px;
       display: flex;
@@ -182,10 +195,7 @@
       cursor: pointer;
       opacity: 0.55;
       border: 1px solid rgba(255,255,255,0.12);
-      transition:
-        opacity 0.25s ease,
-        transform 0.25s ease,
-        border-color 0.25s ease;
+      transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
     }
     .carousel-thumb img {
       width: 100%;
@@ -198,20 +208,16 @@
       border-color: rgba(255,255,255,0.9);
       transform: translateY(-3px);
     }
-    .carousel-thumbs::-webkit-scrollbar {
-      height: 6px;
-    }
-    .carousel-thumbs::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.18);
-      border-radius: 999px;
-    }
 
-    /* Línea antes del contacto — oculta para quitar la franja gris */
+    /* LÍNEA ENTRE GALERÍA Y CONTACTO (ACTIVADA) */
     .footer-line {
-      display: none;
+      width: 100%;
+      max-width: 1100px;
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      margin: 140px auto 80px;
     }
 
-    /* CONTACTO */
     .contact-strip {
       max-width: 1100px;
       margin: 0 auto 160px;
@@ -248,6 +254,14 @@
       .carousel-thumb { width: 110px; border-radius: 8px; }
       .contact-strip { padding: 0 20px; margin: 120px auto 140px; }
     }
+
+    /* ÚLTIMO RECURSO: por si algún CSS externo los pone en blanco */
+    header .logo,
+    header nav a,
+    .hero-text h1,
+    .hero-text p {
+      color: #000 !important;
+    }
   </style>
 </head>
 
@@ -261,5 +275,114 @@
 </header>
 
 <section class="hero">
-  <img src="wencabezado.jpg" alt="Wedding">
-  <div
+  <img src="sencabezado.jpg" alt="Sports">
+  <div class="hero-text">
+    <h1>Sports</h1>
+    <p>Adrenalina, precisión y luz en pleno movimiento</p>
+  </div>
+</section>
+
+<section class="content">
+
+  <h3 class="section-subtitle">Leer el ritmo del deporte</h3>
+  <p>
+    Vengo del mundo de los deportes náuticos, donde todo cambia en segundos: luz, viento, mar, energía. Esa experiencia me ayuda a anticipar el momento clave antes de que suceda. No disparo al azar: busco el gesto, la línea, el punto exacto donde acción y emoción se cruzan.
+  </p>
+
+  <h3 class="section-subtitle">Movimiento congelado, energía intacta</h3>
+  <p>
+    Trabajo para que cada imagen conserve la velocidad, el esfuerzo y la intensidad del momento. Ya sea en agua, tierra o aire, cuido la composición, el fondo y la dirección de la luz para que el resultado sea limpio, potente y con una estética que encaje con marcas, atletas y eventos.
+  </p>
+
+  <h3 class="section-subtitle">Historias para marcas y personas reales</h3>
+  <p>
+    No se trata solo de acción: también documento preparación, concentración, equipo y ambiente. Creo contenido que funciona tanto para proyectos personales como para campañas, redes y comunicación de marcas relacionadas con el deporte, el outdoor y la vida activa.
+  </p>
+
+</section>
+
+<section class="gallery-carousel">
+  <div class="carousel-main">
+    <button class="carousel-arrow left" aria-label="Anterior">&#8249;</button>
+    <img src="s1.jpg" id="carousel-main-img" class="active" alt="Sports principal">
+    <button class="carousel-arrow right" aria-label="Siguiente">&#8250;</button>
+  </div>
+
+  <div class="carousel-thumbs">
+    <div class="carousel-thumb active" data-index="0"><img src="s1.jpg"  alt="Sports 1"></div>
+    <div class="carousel-thumb" data-index="1"><img src="s2.jpg"  alt="Sports 2"></div>
+    <div class="carousel-thumb" data-index="2"><img src="s3.jpg"  alt="Sports 3"></div>
+    <div class="carousel-thumb" data-index="3"><img src="s4.jpg"  alt="Sports 4"></div>
+    <div class="carousel-thumb" data-index="4"><img src="s5.jpg"  alt="Sports 5"></div>
+    <div class="carousel-thumb" data-index="5"><img src="s6.jpg"  alt="Sports 6"></div>
+    <div class="carousel-thumb" data-index="6"><img src="s7.jpg"  alt="Sports 7"></div>
+    <div class="carousel-thumb" data-index="7"><img src="s8.jpg"  alt="Sports 8"></div>
+    <div class="carousel-thumb" data-index="8"><img src="s9.jpg"  alt="Sports 9"></div>
+    <div class="carousel-thumb" data-index="9"><img src="s10.jpg" alt="Sports 10"></div>
+    <div class="carousel-thumb" data-index="10"><img src="s11.jpg" alt="Sports 11"></div>
+    <div class="carousel-thumb" data-index="11"><img src="s12.jpg" alt="Sports 12"></div>
+  </div>
+</section>
+
+<div class="footer-line"></div>
+
+<section class="contact-strip" id="contacto">
+  <div class="contact-strip-info">
+    <p class="contact-label">based in</p>
+    <p>Mallorca, España — proyectos donde llegue la luz</p>
+
+    <p class="contact-label">whatsapp</p>
+    <p><a href="https://wa.me/34671310241" target="_blank">+34 671 310 241</a></p>
+
+    <p class="contact-label">email</p>
+    <p><a href="mailto:carlos.sequini@gmail.com">carlos.sequini@gmail.com</a></p>
+
+    <p class="contact-label">instagram</p>
+    <p><a href="https://instagram.com/ellentecasualdecharlie" target="_blank">@ellentecasualdecharlie</a></p>
+    <p><a href="https://instagram.com/unportafoliocasual" target="_blank">@unportafoliocasual</a></p>
+  </div>
+</section>
+
+<script>
+  // Header scroll (solo cambia fondo, no colores)
+  window.addEventListener("scroll", () => {
+    const header = document.querySelector('header');
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Carrusel
+  const mainImg = document.getElementById('carousel-main-img');
+  const thumbs = document.querySelectorAll('.carousel-thumb');
+  const arrowLeft = document.querySelector('.carousel-arrow.left');
+  const arrowRight = document.querySelector('.carousel-arrow.right');
+
+  let currentIndex = 0;
+
+  function setActive(index) {
+    currentIndex = index;
+    const currentActive = document.querySelector('.carousel-thumb.active');
+    if (currentActive) currentActive.classList.remove('active');
+    thumbs[currentIndex].classList.add('active');
+    mainImg.src = thumbs[currentIndex].querySelector('img').src;
+  }
+
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const index = parseInt(thumb.getAttribute('data-index'), 10);
+      setActive(index);
+    });
+  });
+
+  arrowRight.addEventListener('click', () => {
+    const nextIndex = (currentIndex + 1) % thumbs.length;
+    setActive(nextIndex);
+  });
+
+  arrowLeft.addEventListener('click', () => {
+    const prevIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
+    setActive(prevIndex);
+  });
+</script>
+
+</body>
+</html>
