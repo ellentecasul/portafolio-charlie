@@ -16,7 +16,7 @@
       background-color: #000;
       min-height: 100%;
     }
- 
+
     body {
       color: #fff;
       font-family: "Montserrat", sans-serif;
@@ -107,6 +107,7 @@
       font-weight: 500;
       margin: 90px 0 26px;
       letter-spacing: -0.01em;
+      text-align: center;
     }
 
     /* CARRUSEL */
@@ -153,6 +154,7 @@
       background: rgba(0,0,0,0.4);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
+      transition: background 0.25s ease, transform 0.25s ease;
     }
     .carousel-arrow.left { left: 18px; }
     .carousel-arrow.right { right: 18px; }
@@ -163,6 +165,7 @@
       gap: 12px;
       overflow-x: auto;
       padding-bottom: 10px;
+      -webkit-overflow-scrolling: touch;
     }
     .carousel-thumb {
       flex: 0 0 auto;
@@ -173,6 +176,13 @@
       cursor: pointer;
       opacity: 0.55;
       border: 1px solid rgba(255,255,255,0.12);
+      transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    }
+    .carousel-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .carousel-thumb.active {
       opacity: 1;
@@ -203,6 +213,9 @@
     .contact-strip-info a {
       color: #fff;
       text-decoration: none;
+    }
+    .contact-strip-info a:hover {
+      opacity: 0.8;
     }
 
     @media (max-width: 700px) {
@@ -237,19 +250,13 @@
 <section class="content">
 
   <h3 class="section-subtitle">Leer el ritmo del deporte</h3>
-  <p>
-    Vengo del mundo de los deportes náuticos, donde todo cambia en segundos: luz, viento, mar, energía...
-  </p>
+  <p>Vengo del mundo de los deportes náuticos, donde todo cambia en segundos: luz, viento, mar, energía. Esa experiencia me ayuda a anticipar el momento clave antes de que suceda. No disparo al azar: busco el gesto, la línea, el punto exacto donde acción y emoción se cruzan.</p>
 
   <h3 class="section-subtitle">Movimiento congelado, energía intacta</h3>
-  <p>
-    Trabajo para que cada imagen conserve la velocidad, el esfuerzo y la intensidad del momento...
-  </p>
+  <p>Trabajo para que cada imagen conserve la velocidad, el esfuerzo y la intensidad del momento. Ya sea en agua, tierra o aire, cuido la composición, el fondo y la dirección de la luz para que el resultado sea limpio, potente y con una estética que encaje con marcas, atletas y eventos.</p>
 
   <h3 class="section-subtitle">Historias para marcas y personas reales</h3>
-  <p>
-    No se trata solo de acción: también documento preparación, concentración, equipo y ambiente...
-  </p>
+  <p>No se trata solo de acción: también documento preparación, concentración, equipo y ambiente. Creo contenido que funciona tanto para proyectos personales como para campañas, redes y comunicación de marcas relacionadas con el deporte, el outdoor y la vida activa.</p>
 
 </section>
 
@@ -261,18 +268,18 @@
   </div>
 
   <div class="carousel-thumbs">
-    <div class="carousel-thumb active" data-index="0"><img src="s1.jpg"></div>
-    <div class="carousel-thumb" data-index="1"><img src="s2.jpg"></div>
-    <div class="carousel-thumb" data-index="2"><img src="s3.jpg"></div>
-    <div class="carousel-thumb" data-index="3"><img src="s4.jpg"></div>
-    <div class="carousel-thumb" data-index="4"><img src="s5.jpg"></div>
-    <div class="carousel-thumb" data-index="5"><img src="s6.jpg"></div>
-    <div class="carousel-thumb" data-index="6"><img src="s7.jpg"></div>
-    <div class="carousel-thumb" data-index="7"><img src="s8.jpg"></div>
-    <div class="carousel-thumb" data-index="8"><img src="s9.jpg"></div>
-    <div class="carousel-thumb" data-index="9"><img src="s10.jpg"></div>
-    <div class="carousel-thumb" data-index="10"><img src="s11.jpg"></div>
-    <div class="carousel-thumb" data-index="11"><img src="s12.jpg"></div>
+    <div class="carousel-thumb active" data-index="0"><img src="s1.jpg" alt="Sports 1"></div>
+    <div class="carousel-thumb" data-index="1"><img src="s2.jpg" alt="Sports 2"></div>
+    <div class="carousel-thumb" data-index="2"><img src="s3.jpg" alt="Sports 3"></div>
+    <div class="carousel-thumb" data-index="3"><img src="s4.jpg" alt="Sports 4"></div>
+    <div class="carousel-thumb" data-index="4"><img src="s5.jpg" alt="Sports 5"></div>
+    <div class="carousel-thumb" data-index="5"><img src="s6.jpg" alt="Sports 6"></div>
+    <div class="carousel-thumb" data-index="6"><img src="s7.jpg" alt="Sports 7"></div>
+    <div class="carousel-thumb" data-index="7"><img src="s8.jpg" alt="Sports 8"></div>
+    <div class="carousel-thumb" data-index="8"><img src="s9.jpg" alt="Sports 9"></div>
+    <div class="carousel-thumb" data-index="9"><img src="s10.jpg" alt="Sports 10"></div>
+    <div class="carousel-thumb" data-index="10"><img src="s11.jpg" alt="Sports 11"></div>
+    <div class="carousel-thumb" data-index="11"><img src="s12.jpg" alt="Sports 12"></div>
   </div>
 </section>
 
@@ -310,23 +317,27 @@
 
   function setActive(index) {
     currentIndex = index;
-    document.querySelector('.carousel-thumb.active').classList.remove('active');
+    const currentActive = document.querySelector('.carousel-thumb.active');
+    if (currentActive) currentActive.classList.remove('active');
     thumbs[currentIndex].classList.add('active');
     mainImg.src = thumbs[currentIndex].querySelector('img').src;
   }
 
   thumbs.forEach(thumb => {
     thumb.addEventListener('click', () => {
-      setActive(parseInt(thumb.getAttribute('data-index'), 10));
+      const index = parseInt(thumb.getAttribute('data-index'), 10);
+      setActive(index);
     });
   });
 
   arrowRight.addEventListener('click', () => {
-    setActive((currentIndex + 1) % thumbs.length);
+    const nextIndex = (currentIndex + 1) % thumbs.length;
+    setActive(nextIndex);
   });
 
   arrowLeft.addEventListener('click', () => {
-    setActive((currentIndex - 1 + thumbs.length) % thumbs.length);
+    const prevIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
+    setActive(prevIndex);
   });
 </script>
 
