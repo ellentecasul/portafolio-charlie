@@ -40,26 +40,25 @@
       -webkit-backdrop-filter: blur(14px);
     }
 
-    /* ✔️ CAMBIO: letras negras */
+    /* Letras del header en negro */
     .logo {
       font-family: "Parisienne", cursive;
       font-size: 1.8rem;
       letter-spacing: 0.3em;
-      color: #000; /* antes #fff */
+      color: #000;
       text-decoration: none;
       transition: color 0.35s ease;
     }
 
-    /* ✔️ CAMBIO: letras negras */
     header nav a {
       text-decoration: none;
       margin-left: 22px;
       font-size: 0.9rem;
       transition: color 0.35s ease;
-      color: #000; /* antes #fff */
+      color: #000;
     }
     header.scrolled nav a {
-      color: #000; /* antes #fff */
+      color: #000;
     }
 
     /* HERO */
@@ -207,13 +206,9 @@
       border-radius: 999px;
     }
 
-    /* Línea antes del contacto */
+    /* Línea antes del contacto — oculta para quitar la franja gris */
     .footer-line {
-      width: 100%;
-      max-width: 1100px;
-      height: 1px;
-      background: rgba(255,255,255,0.12);
-      margin: 140px auto 80px;
+      display: none;
     }
 
     /* CONTACTO */
@@ -267,99 +262,4 @@
 
 <section class="hero">
   <img src="wencabezado.jpg" alt="Wedding">
-  <div class="hero-text">
-    <h1>Wedding</h1>
-    <p>Historias honestas de amor y celebración</p>
-  </div>
-</section>
-
-<section class="content">
-
-  <h3 class="section-subtitle">Documentar sin interrumpir</h3>
-  <p>Mi forma de trabajar ...</p>
-
-  <h3 class="section-subtitle">Luz, movimiento y atmósfera</h3>
-  <p>Busco la luz ...</p>
-
-  <h3 class="section-subtitle">Más allá del gran día</h3>
-  <p>Una boda no es solo ...</p>
-
-</section>
-
-<section class="gallery-carousel">
-  <div class="carousel-main">
-    <button class="carousel-arrow left">&#8249;</button>
-    <img src="w1.jpg" id="carousel-main-img" class="active">
-    <button class="carousel-arrow right">&#8250;</button>
-  </div>
-
-  <div class="carousel-thumbs">
-    <div class="carousel-thumb active" data-index="0"><img src="w1.jpg"></div>
-    <div class="carousel-thumb" data-index="1"><img src="w2.jpg"></div>
-    <div class="carousel-thumb" data-index="2"><img src="w3.jpg"></div>
-    <div class="carousel-thumb" data-index="3"><img src="w4.jpg"></div>
-    <div class="carousel-thumb" data-index="4"><img src="w5.jpg"></div>
-    <div class="carousel-thumb" data-index="5"><img src="w6.jpg"></div>
-    <div class="carousel-thumb" data-index="6"><img src="w7.jpg"></div>
-    <div class="carousel-thumb" data-index="7"><img src="w8.jpg"></div>
-    <div class="carousel-thumb" data-index="8"><img src="w9.jpg"></div>
-    <div class="carousel-thumb" data-index="9"><img src="w10.jpg"></div>
-    <div class="carousel-thumb" data-index="10"><img src="w11.jpg"></div>
-    <div class="carousel-thumb" data-index="11"><img src="w12.jpg"></div>
-  </div>
-</section>
-
-<div class="footer-line"></div>
-
-<section class="contact-strip" id="contacto">
-  <div class="contact-strip-info">
-    <p class="contact-label">based in</p>
-    <p>Mallorca, España — proyectos donde llegue la luz</p>
-
-    <p class="contact-label">whatsapp</p>
-    <p><a href="https://wa.me/34671310241">+34 671 310 241</a></p>
-
-    <p class="contact-label">email</p>
-    <p><a href="mailto:carlos.sequini@gmail.com">carlos.sequini@gmail.com</a></p>
-
-    <p class="contact-label">instagram</p>
-    <p><a href="https://instagram.com/ellentecasualdecharlie">@ellentecasualdecharlie</a></p>
-    <p><a href="https://instagram.com/unportafoliocasual">@unportafoliocasual</a></p>
-  </div>
-</section>
-
-<script>
-  window.addEventListener("scroll", () => {
-    const header = document.querySelector('header');
-    header.classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  const mainImg = document.getElementById('carousel-main-img');
-  const thumbs = document.querySelectorAll('.carousel-thumb');
-  const arrowLeft = document.querySelector('.carousel-arrow.left');
-  const arrowRight = document.querySelector('.carousel-arrow.right');
-
-  let currentIndex = 0;
-
-  function setActive(index) {
-    currentIndex = index;
-    document.querySelector('.carousel-thumb.active').classList.remove('active');
-    thumbs[index].classList.add('active');
-    mainImg.src = thumbs[index].querySelector('img').src;
-  }
-
-  thumbs.forEach((thumb, i) => {
-    thumb.addEventListener("click", () => setActive(i));
-  });
-
-  arrowRight.addEventListener("click", () => {
-    setActive((currentIndex + 1) % thumbs.length);
-  });
-
-  arrowLeft.addEventListener("click", () => {
-    setActive((currentIndex - 1 + thumbs.length) % thumbs.length);
-  });
-</script>
-
-</body>
-</html>
+  <div
