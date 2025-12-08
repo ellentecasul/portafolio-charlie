@@ -364,7 +364,7 @@
     if (currentActive) currentActive.classList.remove('active');
     thumbs[currentIndex].classList.add('active');
     mainImg.src = thumbs[currentIndex].querySelector('img').src;
-  }
+  } 
 
   thumbs.forEach(thumb => {
     thumb.addEventListener('click', () => {
