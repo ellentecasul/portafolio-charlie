@@ -1,341 +1,397 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sports | Charlie</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charlie...</title>
 
   <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* Fondo negro sólido en toda la ventana y altura mínima pantalla completa */
-    html, body {
-      background-color: #000; /* fondo negro para evitar gris extraño */
-      min-height: 100%;
-    }
-
     body {
-      color: #fff;
+      background-color: #000;
+      color: #f2f2f2;
       font-family: "Montserrat", sans-serif;
-      line-height: 1.9;
+      line-height: 1.6;
     }
 
-    /* HEADER — transparente arriba y cristal al hacer scroll */
-    header {
+    /* HEADER — inicio transparente sin blur */
+    .main-header {
       position: fixed;
       top: 0; left: 0;
       width: 100%;
       padding: 18px 40px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      background: rgba(0,0,0,0);
-      backdrop-filter: none;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0);     /* transparente real */
+      backdrop-filter: none;            /* sin blur */
       -webkit-backdrop-filter: none;
       z-index: 100;
       transition: background 0.35s ease, backdrop-filter 0.35s ease;
     }
-    header.scrolled {
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(14px);
+
+    /* HEADER — luego al hacer scroll aparece el cristal oscuro con blur */
+    .main-header.scrolled {
+      background: rgba(0, 0, 0, 0.55);         /* overlay oscuro */
+      backdrop-filter: blur(14px);             /* blur como lo tenías */
       -webkit-backdrop-filter: blur(14px);
     }
 
-    /* LOGO Y HOME (letras en negro) */
     .logo {
       font-family: "Parisienne", cursive;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       letter-spacing: 0.3em;
-      color: #000;
-      text-decoration: none;
-      transition: color 0.35s ease;
+      color: #000; /* TEXTO NEGRO */
     }
 
-    header nav a {
-      text-decoration: none;
-      margin-left: 22px;
+    .main-nav {
+      display: flex;
+      gap: 24px;
       font-size: 0.9rem;
-      transition: color 0.35s ease;
-      color: #000;
     }
 
-    header.scrolled .logo {
-      color: #000;
+    .main-nav a,
+    .main-nav a:visited {
+      color: #000; /* TEXTO NEGRO */
+      text-decoration: none;
+      text-transform: lowercase;
+      letter-spacing: 0.08em;
+      transition: opacity 0.3s ease;
     }
-    header.scrolled nav a {
-      color: #000;
+
+    .main-nav a:hover { opacity: 0.7; }
+
+    .header-icons a {
+      color: #000; /* TEXTO NEGRO */
+      text-decoration: none;
+      margin-left: 12px;
     }
 
     /* HERO */
     .hero {
       position: relative;
+      overflow: hidden;
+      min-height: 100vh;  /* ocupa 100% pantalla */
     }
-    .hero img {
+
+    .hero-image {
       width: 100%;
-      height: 620px;
+      height: 100vh;
       object-fit: cover;
       display: block;
     }
+
     .hero-text {
       position: absolute;
-      top: 80%;
-      left: 60px;
-      transform: translateY(-50%);
-    }
-    .hero-text h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 2.8rem;
-      margin-bottom: 2px;
-      line-height: 1.1;
-      color: #000; /* título negro */
-      text-shadow: none;
-    }
-    .hero-text p {
-      font-size: 1.1rem;
-      opacity: 0.95;
-      line-height: 1.1;
-      margin-top: 0;
-      color: #000; /* subtítulo negro */
-      text-shadow: none;
+      bottom: 43%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 1.9rem;
+      font-weight: 300;
+      color: #fff;
+      letter-spacing: 0.12em;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.45);
     }
 
-    /* CONTENIDO estilo Home */
-    .content {
+    /* CATEGORÍAS */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      width: 100%;
+      margin-top: 160px;
+    }
+    .category {
+      position: relative;
+      overflow: hidden;
+    }
+    .category img {
+      width: 100%;
+      aspect-ratio: 271/558;
+      object-fit: cover;
+      filter: grayscale(100%) brightness(70%);
+      transition: filter 0.4s ease, transform 0.4s ease;
+    }
+    .category:hover img {
+      filter: grayscale(0) brightness(100%);
+      transform: scale(1.02);
+    }
+    .category h3 {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 1.1rem;
+      opacity: 0;
+      text-shadow: 0 0 8px rgba(0,0,0,0.8);
+      transition: opacity 0.4s ease;
+    }
+    .category:hover h3 { opacity: 1; }
+
+
+    /* ABOUT */
+    .about {
       max-width: 1300px;
-      margin: 160px auto 90px;
+      margin: 140px auto;
       padding: 0 6vw;
       text-align: center;
     }
-    .content p {
+    .about-title {
+      font-family: "Playfair Display", serif;
+      font-size: 3.1rem;
+      margin-bottom: 30px;
+    }
+    .about-text {
       max-width: 1200px;
-      margin: 0 auto 26px;
+      margin: 0 auto;
       font-size: 1.32rem;
       line-height: 1.65;
+      text-align: center;
     }
-    .section-subtitle {
+    .about-text p { margin-bottom: 26px; }
+
+
+    /* WHY */
+    .why {
+      max-width: 1300px;
+      margin: 140px auto;
+      padding: 0 6vw;
+      text-align: center;
+    }
+    .why-title {
       font-family: "Playfair Display", serif;
-      font-size: 2.25rem;
-      font-weight: 500;
+      font-size: 3.1rem;
+      margin-bottom: 30px;
+    }
+    .why-text p {
       margin-bottom: 26px;
-      margin-top: 90px;
-      letter-spacing: -0.01em;
+      font-size: 1.32rem;
+      line-height: 1.65;
       text-align: center;
     }
 
-    /* CARRUSEL */
-    .gallery-carousel {
-      max-width: 1400px;
-      margin: 0 auto 130px;
-      padding: 0 30px;
-    }
-    .carousel-main {
-      position: relative;
-      background: #000; /* negro plano, sin banner gris */
-      border-radius: 20px;
-      padding: 26px 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .carousel-main img {
-      max-width: 100%;
-      max-height: 72vh;
-      object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-      transition: transform 0.4s ease;
-    }
-    .carousel-main img.active {
-      transform: scale(1.015);
-    }
-    .carousel-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 2.2rem;
-      color: #fff;
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      transition: background 0.25s ease, transform 0.25s ease;
-    }
-    .carousel-arrow.left { left: 18px; }
-    .carousel-arrow.right { right: 18px; }
-    .carousel-arrow:hover {
-      background: rgba(255,255,255,0.14);
-      transform: translateY(-50%) scale(1.04);
-    }
-    .carousel-thumbs {
-      margin-top: 22px;
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      padding-bottom: 10px;
-      -webkit-overflow-scrolling: touch;
-    }
-    .carousel-thumb {
-      flex: 0 0 auto;
-      width: 150px;
-      aspect-ratio: 3/2;
-      border-radius: 10px;
-      overflow: hidden;
-      cursor: pointer;
-      opacity: 0.55;
-      border: 1px solid rgba(255,255,255,0.12);
-      transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
-    }
-    .carousel-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .carousel-thumb.active {
-      opacity: 1;
-      border-color: rgba(255,255,255,0.9);
-      transform: translateY(-3px);
-    }
 
-    /* LÍNEA ENTRE GALERÍA Y CONTACTO (ACTIVADA) */
-    .footer-line {
-      width: 100%;
-      max-width: 1100px;
-      height: 1px;
-      background: rgba(255,255,255,0.12);
-      margin: 140px auto 80px;
-    }
-
+    /* CONTACT + FOOTER */
     .contact-strip {
       max-width: 1100px;
-      margin: 0 auto 160px;
+      margin: 160px auto 180px;
       padding: 0 40px;
+      position: relative;
       text-align: center;
     }
-    .contact-label {
-      font-family: "Playfair Display", serif;
-      font-size: 1.4rem;
-      margin-top: 28px;
-      margin-bottom: 4px;
-      text-transform: lowercase;
-      color: rgba(255,255,255,0.85);
-      letter-spacing: 0.03em;
+
+    .contact-strip-title {
+      position: absolute;
+      bottom: 52%;                        /* subido un poco más */
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;                /* una sola línea */
+      font-family: "Caveat", cursive;
+      font-size: 3.3rem;
+      color: #ffffff;
+      text-shadow: 0 0 14px rgba(0,0,0,0.85);
+      letter-spacing: 0.02em;
     }
-    .contact-strip-info p {
-      margin: 8px 0;
-      font-size: 1rem;
+
+    .contact-strip-image {
+      width: 100%;
+      height: auto;
+      margin-bottom: 48px;
     }
-    .contact-strip-info a {
-      color: #fff;
+
+    .footer-line {
+      display: none; /* OCULTA LA FRANJA GRIS/BLANCA */
+    }
+
+    .footer-content p {
+      color: #ccc;
+      margin: 6px 0;
+    }
+    .footer-content a {
+      color: #ccc;
       text-decoration: none;
     }
+    .footer-content a:hover {
+      color: #fff;
+    }
+
+    /* ===== ESTILO EDITORIAL PARA CONTACTO ===== */
+    .contact-strip-info {
+      max-width: 650px;
+      margin: 0 auto;
+      text-align: left;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #dcdcdc;
+    }
+
+    .contact-strip-info p {
+      margin: 4px 0 10px;
+    }
+
+    .contact-strip-info a {
+      color: #f2f2f2;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(242,242,242,0.2);
+      padding-bottom: 1px;
+      transition: border-color 0.3s ease;
+    }
+
     .contact-strip-info a:hover {
-      opacity: 0.8;
+      border-bottom-color: rgba(242,242,242,0.6);
     }
 
-    @media (max-width: 700px) {
-      .hero img { height: 280px; }
-      .hero-text { top: 52%; left: 24px; }
-      .gallery-carousel { padding: 0 22px; margin-bottom: 90px; }
-      .carousel-main { padding: 18px 18px; border-radius: 16px; }
-      .carousel-main img { max-height: 68vh; }
-      .carousel-thumb { width: 110px; border-radius: 8px; }
-      .contact-strip { padding: 0 20px; margin: 120px auto 140px; }
+    .contact-label {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.7rem;
+      color: #888;
+      margin-top: 22px;
+      margin-bottom: 2px;
     }
 
-    /* ÚLTIMO RECURSO: por si algún CSS externo los pone en blanco */
-    header .logo,
-    header nav a,
-    .hero-text h1,
-    .hero-text p {
-      color: #000 !important;
+    /* ===== AJUSTES SOLO PARA MÓVIL ===== */
+    @media (max-width: 600px) {
+
+      /* HEADER RESPONSIVE PARA QUE NO SE CORTEN LAS CATEGORÍAS */
+      .main-header {
+        padding: 10px 16px;
+        flex-direction: column;         /* logo + menú + iconos en columna */
+        align-items: center;
+        gap: 8px;
+      }
+
+      .logo {
+        font-size: 1.1rem;
+        letter-spacing: 0.22em;
+      }
+
+      .main-nav {
+        flex-wrap: wrap;               /* permite 2 filas si hace falta */
+        justify-content: center;
+        gap: 10px;
+        font-size: 0.78rem;            /* un poco más pequeño para que quepa */
+      }
+
+      .header-icons {
+        font-size: 0.8rem;
+      }
+
+      /* Texto sobre la imagen de palmeras (hero) */
+      .hero-text {
+        bottom: 30%;              /* más abajo y centrado en móvil */
+        font-size: 1.25rem;       /* más pequeño, más limpio */
+        letter-spacing: 0.01em;   /* menos separación entre letras */
+        line-height: 1.25;        /* compacto como título, no párrafo */
+        width: 88%;               /* deja margen a los lados */
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0;
+        text-align: center;
+      }
+
+      /* Categorías una debajo de otra → scroll vertical */
+      .categories {
+        grid-template-columns: 1fr;
+        margin-top: 60px;
+      }
+
+      .category img {
+        aspect-ratio: 4 / 5;      /* relación más natural en móvil */
+      }
+
+      /* Título final adaptado a móvil pero 1 línea */
+      .contact-strip-title {
+        font-size: 7vw;           /* se adapta al ancho de pantalla */
+        bottom: 58%;
+      }
     }
+
   </style>
 </head>
 
+
 <body>
 
-<header>
-  <a href="index.html" class="logo">Charlie...</a>
-  <nav>
-    <a href="index.html">Home</a>
+<header class="main-header">
+  <div class="logo">Charlie...</div>
+  <nav class="main-nav">
+    <a href="dwellings.html">Dwellings</a>
+    <a href="wedding.html">Wedding</a>
+    <a href="gastronomy.html">Gastronomy</a>
+    <a href="lifestyle.html">Lifestyle</a>
+    <a href="sports.html">Sports</a>
   </nav>
+  <div class="header-icons">
+    <a href="https://wa.me/34671310241">WhatsApp</a>
+    <a href="#contacto">📍</a>
+  </div>
 </header>
 
+
 <section class="hero">
-  <img src="sencabezado.jpg" alt="Sports">
-  <div class="hero-text">
-    <h1>Sports</h1>
-    <p>Adrenalina, precisión y luz en pleno movimiento</p>
+  <img src="palmeras.jpg" class="hero-image" alt="Palmeras">
+  <div class="hero-text">Contar historias con luz, naturaleza y emociones reales</div>
+</section>
+
+
+<section class="categories">
+  <a class="category" href="dwellings.html"><img src="dwellings.jpg" alt="Dwellings"><h3>Dwellings</h3></a>
+  <a class="category" href="wedding.html"><img src="wedding.jpg" alt="Wedding"><h3>Wedding</h3></a>
+  <a class="category" href="gastronomy.html"><img src="gastronomy.jpg" alt="Gastronomy"><h3>Gastronomy</h3></a>
+  <a class="category" href="lifestyle.html"><img src="lifestyle.jpg" alt="Lifestyle"><h3>Lifestyle</h3></a>
+  <a class="category" href="sports.html"><img src="saul.jpg" alt="Sports"><h3>Sports</h3></a>
+</section>
+
+
+<section class="about">
+  <h2 class="about-title">Soy Charlie.</h2>
+  <div class="about-text">
+    <p>Mi trabajo no es solo fotografía o filmmaking; es la unión de mis pasiones y la forma más sincera de expresar cómo&nbsp;veo&nbsp;el&nbsp;mundo.</p>
+    <p>Trabajé como chef y aprendí a leer la composición, la textura y el arte de presentar algo que despierte emoción desde&nbsp;el&nbsp;primer&nbsp;vistazo.</p>
+    <p>La música siempre ha sido mi lenguaje. De ella nace mi ritmo narrativo: transiciones fluidas, cadencia natural y una forma intuitiva de contar historias en&nbsp;movimiento&nbsp;real.</p>
+    <p>Como instructor de deportes náuticos descubrí cómo cambia la luz durante el día, el poder del amanecer, el misterio de la noche y la energía humana en su estado más&nbsp;puro&nbsp;y&nbsp;honesto.</p>
+    <p>Hoy combino técnica, sensibilidad y una mirada sensorial para crear historias reales en bodas, deportes, gastronomía y proyectos de&nbsp;lifestyle&nbsp;auténtico.</p>
   </div>
 </section>
 
-<section class="content">
 
-  <h3 class="section-subtitle">Leer el ritmo del deporte</h3>
-  <p>
-    Vengo del mundo de los deportes náuticos, donde todo cambia en segundos: luz, viento, mar, energía. Esa experiencia me ayuda a anticipar el momento clave antes de que suceda. No disparo al azar: busco el gesto, la línea, el punto exacto donde acción y emoción se cruzan.
-  </p>
-
-  <h3 class="section-subtitle">Movimiento congelado, energía intacta</h3>
-  <p>
-    Trabajo para que cada imagen conserve la velocidad, el esfuerzo y la intensidad del momento. Ya sea en agua, tierra o aire, cuido la composición, el fondo y la dirección de la luz para que el resultado sea limpio, potente y con una estética que encaje con marcas, atletas y eventos.
-  </p>
-
-  <h3 class="section-subtitle">Historias para marcas y personas reales</h3>
-  <p>
-    No se trata solo de acción: también documento preparación, concentración, equipo y ambiente. Creo contenido que funciona tanto para proyectos personales como para campañas, redes y comunicación de marcas relacionadas con el deporte, el outdoor y la vida activa.
-  </p>
-
-</section>
-
-<section class="gallery-carousel">
-  <div class="carousel-main">
-    <button class="carousel-arrow left" aria-label="Anterior">&#8249;</button>
-    <img src="s1.jpg" id="carousel-main-img" class="active" alt="Sports principal">
-    <button class="carousel-arrow right" aria-label="Siguiente">&#8250;</button>
-  </div>
-
-  <div class="carousel-thumbs">
-    <div class="carousel-thumb active" data-index="0"><img src="s1.jpg"  alt="Sports 1"></div>
-    <div class="carousel-thumb" data-index="1"><img src="s2.jpg"  alt="Sports 2"></div>
-    <div class="carousel-thumb" data-index="2"><img src="s3.jpg"  alt="Sports 3"></div>
-    <div class="carousel-thumb" data-index="3"><img src="s4.jpg"  alt="Sports 4"></div>
-    <div class="carousel-thumb" data-index="4"><img src="s5.jpg"  alt="Sports 5"></div>
-    <div class="carousel-thumb" data-index="5"><img src="s6.jpg"  alt="Sports 6"></div>
-    <div class="carousel-thumb" data-index="6"><img src="s7.jpg"  alt="Sports 7"></div>
-    <div class="carousel-thumb" data-index="7"><img src="s8.jpg"  alt="Sports 8"></div>
-    <div class="carousel-thumb" data-index="8"><img src="s9.jpg"  alt="Sports 9"></div>
-    <div class="carousel-thumb" data-index="9"><img src="s10.jpg" alt="Sports 10"></div>
-    <div class="carousel-thumb" data-index="10"><img src="s11.jpg" alt="Sports 11"></div>
-    <div class="carousel-thumb" data-index="11"><img src="s12.jpg" alt="Sports 12"></div>
+<section class="why">
+  <h2 class="why-title">¿Por qué elegir trabajar conmigo?</h2>
+  <div class="why-text">
+    <p>No documento momentos: los vivo contigo. Me involucro en la energía de cada situación para capturar lo que realmente pasa, incluso cuando nadie más está&nbsp;mirando&nbsp;de&nbsp;cerca.</p>
+    <p>Mi estilo de vida me enseñó a valorar la conexión humana, el flujo natural de cada proyecto y el ritmo emocional que hace que una historia respire y tenga&nbsp;sentido&nbsp;propio.</p>
+    <p>Inmortalizo la adrenalina de un evento deportivo, la emoción íntima de una boda, la dedicación detrás de un plato gastronómico y la esencia real de un lifestyle vivido&nbsp;sin&nbsp;posturas.</p>
+    <p>Siempre busco la luz, la historia y esa chispa vital que transforma una imagen o un vídeo en un recuerdo que sigue vivo en tu memoria con el paso&nbsp;del&nbsp;tiempo.</p>
+    <p>Si quieres una mirada artística, experiencia real y sensibilidad humana, aquí tienes a alguien dispuesto a contar tu historia con honestidad&nbsp;y&nbsp;propia&nbsp;voz.</p>
   </div>
 </section>
 
-<div class="footer-line"></div>
 
 <section class="contact-strip" id="contacto">
+  <div class="contact-strip-title">el arte de expresar sin palabras</div>
+
+  <img src="pagina 3.jpg" class="contact-strip-image" alt="Contacto Charlie en Mallorca" />
+
+  <div class="footer-line"></div>
+
   <div class="contact-strip-info">
     <p class="contact-label">based in</p>
-    <p>Mallorca, España — proyectos donde llegue la luz</p>
+    <p>Mallorca, España · disponible para proyectos donde llegue la luz</p>
+
+    <p class="contact-label">contacto</p>
+    <p><a href="mailto:carlos.sequini@gmail.com">carlos.sequini@gmail.com</a></p>
 
     <p class="contact-label">whatsapp</p>
-    <p><a href="https://wa.me/34671310241" target="_blank">+34 671 310 241</a></p>
-
-    <p class="contact-label">email</p>
-    <p><a href="mailto:carlos.sequini@gmail.com">carlos.sequini@gmail.com</a></p>
+    <p><a href="https://wa.me/34671310241" target="_blank">+34&nbsp;671&nbsp;310&nbsp;241</a></p>
 
     <p class="contact-label">instagram</p>
     <p><a href="https://instagram.com/ellentecasualdecharlie" target="_blank">@ellentecasualdecharlie</a></p>
@@ -343,44 +399,16 @@
   </div>
 </section>
 
+
 <script>
-  // Header scroll (solo cambia fondo, no colores)
-  window.addEventListener("scroll", () => {
-    const header = document.querySelector('header');
-    header.classList.toggle('scrolled', window.scrollY > 50);
-  });
-
-  // Carrusel
-  const mainImg = document.getElementById('carousel-main-img');
-  const thumbs = document.querySelectorAll('.carousel-thumb');
-  const arrowLeft = document.querySelector('.carousel-arrow.left');
-  const arrowRight = document.querySelector('.carousel-arrow.right');
-
-  let currentIndex = 0;
-
-  function setActive(index) {
-    currentIndex = index;
-    const currentActive = document.querySelector('.carousel-thumb.active');
-    if (currentActive) currentActive.classList.remove('active');
-    thumbs[currentIndex].classList.add('active');
-    mainImg.src = thumbs[currentIndex].querySelector('img').src;
-  }
-
-  thumbs.forEach(thumb => {
-    thumb.addEventListener('click', () => {
-      const index = parseInt(thumb.getAttribute('data-index'), 10);
-      setActive(index);
-    });
-  });
-
-  arrowRight.addEventListener('click', () => {
-    const nextIndex = (currentIndex + 1) % thumbs.length;
-    setActive(nextIndex);
-  });
-
-  arrowLeft.addEventListener('click', () => {
-    const prevIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
-    setActive(prevIndex);
+  // Header cristal → oscuro al hacer scroll
+  window.addEventListener("scroll", function() {
+    const header = document.querySelector('.main-header');
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
   });
 </script>
 
