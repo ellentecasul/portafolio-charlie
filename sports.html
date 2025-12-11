@@ -160,12 +160,23 @@
     .carousel-arrow.right { right: 18px; }
 
     .carousel-thumbs {
-      margin-top: 22px;
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      padding-bottom: 10px;
-      -webkit-overflow-scrolling: touch;
+  margin-top: 22px;
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+
+  /* Ocultar scrollbar en Firefox y otros */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Ocultar scrollbar en Chrome, Edge, Safari */
+.carousel-thumbs::-webkit-scrollbar {
+  display: none;
+}
+
     }
     .carousel-thumb {
       flex: 0 0 auto;
